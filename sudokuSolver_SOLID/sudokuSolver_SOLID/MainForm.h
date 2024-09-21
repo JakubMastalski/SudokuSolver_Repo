@@ -33,6 +33,8 @@ namespace sudokuSolverSOLID {
 	private: System::Windows::Forms::Button^ button6;
 
 	private: System::Windows::Forms::Panel^ MainPanel;
+	private: System::Windows::Forms::Panel^ MenuOptionsPanel;
+
 	private: System::Windows::Forms::Panel^ panel2;
 	private: System::Windows::Forms::Panel^ panel9;
 	private: System::Windows::Forms::Panel^ panel10;
@@ -123,7 +125,6 @@ namespace sudokuSolverSOLID {
 	private: System::Windows::Forms::Panel^ panel59;
 	private: System::Windows::Forms::Panel^ panel60;
 	private: System::Windows::Forms::Panel^ panel61;
-    private: System::Windows::Forms::Panel^ panel92;
 
 	protected:
 

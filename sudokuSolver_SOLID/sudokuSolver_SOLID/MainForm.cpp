@@ -16,6 +16,8 @@ namespace sudokuSolverSOLID
 
 
 			this->MainPanel = (gcnew System::Windows::Forms::Panel());
+			this->MenuOptionsPanel = (gcnew System::Windows::Forms::Panel());
+
 			this->panel82 = (gcnew System::Windows::Forms::Panel());
 			this->panel83 = (gcnew System::Windows::Forms::Panel());
 			this->panel84 = (gcnew System::Windows::Forms::Panel());
@@ -110,7 +112,6 @@ namespace sudokuSolverSOLID
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->button4 = (gcnew System::Windows::Forms::Button());
-			this->panel92 = (gcnew System::Windows::Forms::Panel());
 			this->button5 = (gcnew System::Windows::Forms::Button());
 			this->button6 = (gcnew System::Windows::Forms::Button());
 			this->MainPanel->SuspendLayout();
@@ -123,7 +124,7 @@ namespace sudokuSolverSOLID
 			this->panel22->SuspendLayout();
 			this->panel12->SuspendLayout();
 			this->panel2->SuspendLayout();
-			this->panel92->SuspendLayout();
+			this->MenuOptionsPanel->SuspendLayout();
 			this->SuspendLayout();
 			
 			// 
@@ -150,6 +151,22 @@ namespace sudokuSolverSOLID
 			this->MainPanel->Name = L"panel1";
 			this->MainPanel->Size = System::Drawing::Size(440, 438);
 			this->MainPanel->TabIndex = 0;
+
+			// 
+	        // MenuOptionsPanel
+	        // 
+			this->MenuOptionsPanel->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(25)), static_cast<System::Int32>(static_cast<System::Byte>(25)),
+				static_cast<System::Int32>(static_cast<System::Byte>(25)));
+			this->MenuOptionsPanel->Controls->Add(this->button5);
+			this->MenuOptionsPanel->Controls->Add(this->button3);
+			this->MenuOptionsPanel->Controls->Add(this->button1);
+			this->MenuOptionsPanel->Controls->Add(this->button4);
+			this->MenuOptionsPanel->Controls->Add(this->button2);
+			this->MenuOptionsPanel->Location = System::Drawing::Point(605, 2);
+			this->MenuOptionsPanel->Name = L"MenuOptionsPanel";
+			this->MenuOptionsPanel->Size = System::Drawing::Size(250, 588);
+			this->MenuOptionsPanel->TabIndex = 5;
+
 			// 
 			// panel82
 			// 
@@ -1064,20 +1081,6 @@ namespace sudokuSolverSOLID
 			this->button4->UseVisualStyleBackColor = false;
 			this->button4->Click += gcnew System::EventHandler(this, &MainForm::button4_Click);
 			// 
-			// panel92
-			// 
-			this->panel92->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(25)), static_cast<System::Int32>(static_cast<System::Byte>(25)),
-				static_cast<System::Int32>(static_cast<System::Byte>(25)));
-			this->panel92->Controls->Add(this->button5);
-			this->panel92->Controls->Add(this->button3);
-			this->panel92->Controls->Add(this->button1);
-			this->panel92->Controls->Add(this->button4);
-			this->panel92->Controls->Add(this->button2);
-			this->panel92->Location = System::Drawing::Point(605, 2);
-			this->panel92->Name = L"panel92";
-			this->panel92->Size = System::Drawing::Size(250, 588);
-			this->panel92->TabIndex = 5;
-			// 
 			// button5
 			// 
 			this->button5->BackColor = System::Drawing::Color::Black;
@@ -1123,7 +1126,7 @@ namespace sudokuSolverSOLID
 			this->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
 			this->ClientSize = System::Drawing::Size(856, 584);
 			this->Controls->Add(this->button6);
-			this->Controls->Add(this->panel92);
+			this->Controls->Add(this->MenuOptionsPanel);
 			this->Controls->Add(this->MainPanel);
 			this->Font = (gcnew System::Drawing::Font(L"Segoe UI", 7.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
@@ -1148,7 +1151,7 @@ namespace sudokuSolverSOLID
 			this->panel22->ResumeLayout(false);
 			this->panel12->ResumeLayout(false);
 			this->panel2->ResumeLayout(false);
-			this->panel92->ResumeLayout(false);
+			this->MenuOptionsPanel->ResumeLayout(false);
 			this->ResumeLayout(false);
 		}
 	}
@@ -1157,12 +1160,12 @@ namespace sudokuSolverSOLID
 	}
 
 	Void MainForm::button5_Click(Object^ sender, EventArgs^ e) {
-		panel92->Visible = false;
+		MenuOptionsPanel->Visible = false;
 		button6->Visible = true;
 	}
 
 	Void MainForm::button6_Click(Object^ sender, EventArgs^ e) {
-		panel92->Visible = true;
+		MenuOptionsPanel->Visible = true;
 		button6->Visible = false;
 	}
 
