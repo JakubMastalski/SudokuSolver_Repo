@@ -11,12 +11,8 @@ namespace sudokuSolverSOLID
 			board = gcnew Board();
 			fields = board->getFields();
 
-			for (int i = 0; i < 9; i++) {
-				for (int j = 0; j < 9; j++) {
-					int index = i * 9 + j; 
-					SudokuField^ field = fields[index];
-				}
-			}
+			fields[0]->SetValue(7);
+
 
 			this->MainPanel = (gcnew System::Windows::Forms::Panel());
 			this->panel82 = (gcnew System::Windows::Forms::Panel());
@@ -178,6 +174,7 @@ namespace sudokuSolverSOLID
 			this->panel83->Name = L"panel83";
 			this->panel83->Size = System::Drawing::Size(40, 40);
 			this->panel83->TabIndex = 7;
+			this->panel83->Controls->Add(fields[0]);
 
 
 			// 
