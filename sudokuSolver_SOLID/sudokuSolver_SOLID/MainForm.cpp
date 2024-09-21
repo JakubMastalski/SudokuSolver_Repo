@@ -1,4 +1,6 @@
 #include "MainForm.h"
+#include "IBoard.h"
+#include "Board.h"
 
 namespace sudokuSolverSOLID
 {
@@ -118,8 +120,16 @@ namespace sudokuSolverSOLID
 			this->panel2->SuspendLayout();
 			this->panel92->SuspendLayout();
 			this->SuspendLayout();
+			
 			// 
-			// panel1
+// MainForm
+// 
+			this->ClientSize = System::Drawing::Size(968, 474);
+			this->Name = L"MainForm";
+			this->ResumeLayout(false);
+
+			// 
+			// MainPanel
 			// 
 			this->panel1->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->panel1->Controls->Add(this->panel82);
@@ -160,6 +170,7 @@ namespace sudokuSolverSOLID
 			this->panel83->Name = L"panel83";
 			this->panel83->Size = System::Drawing::Size(40, 40);
 			this->panel83->TabIndex = 7;
+
 			// 
 			// panel84
 			// 
@@ -200,6 +211,7 @@ namespace sudokuSolverSOLID
 			this->panel88->Name = L"panel88";
 			this->panel88->Size = System::Drawing::Size(40, 40);
 			this->panel88->TabIndex = 3;
+
 			// 
 			// panel89
 			// 
@@ -241,6 +253,7 @@ namespace sudokuSolverSOLID
 			this->panel72->Name = L"panel72";
 			this->panel72->Size = System::Drawing::Size(140, 140);
 			this->panel72->TabIndex = 11;
+			this->panel72->Text = "7";
 			// 
 			// panel73
 			// 
@@ -249,6 +262,7 @@ namespace sudokuSolverSOLID
 			this->panel73->Name = L"panel73";
 			this->panel73->Size = System::Drawing::Size(40, 40);
 			this->panel73->TabIndex = 7;
+		
 			// 
 			// panel74
 			// 
@@ -257,6 +271,7 @@ namespace sudokuSolverSOLID
 			this->panel74->Name = L"panel74";
 			this->panel74->Size = System::Drawing::Size(40, 40);
 			this->panel74->TabIndex = 6;
+
 			// 
 			// panel75
 			// 
@@ -265,6 +280,7 @@ namespace sudokuSolverSOLID
 			this->panel75->Name = L"panel75";
 			this->panel75->Size = System::Drawing::Size(40, 40);
 			this->panel75->TabIndex = 5;
+
 			// 
 			// panel76
 			// 
@@ -273,6 +289,7 @@ namespace sudokuSolverSOLID
 			this->panel76->Name = L"panel76";
 			this->panel76->Size = System::Drawing::Size(40, 40);
 			this->panel76->TabIndex = 4;
+
 			// 
 			// panel77
 			// 
@@ -281,6 +298,7 @@ namespace sudokuSolverSOLID
 			this->panel77->Name = L"panel77";
 			this->panel77->Size = System::Drawing::Size(40, 40);
 			this->panel77->TabIndex = 1;
+
 			// 
 			// panel78
 			// 
@@ -289,6 +307,8 @@ namespace sudokuSolverSOLID
 			this->panel78->Name = L"panel78";
 			this->panel78->Size = System::Drawing::Size(40, 40);
 			this->panel78->TabIndex = 3;
+
+
 			// 
 			// panel79
 			// 
@@ -297,6 +317,7 @@ namespace sudokuSolverSOLID
 			this->panel79->Name = L"panel79";
 			this->panel79->Size = System::Drawing::Size(40, 40);
 			this->panel79->TabIndex = 2;
+
 			// 
 			// panel80
 			// 
@@ -313,6 +334,7 @@ namespace sudokuSolverSOLID
 			this->panel81->Name = L"panel81";
 			this->panel81->Size = System::Drawing::Size(40, 40);
 			this->panel81->TabIndex = 0;
+
 			// 
 			// panel52
 			// 
@@ -386,6 +408,7 @@ namespace sudokuSolverSOLID
 			this->panel59->Name = L"panel59";
 			this->panel59->Size = System::Drawing::Size(40, 40);
 			this->panel59->TabIndex = 2;
+
 			// 
 			// panel60
 			// 
@@ -394,6 +417,7 @@ namespace sudokuSolverSOLID
 			this->panel60->Name = L"panel60";
 			this->panel60->Size = System::Drawing::Size(40, 40);
 			this->panel60->TabIndex = 1;
+
 			// 
 			// panel61
 			// 
@@ -402,6 +426,7 @@ namespace sudokuSolverSOLID
 			this->panel61->Name = L"panel61";
 			this->panel61->Size = System::Drawing::Size(40, 40);
 			this->panel61->TabIndex = 0;
+
 			// 
 			// panel62
 			// 
@@ -435,6 +460,7 @@ namespace sudokuSolverSOLID
 			this->panel64->Name = L"panel64";
 			this->panel64->Size = System::Drawing::Size(40, 40);
 			this->panel64->TabIndex = 6;
+
 			// 
 			// panel65
 			// 
@@ -443,6 +469,7 @@ namespace sudokuSolverSOLID
 			this->panel65->Name = L"panel65";
 			this->panel65->Size = System::Drawing::Size(40, 40);
 			this->panel65->TabIndex = 5;
+
 			// 
 			// panel66
 			// 
@@ -516,6 +543,7 @@ namespace sudokuSolverSOLID
 			this->panel43->Name = L"panel43";
 			this->panel43->Size = System::Drawing::Size(40, 40);
 			this->panel43->TabIndex = 7;
+
 			// 
 			// panel44
 			// 
@@ -524,6 +552,7 @@ namespace sudokuSolverSOLID
 			this->panel44->Name = L"panel44";
 			this->panel44->Size = System::Drawing::Size(40, 40);
 			this->panel44->TabIndex = 6;
+
 			// 
 			// panel45
 			// 
@@ -532,6 +561,7 @@ namespace sudokuSolverSOLID
 			this->panel45->Name = L"panel45";
 			this->panel45->Size = System::Drawing::Size(40, 40);
 			this->panel45->TabIndex = 5;
+
 			// 
 			// panel46
 			// 
@@ -540,6 +570,8 @@ namespace sudokuSolverSOLID
 			this->panel46->Name = L"panel46";
 			this->panel46->Size = System::Drawing::Size(40, 40);
 			this->panel46->TabIndex = 4;
+
+
 			// 
 			// panel47
 			// 
@@ -564,6 +596,7 @@ namespace sudokuSolverSOLID
 			this->panel49->Name = L"panel49";
 			this->panel49->Size = System::Drawing::Size(40, 40);
 			this->panel49->TabIndex = 2;
+
 			// 
 			// panel50
 			// 
@@ -572,6 +605,7 @@ namespace sudokuSolverSOLID
 			this->panel50->Name = L"panel50";
 			this->panel50->Size = System::Drawing::Size(40, 40);
 			this->panel50->TabIndex = 1;
+
 			// 
 			// panel51
 			// 
@@ -605,6 +639,7 @@ namespace sudokuSolverSOLID
 			this->panel33->Name = L"panel33";
 			this->panel33->Size = System::Drawing::Size(40, 40);
 			this->panel33->TabIndex = 7;
+
 			// 
 			// panel34
 			// 
@@ -613,6 +648,7 @@ namespace sudokuSolverSOLID
 			this->panel34->Name = L"panel34";
 			this->panel34->Size = System::Drawing::Size(40, 40);
 			this->panel34->TabIndex = 6;
+
 			// 
 			// panel35
 			// 
@@ -621,6 +657,7 @@ namespace sudokuSolverSOLID
 			this->panel35->Name = L"panel35";
 			this->panel35->Size = System::Drawing::Size(40, 40);
 			this->panel35->TabIndex = 5;
+
 			// 
 			// panel36
 			// 
@@ -629,6 +666,7 @@ namespace sudokuSolverSOLID
 			this->panel36->Name = L"panel36";
 			this->panel36->Size = System::Drawing::Size(40, 40);
 			this->panel36->TabIndex = 4;
+
 			// 
 			// panel37
 			// 
@@ -637,6 +675,7 @@ namespace sudokuSolverSOLID
 			this->panel37->Name = L"panel37";
 			this->panel37->Size = System::Drawing::Size(40, 40);
 			this->panel37->TabIndex = 1;
+
 			// 
 			// panel38
 			// 
@@ -645,7 +684,8 @@ namespace sudokuSolverSOLID
 			this->panel38->Name = L"panel38";
 			this->panel38->Size = System::Drawing::Size(40, 40);
 			this->panel38->TabIndex = 3;
-			// 
+
+		
 			// panel39
 			// 
 			this->panel39->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
@@ -653,6 +693,8 @@ namespace sudokuSolverSOLID
 			this->panel39->Name = L"panel39";
 			this->panel39->Size = System::Drawing::Size(40, 40);
 			this->panel39->TabIndex = 2;
+
+	;
 			// 
 			// panel40
 			// 
@@ -661,6 +703,7 @@ namespace sudokuSolverSOLID
 			this->panel40->Name = L"panel40";
 			this->panel40->Size = System::Drawing::Size(40, 40);
 			this->panel40->TabIndex = 1;
+
 			// 
 			// panel41
 			// 
@@ -669,6 +712,8 @@ namespace sudokuSolverSOLID
 			this->panel41->Name = L"panel41";
 			this->panel41->Size = System::Drawing::Size(40, 40);
 			this->panel41->TabIndex = 0;
+
+			
 			// 
 			// panel22
 			// 
@@ -694,6 +739,8 @@ namespace sudokuSolverSOLID
 			this->panel23->Name = L"panel23";
 			this->panel23->Size = System::Drawing::Size(40, 40);
 			this->panel23->TabIndex = 7;
+
+
 			// 
 			// panel24
 			// 
@@ -702,6 +749,8 @@ namespace sudokuSolverSOLID
 			this->panel24->Name = L"panel24";
 			this->panel24->Size = System::Drawing::Size(40, 40);
 			this->panel24->TabIndex = 6;
+
+
 			// 
 			// panel25
 			// 
@@ -710,6 +759,8 @@ namespace sudokuSolverSOLID
 			this->panel25->Name = L"panel25";
 			this->panel25->Size = System::Drawing::Size(40, 40);
 			this->panel25->TabIndex = 5;
+
+	
 			// 
 			// panel26
 			// 
@@ -718,6 +769,7 @@ namespace sudokuSolverSOLID
 			this->panel26->Name = L"panel26";
 			this->panel26->Size = System::Drawing::Size(40, 40);
 			this->panel26->TabIndex = 4;
+
 			// 
 			// panel27
 			// 
@@ -726,6 +778,7 @@ namespace sudokuSolverSOLID
 			this->panel27->Name = L"panel27";
 			this->panel27->Size = System::Drawing::Size(40, 40);
 			this->panel27->TabIndex = 1;
+
 			// 
 			// panel28
 			// 
@@ -734,6 +787,7 @@ namespace sudokuSolverSOLID
 			this->panel28->Name = L"panel28";
 			this->panel28->Size = System::Drawing::Size(40, 40);
 			this->panel28->TabIndex = 3;
+
 			// 
 			// panel29
 			// 
@@ -742,6 +796,7 @@ namespace sudokuSolverSOLID
 			this->panel29->Name = L"panel29";
 			this->panel29->Size = System::Drawing::Size(40, 40);
 			this->panel29->TabIndex = 2;
+
 			// 
 			// panel30
 			// 
@@ -750,6 +805,7 @@ namespace sudokuSolverSOLID
 			this->panel30->Name = L"panel30";
 			this->panel30->Size = System::Drawing::Size(40, 40);
 			this->panel30->TabIndex = 1;
+
 			// 
 			// panel31
 			// 
@@ -775,78 +831,79 @@ namespace sudokuSolverSOLID
 			this->panel12->Name = L"panel12";
 			this->panel12->Size = System::Drawing::Size(140, 140);
 			this->panel12->TabIndex = 8;
-			// 
-			// panel13
-			// 
+			// Panel 13
 			this->panel13->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->panel13->Location = System::Drawing::Point(95, 94);
 			this->panel13->Name = L"panel13";
 			this->panel13->Size = System::Drawing::Size(40, 40);
 			this->panel13->TabIndex = 7;
-			// 
-			// panel14
-			// 
+
+
+			// Panel 14
 			this->panel14->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->panel14->Location = System::Drawing::Point(49, 94);
 			this->panel14->Name = L"panel14";
 			this->panel14->Size = System::Drawing::Size(40, 40);
 			this->panel14->TabIndex = 6;
-			// 
-			// panel15
-			// 
+
+			// Panel 15
 			this->panel15->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->panel15->Location = System::Drawing::Point(3, 94);
 			this->panel15->Name = L"panel15";
 			this->panel15->Size = System::Drawing::Size(40, 40);
 			this->panel15->TabIndex = 5;
-			// 
-			// panel16
-			// 
+
+			// Panel 16
 			this->panel16->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->panel16->Location = System::Drawing::Point(95, 49);
 			this->panel16->Name = L"panel16";
 			this->panel16->Size = System::Drawing::Size(40, 40);
 			this->panel16->TabIndex = 4;
-			// 
-			// panel17
-			// 
+
+			/*
+			auto label16 = gcnew System::Windows::Forms::Label();
+			label16->Location = System::Drawing::Point(5, 5);
+			label16->Size = System::Drawing::Size(30, 30);
+			label16->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			label16->Font = (gcnew System::Drawing::Font(L"Segoe UI", 15.2F, System::Drawing::FontStyle::Bold));
+			this->panel16->Controls->Add(label16);
+			*/
+
+			// Panel 17
 			this->panel17->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->panel17->Location = System::Drawing::Point(95, 3);
 			this->panel17->Name = L"panel17";
 			this->panel17->Size = System::Drawing::Size(40, 40);
 			this->panel17->TabIndex = 1;
-			// 
-			// panel18
-			// 
+
+			// Panel 18
 			this->panel18->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->panel18->Location = System::Drawing::Point(49, 49);
 			this->panel18->Name = L"panel18";
 			this->panel18->Size = System::Drawing::Size(40, 40);
 			this->panel18->TabIndex = 3;
-			// 
-			// panel19
-			// 
+
+			// Panel 19
 			this->panel19->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->panel19->Location = System::Drawing::Point(3, 49);
 			this->panel19->Name = L"panel19";
 			this->panel19->Size = System::Drawing::Size(40, 40);
 			this->panel19->TabIndex = 2;
-			// 
-			// panel20
-			// 
+
+			// Panel 20
 			this->panel20->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->panel20->Location = System::Drawing::Point(49, 3);
 			this->panel20->Name = L"panel20";
 			this->panel20->Size = System::Drawing::Size(40, 40);
 			this->panel20->TabIndex = 1;
-			// 
-			// panel21
-			// 
+
+			// Panel 21
 			this->panel21->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->panel21->Location = System::Drawing::Point(3, 3);
 			this->panel21->Name = L"panel21";
 			this->panel21->Size = System::Drawing::Size(40, 40);
 			this->panel21->TabIndex = 0;
+
 			// 
 			// panel2
 			// 
@@ -864,78 +921,70 @@ namespace sudokuSolverSOLID
 			this->panel2->Name = L"panel2";
 			this->panel2->Size = System::Drawing::Size(140, 140);
 			this->panel2->TabIndex = 0;
-			// 
-			// panel9
-			// 
+			// Panel 9
 			this->panel9->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->panel9->Location = System::Drawing::Point(95, 94);
 			this->panel9->Name = L"panel9";
 			this->panel9->Size = System::Drawing::Size(40, 40);
 			this->panel9->TabIndex = 7;
-			// 
-			// panel10
-			// 
+
+			// Panel 10
 			this->panel10->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->panel10->Location = System::Drawing::Point(49, 94);
 			this->panel10->Name = L"panel10";
 			this->panel10->Size = System::Drawing::Size(40, 40);
 			this->panel10->TabIndex = 6;
-			// 
-			// panel11
-			// 
+
+			// Panel 11
 			this->panel11->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->panel11->Location = System::Drawing::Point(3, 94);
 			this->panel11->Name = L"panel11";
 			this->panel11->Size = System::Drawing::Size(40, 40);
 			this->panel11->TabIndex = 5;
-			// 
-			// panel6
-			// 
+
+			// Panel 6
 			this->panel6->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->panel6->Location = System::Drawing::Point(95, 49);
 			this->panel6->Name = L"panel6";
 			this->panel6->Size = System::Drawing::Size(40, 40);
 			this->panel6->TabIndex = 4;
-			// 
-			// panel5
-			// 
+
+
+			// Panel 5
 			this->panel5->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->panel5->Location = System::Drawing::Point(95, 3);
 			this->panel5->Name = L"panel5";
 			this->panel5->Size = System::Drawing::Size(40, 40);
 			this->panel5->TabIndex = 1;
-			// 
-			// panel7
-			// 
+
+			// Panel 7
 			this->panel7->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->panel7->Location = System::Drawing::Point(49, 49);
 			this->panel7->Name = L"panel7";
 			this->panel7->Size = System::Drawing::Size(40, 40);
 			this->panel7->TabIndex = 3;
-			// 
-			// panel8
-			// 
+
+			// Panel 8
 			this->panel8->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->panel8->Location = System::Drawing::Point(3, 49);
 			this->panel8->Name = L"panel8";
 			this->panel8->Size = System::Drawing::Size(40, 40);
 			this->panel8->TabIndex = 2;
-			// 
-			// panel4
-			// 
+
+			// Panel 4
 			this->panel4->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->panel4->Location = System::Drawing::Point(49, 3);
 			this->panel4->Name = L"panel4";
 			this->panel4->Size = System::Drawing::Size(40, 40);
 			this->panel4->TabIndex = 1;
-			// 
-			// panel3
-			// 
+
+			// Panel 3
 			this->panel3->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->panel3->Location = System::Drawing::Point(3, 3);
 			this->panel3->Name = L"panel3";
 			this->panel3->Size = System::Drawing::Size(40, 40);
 			this->panel3->TabIndex = 0;
+
 			// 
 			// button1
 			// 

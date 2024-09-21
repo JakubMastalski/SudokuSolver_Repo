@@ -119,6 +119,7 @@ namespace sudokuSolverSOLID {
     private: System::Windows::Forms::Panel^ panel92;
     private: System::Windows::Forms::Button^ button5;
     private: System::Windows::Forms::Button^ button6;
+	private: System::Windows::Forms::Label^ label83;
 
 	protected:
 
@@ -137,5 +138,15 @@ private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e
 private: System::Void MainForm_MouseDown(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e);
 private: System::Void MainForm_MouseMove(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e);
 private: System::Void MainForm_MouseUp(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e);
+private: System::Void InitializeComponent() {
+	this->SuspendLayout();
+	// 
+	// MainForm
+	// 
+	this->ClientSize = System::Drawing::Size(632, 411);
+	this->Name = L"MainForm";
+	this->ResumeLayout(false);
+
+}
 };
 }
