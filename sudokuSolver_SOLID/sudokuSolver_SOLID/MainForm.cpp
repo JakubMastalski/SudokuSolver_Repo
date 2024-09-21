@@ -12,6 +12,7 @@ namespace sudokuSolverSOLID
 			fields = board->getFields();
 
 			fields[0]->SetValue(7);
+			fields[1]->SetValue(5);
 
 
 			this->MainPanel = (gcnew System::Windows::Forms::Panel());
@@ -242,6 +243,7 @@ namespace sudokuSolverSOLID
 			this->panel91->Name = L"panel91";
 			this->panel91->Size = System::Drawing::Size(40, 40);
 			this->panel91->TabIndex = 0;
+			this->panel91->Controls->Add(fields[1]);
 			// 
 			// panel72
 			// 

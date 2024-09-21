@@ -124,6 +124,8 @@
     <ClCompile Include="IBoard.cpp" />
     <ClCompile Include="MainForm.cpp" />
     <ClCompile Include="MainForm_main.cpp" />
+    <ClCompile Include="SudokuMajorField.cpp" />
+    <ClCompile Include="SudokuMiniorField.cpp" />
     <ClCompile Include="SudokuField.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -132,6 +134,8 @@
     <ClInclude Include="MainForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="SudokuMajorField.h" />
+    <ClInclude Include="SudokuMiniorFiled.h" />
     <ClInclude Include="SudokuField.h" />
   </ItemGroup>
   <ItemGroup>
