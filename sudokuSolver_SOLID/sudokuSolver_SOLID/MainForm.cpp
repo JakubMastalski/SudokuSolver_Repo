@@ -1,6 +1,4 @@
 #include "MainForm.h"
-#include "IBoard.h"
-#include "Board.h"
 
 namespace sudokuSolverSOLID
 {
@@ -10,7 +8,17 @@ namespace sudokuSolverSOLID
 	{
 		void InitializeComponent(void);
 		{
-			this->panel1 = (gcnew System::Windows::Forms::Panel());
+			board = gcnew Board();
+			fields = board->getFields();
+
+			for (int i = 0; i < 9; i++) {
+				for (int j = 0; j < 9; j++) {
+					int index = i * 9 + j; 
+					SudokuField^ field = fields[index];
+				}
+			}
+
+			this->MainPanel = (gcnew System::Windows::Forms::Panel());
 			this->panel82 = (gcnew System::Windows::Forms::Panel());
 			this->panel83 = (gcnew System::Windows::Forms::Panel());
 			this->panel84 = (gcnew System::Windows::Forms::Panel());
@@ -108,7 +116,7 @@ namespace sudokuSolverSOLID
 			this->panel92 = (gcnew System::Windows::Forms::Panel());
 			this->button5 = (gcnew System::Windows::Forms::Button());
 			this->button6 = (gcnew System::Windows::Forms::Button());
-			this->panel1->SuspendLayout();
+			this->MainPanel->SuspendLayout();
 			this->panel82->SuspendLayout();
 			this->panel72->SuspendLayout();
 			this->panel52->SuspendLayout();
@@ -131,20 +139,20 @@ namespace sudokuSolverSOLID
 			// 
 			// MainPanel
 			// 
-			this->panel1->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->panel1->Controls->Add(this->panel82);
-			this->panel1->Controls->Add(this->panel72);
-			this->panel1->Controls->Add(this->panel52);
-			this->panel1->Controls->Add(this->panel62);
-			this->panel1->Controls->Add(this->panel42);
-			this->panel1->Controls->Add(this->panel32);
-			this->panel1->Controls->Add(this->panel22);
-			this->panel1->Controls->Add(this->panel12);
-			this->panel1->Controls->Add(this->panel2);
-			this->panel1->Location = System::Drawing::Point(82, 63);
-			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(440, 438);
-			this->panel1->TabIndex = 0;
+			this->MainPanel->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->MainPanel->Controls->Add(this->panel82);
+			this->MainPanel->Controls->Add(this->panel72);
+			this->MainPanel->Controls->Add(this->panel52);
+			this->MainPanel->Controls->Add(this->panel62);
+			this->MainPanel->Controls->Add(this->panel42);
+			this->MainPanel->Controls->Add(this->panel32);
+			this->MainPanel->Controls->Add(this->panel22);
+			this->MainPanel->Controls->Add(this->panel12);
+			this->MainPanel->Controls->Add(this->panel2);
+			this->MainPanel->Location = System::Drawing::Point(82, 63);
+			this->MainPanel->Name = L"panel1";
+			this->MainPanel->Size = System::Drawing::Size(440, 438);
+			this->MainPanel->TabIndex = 0;
 			// 
 			// panel82
 			// 
@@ -170,6 +178,7 @@ namespace sudokuSolverSOLID
 			this->panel83->Name = L"panel83";
 			this->panel83->Size = System::Drawing::Size(40, 40);
 			this->panel83->TabIndex = 7;
+
 
 			// 
 			// panel84
@@ -1116,7 +1125,7 @@ namespace sudokuSolverSOLID
 			this->ClientSize = System::Drawing::Size(856, 584);
 			this->Controls->Add(this->button6);
 			this->Controls->Add(this->panel92);
-			this->Controls->Add(this->panel1);
+			this->Controls->Add(this->MainPanel);
 			this->Font = (gcnew System::Drawing::Font(L"Segoe UI", 7.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
 			this->ForeColor = System::Drawing::Color::White;
@@ -1130,7 +1139,7 @@ namespace sudokuSolverSOLID
 			this->MouseDown += gcnew System::Windows::Forms::MouseEventHandler(this, &MainForm::MainForm_MouseDown);
 			this->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &MainForm::MainForm_MouseMove);
 			this->MouseUp += gcnew System::Windows::Forms::MouseEventHandler(this, &MainForm::MainForm_MouseUp);
-			this->panel1->ResumeLayout(false);
+			this->MainPanel->ResumeLayout(false);
 			this->panel82->ResumeLayout(false);
 			this->panel72->ResumeLayout(false);
 			this->panel52->ResumeLayout(false);

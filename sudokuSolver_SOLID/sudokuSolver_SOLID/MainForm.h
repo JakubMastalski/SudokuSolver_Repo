@@ -1,4 +1,7 @@
 #pragma once
+#include "IBoard.h"
+#include "Board.h"
+#include "SudokuField.h"
 
 namespace sudokuSolverSOLID {
 
@@ -21,10 +24,15 @@ namespace sudokuSolverSOLID {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::Panel^ panel1;
+
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::Button^ button2;
 	private: System::Windows::Forms::Button^ button3;
+	private: System::Windows::Forms::Button^ button4;
+	private: System::Windows::Forms::Button^ button5;
+	private: System::Windows::Forms::Button^ button6;
+
+	private: System::Windows::Forms::Panel^ MainPanel;
 	private: System::Windows::Forms::Panel^ panel2;
 	private: System::Windows::Forms::Panel^ panel9;
 	private: System::Windows::Forms::Panel^ panel10;
@@ -115,11 +123,7 @@ namespace sudokuSolverSOLID {
 	private: System::Windows::Forms::Panel^ panel59;
 	private: System::Windows::Forms::Panel^ panel60;
 	private: System::Windows::Forms::Panel^ panel61;
-    private: System::Windows::Forms::Button^ button4;
     private: System::Windows::Forms::Panel^ panel92;
-    private: System::Windows::Forms::Button^ button5;
-    private: System::Windows::Forms::Button^ button6;
-	private: System::Windows::Forms::Label^ label83;
 
 	protected:
 
@@ -127,6 +131,8 @@ namespace sudokuSolverSOLID {
 		bool dragging;
 		Point offset;
 		System::ComponentModel::Container ^components;
+		Board^ board;
+		array<SudokuField^>^ fields;
 
 #pragma region Windows Form Designer generated code
 
