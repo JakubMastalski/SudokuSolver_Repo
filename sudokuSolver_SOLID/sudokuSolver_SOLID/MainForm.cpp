@@ -11,125 +11,21 @@ namespace sudokuSolverSOLID
 			board = gcnew Board();
 			fields = board->getFields();
 
-			fields[0]->SetValue(7);
-			fields[1]->SetValue(5);
-
-
 			this->MainPanel = (gcnew System::Windows::Forms::Panel());
 			this->MenuOptionsPanel = (gcnew System::Windows::Forms::Panel());
-
-			this->panel82 = (gcnew System::Windows::Forms::Panel());
-			this->panel83 = (gcnew System::Windows::Forms::Panel());
-			this->panel84 = (gcnew System::Windows::Forms::Panel());
-			this->panel85 = (gcnew System::Windows::Forms::Panel());
-			this->panel86 = (gcnew System::Windows::Forms::Panel());
-			this->panel87 = (gcnew System::Windows::Forms::Panel());
-			this->panel88 = (gcnew System::Windows::Forms::Panel());
-			this->panel89 = (gcnew System::Windows::Forms::Panel());
-			this->panel90 = (gcnew System::Windows::Forms::Panel());
-			this->panel91 = (gcnew System::Windows::Forms::Panel());
-			this->panel72 = (gcnew System::Windows::Forms::Panel());
-			this->panel73 = (gcnew System::Windows::Forms::Panel());
-			this->panel74 = (gcnew System::Windows::Forms::Panel());
-			this->panel75 = (gcnew System::Windows::Forms::Panel());
-			this->panel76 = (gcnew System::Windows::Forms::Panel());
-			this->panel77 = (gcnew System::Windows::Forms::Panel());
-			this->panel78 = (gcnew System::Windows::Forms::Panel());
-			this->panel79 = (gcnew System::Windows::Forms::Panel());
-			this->panel80 = (gcnew System::Windows::Forms::Panel());
-			this->panel81 = (gcnew System::Windows::Forms::Panel());
-			this->panel52 = (gcnew System::Windows::Forms::Panel());
-			this->panel53 = (gcnew System::Windows::Forms::Panel());
-			this->panel54 = (gcnew System::Windows::Forms::Panel());
-			this->panel55 = (gcnew System::Windows::Forms::Panel());
-			this->panel56 = (gcnew System::Windows::Forms::Panel());
-			this->panel57 = (gcnew System::Windows::Forms::Panel());
-			this->panel58 = (gcnew System::Windows::Forms::Panel());
-			this->panel59 = (gcnew System::Windows::Forms::Panel());
-			this->panel60 = (gcnew System::Windows::Forms::Panel());
-			this->panel61 = (gcnew System::Windows::Forms::Panel());
-			this->panel62 = (gcnew System::Windows::Forms::Panel());
-			this->panel63 = (gcnew System::Windows::Forms::Panel());
-			this->panel64 = (gcnew System::Windows::Forms::Panel());
-			this->panel65 = (gcnew System::Windows::Forms::Panel());
-			this->panel66 = (gcnew System::Windows::Forms::Panel());
-			this->panel67 = (gcnew System::Windows::Forms::Panel());
-			this->panel68 = (gcnew System::Windows::Forms::Panel());
-			this->panel69 = (gcnew System::Windows::Forms::Panel());
-			this->panel70 = (gcnew System::Windows::Forms::Panel());
-			this->panel71 = (gcnew System::Windows::Forms::Panel());
-			this->panel42 = (gcnew System::Windows::Forms::Panel());
-			this->panel43 = (gcnew System::Windows::Forms::Panel());
-			this->panel44 = (gcnew System::Windows::Forms::Panel());
-			this->panel45 = (gcnew System::Windows::Forms::Panel());
-			this->panel46 = (gcnew System::Windows::Forms::Panel());
-			this->panel47 = (gcnew System::Windows::Forms::Panel());
-			this->panel48 = (gcnew System::Windows::Forms::Panel());
-			this->panel49 = (gcnew System::Windows::Forms::Panel());
-			this->panel50 = (gcnew System::Windows::Forms::Panel());
-			this->panel51 = (gcnew System::Windows::Forms::Panel());
-			this->panel32 = (gcnew System::Windows::Forms::Panel());
-			this->panel33 = (gcnew System::Windows::Forms::Panel());
-			this->panel34 = (gcnew System::Windows::Forms::Panel());
-			this->panel35 = (gcnew System::Windows::Forms::Panel());
-			this->panel36 = (gcnew System::Windows::Forms::Panel());
-			this->panel37 = (gcnew System::Windows::Forms::Panel());
-			this->panel38 = (gcnew System::Windows::Forms::Panel());
-			this->panel39 = (gcnew System::Windows::Forms::Panel());
-			this->panel40 = (gcnew System::Windows::Forms::Panel());
-			this->panel41 = (gcnew System::Windows::Forms::Panel());
-			this->panel22 = (gcnew System::Windows::Forms::Panel());
-			this->panel23 = (gcnew System::Windows::Forms::Panel());
-			this->panel24 = (gcnew System::Windows::Forms::Panel());
-			this->panel25 = (gcnew System::Windows::Forms::Panel());
-			this->panel26 = (gcnew System::Windows::Forms::Panel());
-			this->panel27 = (gcnew System::Windows::Forms::Panel());
-			this->panel28 = (gcnew System::Windows::Forms::Panel());
-			this->panel29 = (gcnew System::Windows::Forms::Panel());
-			this->panel30 = (gcnew System::Windows::Forms::Panel());
-			this->panel31 = (gcnew System::Windows::Forms::Panel());
-			this->panel12 = (gcnew System::Windows::Forms::Panel());
-			this->panel13 = (gcnew System::Windows::Forms::Panel());
-			this->panel14 = (gcnew System::Windows::Forms::Panel());
-			this->panel15 = (gcnew System::Windows::Forms::Panel());
-			this->panel16 = (gcnew System::Windows::Forms::Panel());
-			this->panel17 = (gcnew System::Windows::Forms::Panel());
-			this->panel18 = (gcnew System::Windows::Forms::Panel());
-			this->panel19 = (gcnew System::Windows::Forms::Panel());
-			this->panel20 = (gcnew System::Windows::Forms::Panel());
-			this->panel21 = (gcnew System::Windows::Forms::Panel());
-			this->panel2 = (gcnew System::Windows::Forms::Panel());
-			this->panel9 = (gcnew System::Windows::Forms::Panel());
-			this->panel10 = (gcnew System::Windows::Forms::Panel());
-			this->panel11 = (gcnew System::Windows::Forms::Panel());
-			this->panel6 = (gcnew System::Windows::Forms::Panel());
-			this->panel5 = (gcnew System::Windows::Forms::Panel());
-			this->panel7 = (gcnew System::Windows::Forms::Panel());
-			this->panel8 = (gcnew System::Windows::Forms::Panel());
-			this->panel4 = (gcnew System::Windows::Forms::Panel());
-			this->panel3 = (gcnew System::Windows::Forms::Panel());
 			this->StartButton = (gcnew System::Windows::Forms::Button());
 			this->RestartButton = (gcnew System::Windows::Forms::Button());
 			this->CloseButton = (gcnew System::Windows::Forms::Button());
 			this->ExitButton = (gcnew System::Windows::Forms::Button());
 			this->HideButton = (gcnew System::Windows::Forms::Button());
 			this->ShowButton = (gcnew System::Windows::Forms::Button());
+
 			this->MainPanel->SuspendLayout();
-			this->panel82->SuspendLayout();
-			this->panel72->SuspendLayout();
-			this->panel52->SuspendLayout();
-			this->panel62->SuspendLayout();
-			this->panel42->SuspendLayout();
-			this->panel32->SuspendLayout();
-			this->panel22->SuspendLayout();
-			this->panel12->SuspendLayout();
-			this->panel2->SuspendLayout();
 			this->MenuOptionsPanel->SuspendLayout();
 			this->SuspendLayout();
 			
-			// 
-// MainForm
-// 
+			//MainForm
+
 			this->ClientSize = System::Drawing::Size(968, 474);
 			this->Name = L"MainForm";
 			this->ResumeLayout(false);
@@ -138,20 +34,16 @@ namespace sudokuSolverSOLID
 			// MainPanel
 			// 
 			this->MainPanel->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->MainPanel->Controls->Add(this->panel82);
-			this->MainPanel->Controls->Add(this->panel72);
-			this->MainPanel->Controls->Add(this->panel52);
-			this->MainPanel->Controls->Add(this->panel62);
-			this->MainPanel->Controls->Add(this->panel42);
-			this->MainPanel->Controls->Add(this->panel32);
-			this->MainPanel->Controls->Add(this->panel22);
-			this->MainPanel->Controls->Add(this->panel12);
-			this->MainPanel->Controls->Add(this->panel2);
 			this->MainPanel->Location = System::Drawing::Point(82, 63);
 			this->MainPanel->Name = L"panel1";
 			this->MainPanel->Size = System::Drawing::Size(440, 438);
 			this->MainPanel->TabIndex = 0;
-
+			for (int i = 0; i < 3; i++) {
+				for (int j = 0; j < 3; j++) {
+					SudokuMajorField^ majorField = gcnew SudokuMajorField(j * 146+6, i * 146+5);
+					this->MainPanel->Controls->Add(majorField);
+				}
+			}
 			// 
 	        // MenuOptionsPanel
 	        // 
@@ -300,15 +192,6 @@ namespace sudokuSolverSOLID
 			this->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &MainForm::MainForm_MouseMove);
 			this->MouseUp += gcnew System::Windows::Forms::MouseEventHandler(this, &MainForm::MainForm_MouseUp);
 			this->MainPanel->ResumeLayout(false);
-			this->panel82->ResumeLayout(false);
-			this->panel72->ResumeLayout(false);
-			this->panel52->ResumeLayout(false);
-			this->panel62->ResumeLayout(false);
-			this->panel42->ResumeLayout(false);
-			this->panel32->ResumeLayout(false);
-			this->panel22->ResumeLayout(false);
-			this->panel12->ResumeLayout(false);
-			this->panel2->ResumeLayout(false);
 			this->MenuOptionsPanel->ResumeLayout(false);
 			this->ResumeLayout(false);
 		}
