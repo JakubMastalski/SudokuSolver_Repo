@@ -6,7 +6,7 @@ SudokuMiniorField::SudokuMiniorField(int row, int col) {
     this->Location = System::Drawing::Point(col * 45+3, row * 45+3); 
 
     SudokuField^ field = gcnew SudokuField();
-    field->SetValue(0);
+    field->SetValue(7);
     this->Controls->Add(field);
 }
 
