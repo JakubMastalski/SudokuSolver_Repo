@@ -9,5 +9,6 @@ private:
 public:
     SudokuMiniorField(int row, int col);
     array<SudokuField^>^ GetFields();
+    SudokuField^ GetField(int index);
 };
 

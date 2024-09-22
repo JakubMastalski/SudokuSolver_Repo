@@ -8,8 +8,8 @@ namespace sudokuSolverSOLID
 	{
 		void InitializeComponent(void);
 		{
-			//board = gcnew Board();
-			//fields = board->getFields();
+			board = gcnew Board();
+			fields = board->getFields();
 
 			this->MainPanel = (gcnew System::Windows::Forms::Panel());
 			this->MenuOptionsPanel = (gcnew System::Windows::Forms::Panel());
@@ -41,10 +41,22 @@ namespace sudokuSolverSOLID
 
 			for (int i = 0; i < 3; i++) {
 				for (int j = 0; j < 3; j++) {
-					SudokuMajorField^ majorField = gcnew SudokuMajorField(j * 146+6, i * 146+5);
+					SudokuMajorField^ majorField = gcnew SudokuMajorField(j * 146 + 6, i * 146 + 5);
+
+					for (int minorIndex = 0; minorIndex < majorField->Controls->Count; minorIndex++) {
+						SudokuMiniorField^ minorField = dynamic_cast<SudokuMiniorField^>(majorField->Controls[minorIndex]);
+
+						for (int fieldIndex = 0; fieldIndex < minorField->GetFields()->Length; fieldIndex++) {
+							SudokuField^ field = minorField->GetField(fieldIndex);
+
+							field->SetValue(5);
+
+						}
+					}
 					this->MainPanel->Controls->Add(majorField);
 				}
 			}
+
 			// 
 	        // MenuOptionsPanel
 	        // 
