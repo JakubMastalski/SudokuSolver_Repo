@@ -44,7 +44,7 @@ namespace sudokuSolverSOLID {
 		Point offset;
 		System::ComponentModel::Container ^components;
 		Board^ board;
-		array<SudokuField^>^ fields;
+		array<SudokuField^, 2>^ fieldsSudoku;
 
 #pragma region Windows Form Designer generated code
 

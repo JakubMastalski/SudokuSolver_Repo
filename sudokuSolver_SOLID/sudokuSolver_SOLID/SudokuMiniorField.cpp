@@ -9,12 +9,12 @@ SudokuMiniorField::SudokuMiniorField(int row, int col) {
 
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
-            int index = i * 3 + j;  // Przekszta³cenie wspó³rzêdnych (i, j) na indeks tablicy
+            int index = i * 3 + j;  
             SudokuField^ sudokuField = gcnew SudokuField();
             sudokuField->Location = System::Drawing::Point(j * 45 + 6, i * 45 + 3);
-            sudokuField->SetValue(4);  // Przyk³adowa wartoœæ
+            sudokuField->Name = "Field";
             this->Controls->Add(sudokuField);
-            fields[index] = sudokuField;  // Przechowywanie w tablicy
+            fields[index] = sudokuField;
         }
     }
 }

@@ -4,7 +4,7 @@ ref class SudokuField :
 {
 public:
     SudokuField();
-    void SetValue(int value);
+    void SetValue(int value, array<SudokuField^, 2>^ fieldsSudoku, int row, int column);
     void ClearValue();
 };
 

@@ -9,7 +9,7 @@ Board::Board() {
         for (int j = 0; j < 9; j++) {
             int index = i * 9 + j;
             fields[index] = gcnew SudokuField();
-            fields[index]->SetValue(1);
+            //fields[index]->SetValue(1);
         }
     }
 }

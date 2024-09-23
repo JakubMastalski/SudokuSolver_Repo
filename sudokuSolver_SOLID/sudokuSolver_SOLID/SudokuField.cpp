@@ -7,8 +7,11 @@ SudokuField::SudokuField() {
     this->Font = gcnew System::Drawing::Font(L"Segoe UI", 15.2F, System::Drawing::FontStyle::Bold);
 }
 
-void SudokuField::SetValue(int value) {
-    this->Text = value == 0 ? "" : value.ToString();
+void SudokuField::SetValue(int value, array<SudokuField^, 2>^ fieldsSudoku, int row, int column) {
+    // Przypisujemy wartoœæ dla danego pola w tablicy
+    if (fieldsSudoku[row, column] != nullptr) {
+        fieldsSudoku[row, column]->Text = value == 0 ? "" : value.ToString();
+    }
 }
 
 void SudokuField::ClearValue() {
