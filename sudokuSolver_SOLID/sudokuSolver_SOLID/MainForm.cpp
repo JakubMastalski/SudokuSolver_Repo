@@ -41,27 +41,10 @@ namespace sudokuSolverSOLID
 			for (int i = 0; i < 3; i++) {
 				for (int j = 0; j < 3; j++) {
 					SudokuMajorField^ majorField = gcnew SudokuMajorField(j * 146 + 6, i * 146 + 5);
-
-					for (int minorIndex = 0; minorIndex < majorField->Controls->Count; minorIndex++) {
-						SudokuMiniorField^ minorField = dynamic_cast<SudokuMiniorField^>(majorField->Controls[minorIndex]);
-
-						for (int fieldIndex = 0; fieldIndex < minorField->GetFields()->Length; fieldIndex++) {
-							SudokuField^ field = minorField->GetField(fieldIndex);
-
-							int globalRow = i * 3 + (minorIndex / 3);
-							int globalCol = j * 3 + (minorIndex % 3);
-
-							fieldsSudoku[globalRow, globalCol] = field;
-							fieldsSudoku[3, 2]->SetValue(5, fieldsSudoku, 3, 2);
-
-						}
-					}
-					this->MainPanel->Controls->Add(majorField); 
+					this->MainPanel->Controls->Add(majorField);
 				}
 			}
 
-
-			
 			// 
 	        // MenuOptionsPanel
 	        // 
@@ -215,9 +198,30 @@ namespace sudokuSolverSOLID
 		}
 	}
 
+	Void MainForm::StartButton_Click(Object^ sender, EventArgs^ e) {
+	}
 
 	Void MainForm::button3_Click(Object^ sender, EventArgs^ e) {
-		Application::Restart();
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < 3; j++) {
+				SudokuMajorField^ majorField = dynamic_cast<SudokuMajorField^>(this->MainPanel->Controls[i * 3 + j]);
+
+				for (int minorIndex = 0; minorIndex < majorField->Controls->Count; minorIndex++) {
+					SudokuMiniorField^ minorField = dynamic_cast<SudokuMiniorField^>(majorField->Controls[minorIndex]);
+
+					for (int fieldIndex = 0; fieldIndex < minorField->GetFields()->Length; fieldIndex++) {
+						SudokuField^ field = minorField->GetField(fieldIndex);
+
+						int globalRow = i * 3 + (minorIndex / 3);
+						int globalCol = j * 3 + (minorIndex % 3);
+
+						fieldsSudoku[globalRow, globalCol] = field;
+
+						fieldsSudoku[3, 2]->SetValue(5, fieldsSudoku, 3, 2);
+					}
+				}
+			}
+		}
 	}
 
 	Void MainForm::button5_Click(Object^ sender, EventArgs^ e) {

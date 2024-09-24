@@ -49,6 +49,7 @@ namespace sudokuSolverSOLID {
 #pragma region Windows Form Designer generated code
 
 #pragma endregion
+private: System::Void StartButton_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void button6_Click(System::Object^ sender, System::EventArgs^ e);
