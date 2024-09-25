@@ -54,6 +54,7 @@ namespace sudokuSolverSOLID {
 
 #pragma endregion
 private: System::Void StartButton_Click(System::Object^ sender, System::EventArgs^ e);
+private: System::Void FillSudokuButton_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void RestartButton_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void HideButton_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void ShowButton_Click(System::Object^ sender, System::EventArgs^ e);

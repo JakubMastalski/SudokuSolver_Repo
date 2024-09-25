@@ -9,5 +9,13 @@ ref class  IPanelButtons :
 {
 public:
     IPanelButtons();
+public:
+    void StartButton_Click(System::Object^ sender, System::EventArgs^ e);
+    void FillSudokuButton_Click(System::Object^ sender, System::EventArgs^ e);
+    void RestartButton_Click(System::Object^ sender, System::EventArgs^ e);
+    void HideButton_Click(System::Object^ sender, System::EventArgs^ e);
+    void ShowButton_Click(System::Object^ sender, System::EventArgs^ e);
+    void ExitButton_Click(System::Object^ sender, System::EventArgs^ e);
+    
 };
 

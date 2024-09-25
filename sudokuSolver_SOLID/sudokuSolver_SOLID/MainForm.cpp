@@ -64,82 +64,46 @@ namespace sudokuSolverSOLID
 			// 
 			// StartButton
 			// 
-			this->StartButton->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
 			this->StartButton->Location = System::Drawing::Point(12, 27);
+			this->TabIndex = 1;
 			this->StartButton->Name = L"StartButton";
-			this->StartButton->TabIndex = 1;
 			this->StartButton->Text = L"Start Game";
 			this->StartButton->Click += gcnew System::EventHandler(this, &MainForm::StartButton_Click);
 			// 
 			//  FillSudokuButton
 			// 
-			this->FillSudokuButton->BackColor = System::Drawing::Color::Black;
-			this->FillSudokuButton->Cursor = System::Windows::Forms::Cursors::Hand;
-			this->FillSudokuButton->FlatAppearance->BorderColor = System::Drawing::Color::White;
-			this->FillSudokuButton->FlatAppearance->BorderSize = 2;
-			this->FillSudokuButton->FlatAppearance->MouseDownBackColor = System::Drawing::Color::White;
-			this->FillSudokuButton->FlatAppearance->MouseOverBackColor = System::Drawing::Color::White;
-			this->FillSudokuButton->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
-			this->FillSudokuButton->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12.2F, System::Drawing::FontStyle::Bold));
 			this->FillSudokuButton->Location = System::Drawing::Point(12, 246);
-			this->FillSudokuButton->Name = L"button2";
+			this->FillSudokuButton->Name = L" FillSudokuButton";
 			this->FillSudokuButton->Size = System::Drawing::Size(227, 54);
-			this->FillSudokuButton->TabIndex = 2;
+			this->TabIndex = 2;
 			this->FillSudokuButton->Text = L"Fill Sudoku";
-			this->FillSudokuButton->UseVisualStyleBackColor = false;
+			this->FillSudokuButton->Click += gcnew System::EventHandler(this, &MainForm::FillSudokuButton_Click);
 			// 
 			// CloseButton
 			// 
-			this->RestartButton->BackColor = System::Drawing::Color::Black;
-			this->RestartButton->Cursor = System::Windows::Forms::Cursors::Hand;
-			this->RestartButton->FlatAppearance->BorderColor = System::Drawing::Color::White;
-			this->RestartButton->FlatAppearance->BorderSize = 2;
-			this->RestartButton->FlatAppearance->MouseDownBackColor = System::Drawing::Color::White;
-			this->RestartButton->FlatAppearance->MouseOverBackColor = System::Drawing::Color::White;
-			this->RestartButton->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
-			this->RestartButton->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12.2F, System::Drawing::FontStyle::Bold));
 			this->RestartButton->Location = System::Drawing::Point(12, 100);
-			this->RestartButton->Name = L"button3";
+			this->RestartButton->Name = L"CloseButton";
 			this->RestartButton->Size = System::Drawing::Size(227, 54);
 			this->RestartButton->TabIndex = 3;
 			this->RestartButton->Text = L"Restart";
-			this->RestartButton->UseVisualStyleBackColor = false;
 			this->RestartButton->Click += gcnew System::EventHandler(this, &MainForm::RestartButton_Click);
 			// 
 			// ExitButton
 			// 
-			this->ExitButton->BackColor = System::Drawing::Color::Black;
-			this->ExitButton->Cursor = System::Windows::Forms::Cursors::Hand;
-			this->ExitButton->FlatAppearance->BorderColor = System::Drawing::Color::White;
-			this->ExitButton->FlatAppearance->BorderSize = 2;
-			this->ExitButton->FlatAppearance->MouseDownBackColor = System::Drawing::Color::White;
-			this->ExitButton->FlatAppearance->MouseOverBackColor = System::Drawing::Color::White;
-			this->ExitButton->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
-			this->ExitButton->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12.2F, System::Drawing::FontStyle::Bold));
 			this->ExitButton->Location = System::Drawing::Point(12, 174);
-			this->ExitButton->Name = L"button4";
+			this->ExitButton->Name = L" ExitButton";
 			this->ExitButton->Size = System::Drawing::Size(227, 54);
 			this->ExitButton->TabIndex = 4;
 			this->ExitButton->Text = L"Close";
-			this->ExitButton->UseVisualStyleBackColor = false;
 			this->ExitButton->Click += gcnew System::EventHandler(this, &MainForm::ExitButton_Click);
 			// 
 			// HideButton
 			// 
-			this->HideButton->BackColor = System::Drawing::Color::Black;
-			this->HideButton->Cursor = System::Windows::Forms::Cursors::Hand;
-			this->HideButton->FlatAppearance->BorderColor = System::Drawing::Color::White;
-			this->HideButton->FlatAppearance->BorderSize = 2;
-			this->HideButton->FlatAppearance->MouseDownBackColor = System::Drawing::Color::White;
-			this->HideButton->FlatAppearance->MouseOverBackColor = System::Drawing::Color::White;
-			this->HideButton->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
-			this->HideButton->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12.2F, System::Drawing::FontStyle::Bold));
 			this->HideButton->Location = System::Drawing::Point(12, 321);
-			this->HideButton->Name = L"button5";
+			this->HideButton->Name = L"HideButton";
 			this->HideButton->Size = System::Drawing::Size(227, 54);
 			this->HideButton->TabIndex = 5;
 			this->HideButton->Text = L"Hide Menu";
-			this->HideButton->UseVisualStyleBackColor = false;
 			this->HideButton->Click += gcnew System::EventHandler(this, &MainForm::HideButton_Click);
 			// 
 			// ShowButton
@@ -215,6 +179,11 @@ namespace sudokuSolverSOLID
 			}
 		}
 	}
+
+	Void MainForm::FillSudokuButton_Click(Object^ sender, EventArgs^ e) {
+		;
+	}
+
 
 	Void MainForm::RestartButton_Click(Object^ sender, EventArgs^ e) {
 		Application::Restart();
