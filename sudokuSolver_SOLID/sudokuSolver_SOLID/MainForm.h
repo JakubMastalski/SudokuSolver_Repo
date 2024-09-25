@@ -6,6 +6,7 @@
 #include "SudokuMiniorFiled.h"
 #include "ctime"
 #include <random>
+#include "iPanelButtons.h"
 
 namespace sudokuSolverSOLID {
 
@@ -29,12 +30,13 @@ namespace sudokuSolverSOLID {
 			}
 		}
 
-	private: System::Windows::Forms::Button^ StartButton;
-	private: System::Windows::Forms::Button^ FillSudokuButton;
-	private: System::Windows::Forms::Button^ RestartButton;
-	private: System::Windows::Forms::Button^ ExitButton;
-	private: System::Windows::Forms::Button^ HideButton;
-	private: System::Windows::Forms::Button^ ShowButton;
+	private:
+		IPanelButtons^ StartButton;
+		IPanelButtons^ RestartButton;
+		IPanelButtons^ FillSudokuButton;
+		IPanelButtons^ ExitButton;
+		IPanelButtons^ HideButton;
+		IPanelButtons^ ShowButton;
 
 	private: System::Windows::Forms::Panel^ MainPanel;
 	private: System::Windows::Forms::Panel^ MenuOptionsPanel;
@@ -59,7 +61,6 @@ private: System::Void ExitButton_Click(System::Object^ sender, System::EventArgs
 private: System::Void MainForm_MouseDown(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e);
 private: System::Void MainForm_MouseMove(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e);
 private: System::Void MainForm_MouseUp(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e);
-//private: bool MainForm::CanPlaceNumber(int row, int col, int value);
 private: System::Void InitializeComponent() {
 	this->SuspendLayout();
 	this->ClientSize = System::Drawing::Size(632, 411);

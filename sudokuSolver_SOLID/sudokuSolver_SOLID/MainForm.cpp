@@ -12,13 +12,13 @@ namespace sudokuSolverSOLID
 
 			this->MainPanel = (gcnew System::Windows::Forms::Panel());
 			this->MenuOptionsPanel = (gcnew System::Windows::Forms::Panel());
-			this->StartButton = (gcnew System::Windows::Forms::Button());
-			this->FillSudokuButton = (gcnew System::Windows::Forms::Button());
-			this->RestartButton = (gcnew System::Windows::Forms::Button());
-			this->ExitButton = (gcnew System::Windows::Forms::Button());
-			this->HideButton = (gcnew System::Windows::Forms::Button());
-			this->ShowButton = (gcnew System::Windows::Forms::Button());
-
+			this->StartButton = gcnew IPanelButtons();
+			this->FillSudokuButton = gcnew IPanelButtons();
+			this->RestartButton = gcnew IPanelButtons();
+			this->ExitButton = gcnew IPanelButtons();
+			this->HideButton = gcnew IPanelButtons();
+			this->ShowButton = gcnew IPanelButtons();
+			
 			this->MainPanel->SuspendLayout();
 			this->MenuOptionsPanel->SuspendLayout();
 			this->SuspendLayout();
@@ -64,20 +64,11 @@ namespace sudokuSolverSOLID
 			// 
 			// StartButton
 			// 
-			this->StartButton->BackColor = System::Drawing::Color::Black;
-			this->StartButton->Cursor = System::Windows::Forms::Cursors::Hand;
-			this->StartButton->FlatAppearance->BorderColor = System::Drawing::Color::White;
-			this->StartButton->FlatAppearance->BorderSize = 2;
-			this->StartButton->FlatAppearance->MouseDownBackColor = System::Drawing::Color::White;
-			this->StartButton->FlatAppearance->MouseOverBackColor = System::Drawing::Color::White;
 			this->StartButton->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
-			this->StartButton->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12.2F, System::Drawing::FontStyle::Bold));
 			this->StartButton->Location = System::Drawing::Point(12, 27);
-			this->StartButton->Name = L"button1";
-			this->StartButton->Size = System::Drawing::Size(227, 54);
+			this->StartButton->Name = L"StartButton";
 			this->StartButton->TabIndex = 1;
 			this->StartButton->Text = L"Start Game";
-			this->StartButton->UseVisualStyleBackColor = false;
 			this->StartButton->Click += gcnew System::EventHandler(this, &MainForm::StartButton_Click);
 			// 
 			//  FillSudokuButton
