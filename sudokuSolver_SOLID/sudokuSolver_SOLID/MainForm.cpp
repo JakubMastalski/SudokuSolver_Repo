@@ -13,8 +13,8 @@ namespace sudokuSolverSOLID
 			this->MainPanel = (gcnew System::Windows::Forms::Panel());
 			this->MenuOptionsPanel = (gcnew System::Windows::Forms::Panel());
 			this->StartButton = (gcnew System::Windows::Forms::Button());
+			this->FillSudokuButton = (gcnew System::Windows::Forms::Button());
 			this->RestartButton = (gcnew System::Windows::Forms::Button());
-			this->CloseButton = (gcnew System::Windows::Forms::Button());
 			this->ExitButton = (gcnew System::Windows::Forms::Button());
 			this->HideButton = (gcnew System::Windows::Forms::Button());
 			this->ShowButton = (gcnew System::Windows::Forms::Button());
@@ -51,10 +51,10 @@ namespace sudokuSolverSOLID
 			this->MenuOptionsPanel->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(25)), static_cast<System::Int32>(static_cast<System::Byte>(25)),
 				static_cast<System::Int32>(static_cast<System::Byte>(25)));
 			this->MenuOptionsPanel->Controls->Add(this->HideButton);
-			this->MenuOptionsPanel->Controls->Add(this->CloseButton);
+			this->MenuOptionsPanel->Controls->Add(this->RestartButton);
 			this->MenuOptionsPanel->Controls->Add(this->StartButton);
 			this->MenuOptionsPanel->Controls->Add(this->ExitButton);
-			this->MenuOptionsPanel->Controls->Add(this->RestartButton);
+			this->MenuOptionsPanel->Controls->Add(this->FillSudokuButton);
 			this->MenuOptionsPanel->Location = System::Drawing::Point(605, 2);
 			this->MenuOptionsPanel->Name = L"MenuOptionsPanel";
 			this->MenuOptionsPanel->Size = System::Drawing::Size(250, 588);
@@ -78,8 +78,26 @@ namespace sudokuSolverSOLID
 			this->StartButton->TabIndex = 1;
 			this->StartButton->Text = L"Start Game";
 			this->StartButton->UseVisualStyleBackColor = false;
+			this->StartButton->Click += gcnew System::EventHandler(this, &MainForm::StartButton_Click);
 			// 
-			//  RestartButton
+			//  FillSudokuButton
+			// 
+			this->FillSudokuButton->BackColor = System::Drawing::Color::Black;
+			this->FillSudokuButton->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->FillSudokuButton->FlatAppearance->BorderColor = System::Drawing::Color::White;
+			this->FillSudokuButton->FlatAppearance->BorderSize = 2;
+			this->FillSudokuButton->FlatAppearance->MouseDownBackColor = System::Drawing::Color::White;
+			this->FillSudokuButton->FlatAppearance->MouseOverBackColor = System::Drawing::Color::White;
+			this->FillSudokuButton->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
+			this->FillSudokuButton->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12.2F, System::Drawing::FontStyle::Bold));
+			this->FillSudokuButton->Location = System::Drawing::Point(12, 246);
+			this->FillSudokuButton->Name = L"button2";
+			this->FillSudokuButton->Size = System::Drawing::Size(227, 54);
+			this->FillSudokuButton->TabIndex = 2;
+			this->FillSudokuButton->Text = L"Fill Sudoku";
+			this->FillSudokuButton->UseVisualStyleBackColor = false;
+			// 
+			// CloseButton
 			// 
 			this->RestartButton->BackColor = System::Drawing::Color::Black;
 			this->RestartButton->Cursor = System::Windows::Forms::Cursors::Hand;
@@ -89,30 +107,13 @@ namespace sudokuSolverSOLID
 			this->RestartButton->FlatAppearance->MouseOverBackColor = System::Drawing::Color::White;
 			this->RestartButton->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
 			this->RestartButton->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12.2F, System::Drawing::FontStyle::Bold));
-			this->RestartButton->Location = System::Drawing::Point(12, 246);
-			this->RestartButton->Name = L"button2";
+			this->RestartButton->Location = System::Drawing::Point(12, 100);
+			this->RestartButton->Name = L"button3";
 			this->RestartButton->Size = System::Drawing::Size(227, 54);
-			this->RestartButton->TabIndex = 2;
-			this->RestartButton->Text = L"Fill Sudoku";
+			this->RestartButton->TabIndex = 3;
+			this->RestartButton->Text = L"Restart";
 			this->RestartButton->UseVisualStyleBackColor = false;
-			// 
-			// CloseButton
-			// 
-			this->CloseButton->BackColor = System::Drawing::Color::Black;
-			this->CloseButton->Cursor = System::Windows::Forms::Cursors::Hand;
-			this->CloseButton->FlatAppearance->BorderColor = System::Drawing::Color::White;
-			this->CloseButton->FlatAppearance->BorderSize = 2;
-			this->CloseButton->FlatAppearance->MouseDownBackColor = System::Drawing::Color::White;
-			this->CloseButton->FlatAppearance->MouseOverBackColor = System::Drawing::Color::White;
-			this->CloseButton->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
-			this->CloseButton->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12.2F, System::Drawing::FontStyle::Bold));
-			this->CloseButton->Location = System::Drawing::Point(12, 100);
-			this->CloseButton->Name = L"button3";
-			this->CloseButton->Size = System::Drawing::Size(227, 54);
-			this->CloseButton->TabIndex = 3;
-			this->CloseButton->Text = L"Restart";
-			this->CloseButton->UseVisualStyleBackColor = false;
-			this->CloseButton->Click += gcnew System::EventHandler(this, &MainForm::button3_Click);
+			this->RestartButton->Click += gcnew System::EventHandler(this, &MainForm::RestartButton_Click);
 			// 
 			// ExitButton
 			// 
@@ -130,7 +131,7 @@ namespace sudokuSolverSOLID
 			this->ExitButton->TabIndex = 4;
 			this->ExitButton->Text = L"Close";
 			this->ExitButton->UseVisualStyleBackColor = false;
-			this->ExitButton->Click += gcnew System::EventHandler(this, &MainForm::button4_Click);
+			this->ExitButton->Click += gcnew System::EventHandler(this, &MainForm::ExitButton_Click);
 			// 
 			// HideButton
 			// 
@@ -148,7 +149,7 @@ namespace sudokuSolverSOLID
 			this->HideButton->TabIndex = 5;
 			this->HideButton->Text = L"Hide Menu";
 			this->HideButton->UseVisualStyleBackColor = false;
-			this->HideButton->Click += gcnew System::EventHandler(this, &MainForm::button5_Click);
+			this->HideButton->Click += gcnew System::EventHandler(this, &MainForm::HideButton_Click);
 			// 
 			// ShowButton
 			// 
@@ -168,7 +169,7 @@ namespace sudokuSolverSOLID
 			this->ShowButton->Text = L"Open Menu";
 			this->ShowButton->UseVisualStyleBackColor = false;
 			this->ShowButton->Visible = false;
-			this->ShowButton->Click += gcnew System::EventHandler(this, &MainForm::button6_Click);
+			this->ShowButton->Click += gcnew System::EventHandler(this, &MainForm::ShowButton_Click);
 			// 
 			// MainForm
 			// 
@@ -199,9 +200,6 @@ namespace sudokuSolverSOLID
 	}
 
 	Void MainForm::StartButton_Click(Object^ sender, EventArgs^ e) {
-	}
-
-	Void MainForm::button3_Click(Object^ sender, EventArgs^ e) {
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 3; j++) {
 				SudokuMajorField^ majorField = dynamic_cast<SudokuMajorField^>(this->MainPanel->Controls[i * 3 + j]);
@@ -215,7 +213,10 @@ namespace sudokuSolverSOLID
 						int globalRow = i * 3 + (minorIndex / 3);
 						int globalCol = j * 3 + (minorIndex % 3);
 
+						field->ClearValue();
+
 						fieldsSudoku[globalRow, globalCol] = field;
+						
 
 						fieldsSudoku[3, 2]->SetValue(5, fieldsSudoku, 3, 2);
 					}
@@ -224,17 +225,21 @@ namespace sudokuSolverSOLID
 		}
 	}
 
-	Void MainForm::button5_Click(Object^ sender, EventArgs^ e) {
+	Void MainForm::RestartButton_Click(Object^ sender, EventArgs^ e) {
+		Application::Restart();
+	}
+
+	Void MainForm::HideButton_Click(Object^ sender, EventArgs^ e) {
 		MenuOptionsPanel->Visible = false;
 		ShowButton->Visible = true;
 	}
 
-	Void MainForm::button6_Click(Object^ sender, EventArgs^ e) {
+	Void MainForm::ShowButton_Click(Object^ sender, EventArgs^ e) {
 		MenuOptionsPanel->Visible = true;
 		ShowButton->Visible = false;
 	}
 
-	Void MainForm::button4_Click(Object^ sender, EventArgs^ e) {
+	Void MainForm::ExitButton_Click(Object^ sender, EventArgs^ e) {
 		Application::Exit();
 	}
 
@@ -256,3 +261,4 @@ namespace sudokuSolverSOLID
 		dragging = false;
 	}
 }
+

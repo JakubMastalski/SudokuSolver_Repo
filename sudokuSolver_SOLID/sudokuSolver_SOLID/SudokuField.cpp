@@ -8,11 +8,11 @@ SudokuField::SudokuField() {
 }
 
 void SudokuField::SetValue(int value, array<SudokuField^, 2>^ fieldsSudoku, int row, int column) {
-    // Przypisujemy wartoœæ dla danego pola w tablicy
     if (fieldsSudoku[row, column] != nullptr) {
         fieldsSudoku[row, column]->Text = value == 0 ? "" : value.ToString();
     }
 }
+
 
 void SudokuField::ClearValue() {
     this->Text = "";
