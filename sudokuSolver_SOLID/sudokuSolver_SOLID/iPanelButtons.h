@@ -1,5 +1,6 @@
 #pragma once
 #include "SudokuField.h"
+#include "SudokuMajorField.h"
 
 
 using namespace System;
@@ -13,7 +14,7 @@ ref class  IPanelButtons :
 public:
     IPanelButtons();
 public:
-    void StartButton_Click(array<SudokuField^, 2>^ fieldsSudoku);
+    void StartButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^ MainPanel);
     void FillSudokuButton_Click();
     void RestartButton_Click();
     void HideButton_Click(Panel^ menuOptionsPanel, Button^ showButton);
