@@ -12,6 +12,7 @@ namespace sudokuSolverSOLID
 
 			this->MainPanel = (gcnew System::Windows::Forms::Panel());
 			this->MenuOptionsPanel = (gcnew System::Windows::Forms::Panel());
+
 			this->StartButton = gcnew IPanelButtons();
 			this->FillSudokuButton = gcnew IPanelButtons();
 			this->RestartButton = gcnew IPanelButtons();
@@ -186,7 +187,7 @@ namespace sudokuSolverSOLID
 
 
 	Void MainForm::RestartButton_Click(Object^ sender, EventArgs^ e) {
-		Application::Restart();
+		RestartButton->RestartButton_Click();
 	}
 
 	Void MainForm::HideButton_Click(Object^ sender, EventArgs^ e) {
@@ -200,7 +201,7 @@ namespace sudokuSolverSOLID
 	}
 
 	Void MainForm::ExitButton_Click(Object^ sender, EventArgs^ e) {
-		Application::Exit();
+		ExitButton->ExitButton_Click();
 	}
 
 	Void MainForm::MainForm_MouseMove(Object^ sender, Windows::Forms::MouseEventArgs^ e) {

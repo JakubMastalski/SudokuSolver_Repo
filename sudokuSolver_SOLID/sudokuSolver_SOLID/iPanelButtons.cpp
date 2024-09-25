@@ -18,32 +18,32 @@
 }
 
 
- void IPanelButtons::StartButton_Click(System::Object^ sender, System::EventArgs^ e)
+ void IPanelButtons::StartButton_Click(array<SudokuField^, 2>^ fieldsSudoku)
  {
      
  }
 
- void IPanelButtons::FillSudokuButton_Click(System::Object^ sender, System::EventArgs^ e)
+ void IPanelButtons::FillSudokuButton_Click()
  {
     
  }
 
- void IPanelButtons::RestartButton_Click(System::Object^ sender, System::EventArgs^ e)
+ void IPanelButtons::RestartButton_Click()
  {
-     
+     Application::Restart();
  }
 
- void IPanelButtons::HideButton_Click(System::Object^ sender, System::EventArgs^ e)
+ void IPanelButtons::HideButton_Click(Panel^ menuOptionsPanel, Button^ showButton)
  {
     
  }
 
- void IPanelButtons::ShowButton_Click(System::Object^ sender, System::EventArgs^ e)
+ void IPanelButtons::ShowButton_Click(Panel^ menuOptionsPanel, Button^ hideButton)
  {
      
  }
 
- void IPanelButtons::ExitButton_Click(System::Object^ sender, System::EventArgs^ e)
+ void IPanelButtons::ExitButton_Click()
  {
      Application::Exit();
  }

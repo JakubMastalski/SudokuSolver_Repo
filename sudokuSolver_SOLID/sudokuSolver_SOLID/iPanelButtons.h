@@ -1,4 +1,7 @@
 #pragma once
+#include "SudokuField.h"
+
+
 using namespace System;
 using namespace System::Windows::Forms;
 using namespace System::Drawing;
@@ -10,12 +13,12 @@ ref class  IPanelButtons :
 public:
     IPanelButtons();
 public:
-    void StartButton_Click(System::Object^ sender, System::EventArgs^ e);
-    void FillSudokuButton_Click(System::Object^ sender, System::EventArgs^ e);
-    void RestartButton_Click(System::Object^ sender, System::EventArgs^ e);
-    void HideButton_Click(System::Object^ sender, System::EventArgs^ e);
-    void ShowButton_Click(System::Object^ sender, System::EventArgs^ e);
-    void ExitButton_Click(System::Object^ sender, System::EventArgs^ e);
+    void StartButton_Click(array<SudokuField^, 2>^ fieldsSudoku);
+    void FillSudokuButton_Click();
+    void RestartButton_Click();
+    void HideButton_Click(Panel^ menuOptionsPanel, Button^ showButton);
+    void ShowButton_Click(Panel^ menuOptionsPanel, Button^ hideButton);
+    void ExitButton_Click();
     
 };
 
