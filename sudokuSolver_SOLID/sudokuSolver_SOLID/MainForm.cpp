@@ -109,21 +109,10 @@ namespace sudokuSolverSOLID
 			// 
 			// ShowButton
 			// 
-			this->ShowButton->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(25)), static_cast<System::Int32>(static_cast<System::Byte>(25)),
-				static_cast<System::Int32>(static_cast<System::Byte>(25)));
-			this->ShowButton->Cursor = System::Windows::Forms::Cursors::Hand;
-			this->ShowButton->FlatAppearance->BorderColor = System::Drawing::Color::White;
-			this->ShowButton->FlatAppearance->BorderSize = 2;
-			this->ShowButton->FlatAppearance->MouseDownBackColor = System::Drawing::Color::White;
-			this->ShowButton->FlatAppearance->MouseOverBackColor = System::Drawing::Color::White;
-			this->ShowButton->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
-			this->ShowButton->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12.2F, System::Drawing::FontStyle::Bold));
 			this->ShowButton->Location = System::Drawing::Point(617, 22);
-			this->ShowButton->Name = L"button6";
+			this->ShowButton->Name = L"ShowButton";
 			this->ShowButton->Size = System::Drawing::Size(227, 54);
-			this->ShowButton->TabIndex = 6;
 			this->ShowButton->Text = L"Open Menu";
-			this->ShowButton->UseVisualStyleBackColor = false;
 			this->ShowButton->Visible = false;
 			this->ShowButton->Click += gcnew System::EventHandler(this, &MainForm::ShowButton_Click);
 			// 
@@ -155,6 +144,8 @@ namespace sudokuSolverSOLID
 		}
 	}
 
+	//Menu Buttons Options
+
 	Void MainForm::StartButton_Click(Object^ sender, EventArgs^ e) {
 		StartButton->StartButton_Click(fieldsSudoku, MainPanel);
 	}
@@ -162,7 +153,6 @@ namespace sudokuSolverSOLID
 	Void MainForm::FillSudokuButton_Click(Object^ sender, EventArgs^ e) {
 		;
 	}
-
 
 	Void MainForm::RestartButton_Click(Object^ sender, EventArgs^ e) {
 		RestartButton->RestartButton_Click();
@@ -179,6 +169,9 @@ namespace sudokuSolverSOLID
 	Void MainForm::ExitButton_Click(Object^ sender, EventArgs^ e) {
 		ExitButton->ExitButton_Click();
 	}
+
+
+	//Dragging Form
 
 	Void MainForm::MainForm_MouseMove(Object^ sender, Windows::Forms::MouseEventArgs^ e) {
 		if (dragging) {
@@ -198,4 +191,3 @@ namespace sudokuSolverSOLID
 		dragging = false;
 	}
 }
-
