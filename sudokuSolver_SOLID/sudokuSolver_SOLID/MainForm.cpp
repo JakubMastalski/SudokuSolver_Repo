@@ -10,6 +10,7 @@ namespace sudokuSolverSOLID
 		{
 			fieldsSudoku = gcnew array<SudokuField^, 2>(9, 9);
 
+			std::srand(static_cast<unsigned int>(std::time(nullptr)));
 			this->MainPanel = (gcnew System::Windows::Forms::Panel());
 			this->MenuOptionsPanel = (gcnew System::Windows::Forms::Panel());
 

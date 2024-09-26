@@ -2,7 +2,8 @@
 
 void ButtonStart::StartButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^ MainPanel)
 {
-    std::srand(static_cast<unsigned int>(std::time(nullptr)));
+    this->Visible = false;
+    this->Enabled = false;
 
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
@@ -19,18 +20,27 @@ void ButtonStart::StartButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^
 
                     fieldsSudoku[globalRow, globalCol] = field;
                     field->ClearValue(fieldsSudoku);
-               
-                        int row = std::rand() % 9;
-                        int col = std::rand() % 9;  
-                        int value = (std::rand() % 9) + 1;
 
-                        if (fieldsSudoku[row, col]->GetValue() == 0 && fieldsSudoku[row,col] != nullptr)
-                        {
-                            if (IsValid(fieldsSudoku, row, col, value))
-                            {
-                                fieldsSudoku[row, col]->SetValue(value, fieldsSudoku, row, col);
-                            }
-                        }
+                    AddNumbersToBoard(fieldsSudoku);
+                }
+            }
+        }
+    }
+    this->Visible = true;
+    this->Enabled = true;
+}
+
+void ButtonStart::AddNumbersToBoard(array<SudokuField^, 2>^ fieldsSudoku)
+{
+    for (int i = 0; i < 8; i++) {
+        for (int j = 0; j < 8; j++) {
+            int row = std::rand() % 9;
+            int col = std::rand() % 9;
+            int value = (std::rand() % 9) + 1;
+
+            if (fieldsSudoku[row, col]->GetValue() == 0 && fieldsSudoku[row, col] != nullptr) {
+                if (IsValid(fieldsSudoku, row, col, value)) {
+                    fieldsSudoku[row, col]->SetValue(value, fieldsSudoku, row, col);
                 }
             }
         }
