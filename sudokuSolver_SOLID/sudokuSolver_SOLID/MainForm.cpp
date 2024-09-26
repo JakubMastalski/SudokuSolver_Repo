@@ -13,7 +13,7 @@ namespace sudokuSolverSOLID
 			this->MainPanel = (gcnew System::Windows::Forms::Panel());
 			this->MenuOptionsPanel = (gcnew System::Windows::Forms::Panel());
 
-			this->StartButton = gcnew IPanelButtons();
+			this->StartButton = gcnew ButtonStart();
 			this->FillSudokuButton = gcnew IPanelButtons();
 			this->RestartButton = gcnew PanelButtonsSecondary();
 			this->ExitButton = gcnew PanelButtonsSecondary();

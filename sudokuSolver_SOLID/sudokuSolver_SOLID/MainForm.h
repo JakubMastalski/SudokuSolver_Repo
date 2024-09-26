@@ -8,6 +8,7 @@
 #include <random>
 #include "iPanelButtons.h"
 #include "PanelButtonsSecondary.h"
+#include "ButtonStart.h"
 
 namespace sudokuSolverSOLID {
 
@@ -32,7 +33,7 @@ namespace sudokuSolverSOLID {
 		}
 
 	private:
-		IPanelButtons^ StartButton;
+		ButtonStart^ StartButton;
 		IPanelButtons^ FillSudokuButton;
 		PanelButtonsSecondary^ RestartButton;
 		PanelButtonsSecondary^ ExitButton;

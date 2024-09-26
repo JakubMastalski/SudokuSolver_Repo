@@ -16,8 +16,6 @@ ref class  IPanelButtons :
 public:
     IPanelButtons();
 public:
-    void StartButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^ MainPanel);
     void FillSudokuButton_Click();
-    
 };
 
