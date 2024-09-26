@@ -2,6 +2,8 @@
 
 void ButtonStart::StartButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^ MainPanel)
 {
+    std::srand(static_cast<unsigned int>(std::time(nullptr)));
+
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
             SudokuMajorField^ majorField = dynamic_cast<SudokuMajorField^>(MainPanel->Controls[i * 3 + j]);
@@ -19,8 +21,17 @@ void ButtonStart::StartButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^
 
                     fieldsSudoku[globalRow, globalCol] = field;
 
+                    int filledCells = 0;
+                    while (filledCells < 30)
+                    {
+                        int row = std::rand() % 9;
+                        int col = std::rand() % 9;  
+                        int value = (std::rand() % 9) + 1;
 
-                    fieldsSudoku[3, 2]->SetValue(5, fieldsSudoku, 3, 2);
+                        fieldsSudoku[3, 2]->SetValue(5, fieldsSudoku, 3, 2);
+                        filledCells++;
+                    }
+
                 }
             }
         }
