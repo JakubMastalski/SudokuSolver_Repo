@@ -27,3 +27,30 @@ void ButtonStart::StartButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^
     }
 }
 
+bool ButtonStart::IsValid(array<SudokuField^, 2>^ fieldsSudoku, int row, int col, int value)
+{
+    for (int i = 0; i < 9; i++)
+    {
+        if (fieldsSudoku[row, i]->GetValue() == value)
+            return false;
+    }
+
+    for (int i = 0; i < 9; i++)
+    {
+        if (fieldsSudoku[i, col]->GetValue() == value)
+            return false;
+    }
+
+    int startRow = row / 3 * 3;
+    int startCol = col / 3 * 3;
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            if (fieldsSudoku[startRow + i, startCol + j]->GetValue() == value)
+                return false;
+        }
+    }
+
+    return true;
+}
