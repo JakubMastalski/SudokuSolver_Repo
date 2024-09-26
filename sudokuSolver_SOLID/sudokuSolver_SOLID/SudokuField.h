@@ -6,6 +6,6 @@ public:
     SudokuField();
     void SetValue(int value, array<SudokuField^, 2>^ fieldsSudoku, int row, int column);
     int GetValue();
-    void ClearValue();
+    void ClearValue(array<SudokuField^, 2>^ fieldsSudoku);
 };
 

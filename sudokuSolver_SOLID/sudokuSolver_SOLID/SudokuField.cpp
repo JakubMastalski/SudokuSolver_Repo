@@ -14,8 +14,14 @@ void SudokuField::SetValue(int value, array<SudokuField^, 2>^ fieldsSudoku, int 
 }
 
 
-void SudokuField::ClearValue() {
-    this->Text = "";
+void SudokuField::ClearValue(array<SudokuField^, 2>^ fieldsSudoku) {
+    for (int row = 0; row < 9; row++) {
+        for (int col = 0; col < 9; col++) {
+            if (fieldsSudoku[row, col] != nullptr) { 
+                fieldsSudoku[row, col]->Text = "";
+            }
+        }
+    }
 }
 
 int SudokuField::GetValue()

@@ -17,13 +17,9 @@ void ButtonStart::StartButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^
                     int globalRow = i * 3 + (minorIndex / 3);
                     int globalCol = j * 3 + (minorIndex % 3);
 
-                    field->ClearValue();
-
                     fieldsSudoku[globalRow, globalCol] = field;
-
-                    int filledCells = 0;
-                    while (filledCells < 30)
-                    {
+                    field->ClearValue(fieldsSudoku);
+               
                         int row = std::rand() % 9;
                         int col = std::rand() % 9;  
                         int value = (std::rand() % 9) + 1;
@@ -33,10 +29,8 @@ void ButtonStart::StartButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^
                             if (IsValid(fieldsSudoku, row, col, value))
                             {
                                 fieldsSudoku[row, col]->SetValue(value, fieldsSudoku, row, col);
-                                filledCells++;
                             }
                         }
-                    }
                 }
             }
         }
