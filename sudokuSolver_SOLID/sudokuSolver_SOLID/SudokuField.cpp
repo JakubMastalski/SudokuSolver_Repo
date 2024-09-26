@@ -20,9 +20,12 @@ void SudokuField::ClearValue() {
 
 int SudokuField::GetValue()
 {
-    if (this->Text == "") {
-        return 0;
+    if (this != nullptr)
+    {
+        if (this->Text == "" || this->Text == "0") {
+            return 0;
+        }
+        return System::Int32::Parse(this->Text);
     }
-
-    return System::Int32::Parse(this->Text);
+    return 0;
 }

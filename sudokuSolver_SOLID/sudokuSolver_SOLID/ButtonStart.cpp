@@ -28,10 +28,15 @@ void ButtonStart::StartButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^
                         int col = std::rand() % 9;  
                         int value = (std::rand() % 9) + 1;
 
-                        fieldsSudoku[3, 2]->SetValue(5, fieldsSudoku, 3, 2);
-                        filledCells++;
+                        if (fieldsSudoku[row, col]->GetValue() == 0 && fieldsSudoku[row,col] != nullptr)
+                        {
+                            if (IsValid(fieldsSudoku, row, col, value))
+                            {
+                                fieldsSudoku[row, col]->SetValue(value, fieldsSudoku, row, col);
+                                filledCells++;
+                            }
+                        }
                     }
-
                 }
             }
         }
