@@ -35,7 +35,7 @@ namespace sudokuSolverSOLID
 			// 
 			this->MainPanel->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->MainPanel->Location = System::Drawing::Point(82, 63);
-			this->MainPanel->Name = L"panel1";
+			this->MainPanel->Name = L"MainPanel";
 			this->MainPanel->Size = System::Drawing::Size(440, 438);
 			this->MainPanel->TabIndex = 0;
 

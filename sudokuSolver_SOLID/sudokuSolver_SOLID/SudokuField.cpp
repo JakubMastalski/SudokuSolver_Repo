@@ -17,3 +17,12 @@ void SudokuField::SetValue(int value, array<SudokuField^, 2>^ fieldsSudoku, int 
 void SudokuField::ClearValue() {
     this->Text = "";
 }
+
+int SudokuField::GetValue()
+{
+    if (this->Text == "") {
+        return 0;
+    }
+
+    return System::Int32::Parse(this->Text);
+}
