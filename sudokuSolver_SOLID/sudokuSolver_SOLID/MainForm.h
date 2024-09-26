@@ -7,6 +7,7 @@
 #include "ctime"
 #include <random>
 #include "iPanelButtons.h"
+#include "PanelButtonsSecondary.h"
 
 namespace sudokuSolverSOLID {
 
@@ -32,11 +33,11 @@ namespace sudokuSolverSOLID {
 
 	private:
 		IPanelButtons^ StartButton;
-		IPanelButtons^ RestartButton;
 		IPanelButtons^ FillSudokuButton;
-		IPanelButtons^ ExitButton;
-		IPanelButtons^ HideButton;
-		IPanelButtons^ ShowButton;
+		PanelButtonsSecondary^ RestartButton;
+		PanelButtonsSecondary^ ExitButton;
+		PanelButtonsSecondary^ HideButton;
+		PanelButtonsSecondary^ ShowButton;
 
 	private: System::Windows::Forms::Panel^ MainPanel;
 	private: System::Windows::Forms::Panel^ MenuOptionsPanel;

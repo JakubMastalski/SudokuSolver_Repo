@@ -15,10 +15,10 @@ namespace sudokuSolverSOLID
 
 			this->StartButton = gcnew IPanelButtons();
 			this->FillSudokuButton = gcnew IPanelButtons();
-			this->RestartButton = gcnew IPanelButtons();
-			this->ExitButton = gcnew IPanelButtons();
-			this->HideButton = gcnew IPanelButtons();
-			this->ShowButton = gcnew IPanelButtons();
+			this->RestartButton = gcnew PanelButtonsSecondary();
+			this->ExitButton = gcnew PanelButtonsSecondary();
+			this->HideButton = gcnew PanelButtonsSecondary();
+			this->ShowButton = gcnew PanelButtonsSecondary();
 			
 			this->MainPanel->SuspendLayout();
 			this->MenuOptionsPanel->SuspendLayout();
@@ -169,7 +169,6 @@ namespace sudokuSolverSOLID
 	Void MainForm::ExitButton_Click(Object^ sender, EventArgs^ e) {
 		ExitButton->ExitButton_Click();
 	}
-
 
 	//Dragging Form
 

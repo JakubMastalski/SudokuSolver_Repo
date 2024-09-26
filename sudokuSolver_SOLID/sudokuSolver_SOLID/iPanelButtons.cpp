@@ -49,25 +49,3 @@
  {
     
  }
-
- void IPanelButtons::RestartButton_Click()
- {
-     Application::Restart();
- }
-
- void IPanelButtons::HideButton_Click(Panel^ MenuOptionsPanel, Button^ ShowButton)
- {
-     MenuOptionsPanel->Visible = false;
-     ShowButton->Visible = true;
- }
-
- void IPanelButtons::ShowButton_Click(Panel^ MenuOptionsPanel, Button^ ShowButton)
- {
-     MenuOptionsPanel->Visible = true;
-     ShowButton->Visible = false;
- }
-
- void IPanelButtons::ExitButton_Click()
- {
-     Application::Exit();
- }

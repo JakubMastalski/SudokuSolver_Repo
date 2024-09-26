@@ -121,21 +121,25 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Board.cpp" />
+    <ClCompile Include="ButtonStart.cpp" />
     <ClCompile Include="IBoard.cpp" />
     <ClCompile Include="iPanelButtons.cpp" />
     <ClCompile Include="MainForm.cpp" />
     <ClCompile Include="MainForm_main.cpp" />
+    <ClCompile Include="PanelButtonsSecondary.cpp" />
     <ClCompile Include="SudokuMajorField.cpp" />
     <ClCompile Include="SudokuMiniorField.cpp" />
     <ClCompile Include="SudokuField.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Board.h" />
+    <ClInclude Include="ButtonStart.h" />
     <ClInclude Include="IBoard.h" />
     <ClInclude Include="iPanelButtons.h" />
     <ClInclude Include="MainForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="PanelButtonsSecondary.h" />
     <ClInclude Include="SudokuMajorField.h" />
     <ClInclude Include="SudokuMiniorFiled.h" />
     <ClInclude Include="SudokuField.h" />

@@ -1,6 +1,8 @@
 #pragma once
 #include "SudokuField.h"
 #include "SudokuMajorField.h"
+#include <random>
+#include <ctime>
 
 
 using namespace System;
@@ -16,10 +18,6 @@ public:
 public:
     void StartButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^ MainPanel);
     void FillSudokuButton_Click();
-    void RestartButton_Click();
-    void HideButton_Click(Panel^ menuOptionsPanel, Button^ showButton);
-    void ShowButton_Click(Panel^ menuOptionsPanel, Button^ hideButton);
-    void ExitButton_Click();
     
 };
 
