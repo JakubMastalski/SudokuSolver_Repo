@@ -121,6 +121,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Board.cpp" />
+    <ClCompile Include="ButtonFillSudoku.cpp" />
     <ClCompile Include="ButtonStart.cpp" />
     <ClCompile Include="IBoard.cpp" />
     <ClCompile Include="iPanelButtons.cpp" />
@@ -133,6 +134,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Board.h" />
+    <ClInclude Include="ButtonFillSudoku.h" />
     <ClInclude Include="ButtonStart.h" />
     <ClInclude Include="IBoard.h" />
     <ClInclude Include="iPanelButtons.h" />

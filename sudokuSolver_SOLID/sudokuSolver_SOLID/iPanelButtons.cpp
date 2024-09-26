@@ -17,7 +17,3 @@
     this->FlatAppearance->MouseOverBackColor = Color::White;
 }
 
- void IPanelButtons::FillSudokuButton_Click()
- {
-    
- }

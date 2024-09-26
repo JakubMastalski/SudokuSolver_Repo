@@ -15,7 +15,5 @@ ref class  IPanelButtons :
 {
 public:
     IPanelButtons();
-public:
-    void FillSudokuButton_Click();
 };
 

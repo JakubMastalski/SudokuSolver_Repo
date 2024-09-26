@@ -9,6 +9,7 @@
 #include "iPanelButtons.h"
 #include "PanelButtonsSecondary.h"
 #include "ButtonStart.h"
+#include "ButtonFillSudoku.h"
 
 namespace sudokuSolverSOLID {
 
@@ -34,7 +35,8 @@ namespace sudokuSolverSOLID {
 
 	private:
 		ButtonStart^ StartButton;
-		IPanelButtons^ FillSudokuButton;
+		ButtonFillSudoku^ FillSudokuButton;
+
 		PanelButtonsSecondary^ RestartButton;
 		PanelButtonsSecondary^ ExitButton;
 		PanelButtonsSecondary^ HideButton;
