@@ -13,6 +13,7 @@ SudokuMiniorField::SudokuMiniorField(int row, int col) {
             SudokuField^ sudokuField = gcnew SudokuField();
             sudokuField->Location = System::Drawing::Point(j * 45 + 6, i * 45 + 3);
             sudokuField->Name = "Field";
+            sudokuField->Text = "";
             this->Controls->Add(sudokuField);
             fields[index] = sudokuField;
         }

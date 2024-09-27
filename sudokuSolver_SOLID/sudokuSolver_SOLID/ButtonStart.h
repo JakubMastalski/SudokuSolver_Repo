@@ -1,5 +1,7 @@
 #pragma once
 #include "iPanelButtons.h"
+#include <algorithm> 
+#include <vector> 
 
 ref class ButtonStart :
     public IPanelButtons

@@ -18,6 +18,7 @@ void ButtonStart::StartButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^
                     int globalRow = i * 3 + (minorIndex / 3);
                     int globalCol = j * 3 + (minorIndex % 3);
 
+
                     fieldsSudoku[globalRow, globalCol] = field;
                     field->ClearValue(fieldsSudoku);
 
@@ -32,16 +33,16 @@ void ButtonStart::StartButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^
 
 void ButtonStart::AddNumbersToBoard(array<SudokuField^, 2>^ fieldsSudoku)
 {
-    for (int i = 0; i < 8; i++) {
-        for (int j = 0; j < 8; j++) {
-            int row = std::rand() % 9;
-            int col = std::rand() % 9;
-            int value = (std::rand() % 9) + 1;
-
-            if (fieldsSudoku[row, col]->GetValue() == 0 && fieldsSudoku[row, col] != nullptr) {
-                if (IsValid(fieldsSudoku, row, col, value)) {
-                    fieldsSudoku[row, col]->SetValue(value, fieldsSudoku, row, col);
-                }
+    for (int i = 0; i < 9; i++) {
+        for (int j = 0; j < 9; j++) {
+            int value = (rand() % 9) + 1;
+            if (IsValid(fieldsSudoku, i, j, 5))
+            {
+                fieldsSudoku[i, j]->SetValue(5, fieldsSudoku, i, j);
+            }
+            if (IsValid(fieldsSudoku, i, j, 4))
+            {
+                fieldsSudoku[i, j]->SetValue(4, fieldsSudoku, i, j);
             }
         }
     }
