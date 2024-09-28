@@ -45,10 +45,13 @@ void ButtonStart::AddNumbersToBoard(array<SudokuField^, 2>^ fieldsSudoku)
         if (fieldsSudoku[i, j]->GetValue() == 0) {
             int value = (rand() % 9) + 1;
 
-            if (IsValid(fieldsSudoku, i, j, value)) {
-                fieldsSudoku[i, j]->SetValue(value, fieldsSudoku, i, j);
-                numbersToInsert--;
+            // Zmieniamy wartoœæ, jeœli nie jest zgodna z zasadami
+            while (!IsValid(fieldsSudoku, i, j, value)) {
+                value = (value % 9) + 1;  // Dodajemy 1, a jak dojdziemy do 9, wracamy do 1
             }
+
+            fieldsSudoku[i, j]->SetValue(value, fieldsSudoku, i, j);
+            numbersToInsert--;
         }
     }
 }
