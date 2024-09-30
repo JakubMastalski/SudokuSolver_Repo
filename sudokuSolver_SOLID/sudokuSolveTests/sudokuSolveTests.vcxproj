@@ -97,8 +97,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
+    <ClInclude Include="SudokuFieldLogic.h" />
+    <ClInclude Include="SudokuMiniorFieldLogic.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="SudokuFieldLogic.cpp" />
+    <ClCompile Include="SudokuMiniorFieldLogic.cpp" />
     <ClCompile Include="test.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

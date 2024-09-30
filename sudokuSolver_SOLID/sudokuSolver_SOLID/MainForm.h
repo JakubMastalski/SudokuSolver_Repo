@@ -1,6 +1,4 @@
 #pragma once
-#include "IBoard.h"
-#include "Board.h"
 #include "SudokuField.h"
 #include "SudokuMajorField.h"
 #include "SudokuMiniorFiled.h"
@@ -51,7 +49,7 @@ namespace sudokuSolverSOLID {
 		bool dragging;
 		Point offset;
 		System::ComponentModel::Container ^components;
-		Board^ board;
+
 		array<SudokuField^, 2>^ fieldsSudoku;
 
 #pragma region Windows Form Designer generated code
