@@ -1,17 +1,14 @@
 #include "ButtonFillSudoku.h"
 
-
-void ButtonFillSudoku::FillSudokuButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^ MainPanel,Timer^ fillTimer)
+void ButtonFillSudoku::FillSudokuButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^ MainPanel, Timer^ fillTimer)
 {
-
     this->Visible = false;
     this->Enabled = false;
 
-    sudokuFieldsGlobal = fieldsSudoku;
-    globalFillTimer = fillTimer;
-
     currentRow = 0;
     currentCol = 0;
+
+    sudokuFieldsGlobal = fieldsSudoku;
 
     fillTimer->Interval = 10;
     fillTimer->Tick += gcnew EventHandler(this, &ButtonFillSudoku::OnTick);
@@ -21,58 +18,52 @@ void ButtonFillSudoku::FillSudokuButton_Click(array<SudokuField^, 2>^ fieldsSudo
 
 void ButtonFillSudoku::OnTick(Object^ sender, EventArgs^ e)
 {
-
-    if (FillSudokuStep(sudokuFieldsGlobal, currentRow, currentCol)) 
+    // Upewnij siê, ¿e fieldsSudoku jest odpowiednio przekazywane
+    if (FillSudokuStep(sudokuFieldsGlobal))
     {
         Console::WriteLine("Sudoku solved");
         globalFillTimer->Stop();
-        UpdateUI();
+        UpdateUI(sudokuFieldsGlobal);
         this->Visible = true;
         this->Enabled = true;
     }
 }
 
-bool ButtonFillSudoku::FillSudokuStep(array<SudokuField^, 2>^ fieldsSudoku, int row, int col)
+bool ButtonFillSudoku::FillSudokuStep(array<SudokuField^, 2>^ fieldsSudoku)
 {
-    int emptyRow = -1, emptyCol = -1;
-
-    if (!FindEmptyLocation(emptyRow, emptyCol) || emptyRow >= 1) 
-        return true; 
+    if (!FindEmptyLocation(fieldsSudoku, currentRow, currentCol))
+        return true;
 
     for (int num = 1; num <= 9; num++)
     {
-        if (IsValid(emptyRow, emptyCol, num))
+        if (IsValidFill(fieldsSudoku, currentRow, currentCol, num))
         {
-            fieldsSudoku[emptyRow, emptyCol]->SetValue(num, fieldsSudoku, emptyRow, emptyCol);
-
-            currentRow = emptyRow;
-            currentCol = emptyCol;
-
-            return false; 
+            fieldsSudoku[currentRow, currentCol]->SetValue(num, fieldsSudoku, currentRow, currentCol);
+            return false; // Kontynuuj wype³nianie
         }
     }
 
     return false;
 }
 
-bool ButtonFillSudoku::FindEmptyLocation(int& row, int& col)
+bool ButtonFillSudoku::FindEmptyLocation(array<SudokuField^, 2>^ fieldsSudoku, int% row, int% col)
 {
     for (row = currentRow; row < 9; row++)
     {
         for (col = (row == currentRow) ? currentCol : 0; col < 9; col++)
         {
-            if (sudokuFieldsGlobal[row, col]->GetValue() == 0 || sudokuFieldsGlobal[row, col]->Text == "")
+            if (fieldsSudoku[row, col]->GetValue() == 0 || fieldsSudoku[row, col]->Text == "")
                 return true;
         }
     }
     return false;
 }
 
-bool ButtonFillSudoku::IsValid(int& row, int& col, int& value)
+bool ButtonFillSudoku::IsValidFill(array<SudokuField^, 2>^ fieldsSudoku, int% row, int% col, int value) // Zmieniona na IsValid
 {
     for (int i = 0; i < 9; i++)
     {
-        if (sudokuFieldsGlobal[row, i]->GetValue() == value || sudokuFieldsGlobal[i, col]->GetValue() == value)
+        if (fieldsSudoku[row, i]->GetValue() == value || fieldsSudoku[i, col]->GetValue() == value)
             return false;
     }
 
@@ -82,7 +73,7 @@ bool ButtonFillSudoku::IsValid(int& row, int& col, int& value)
     {
         for (int j = 0; j < 3; j++)
         {
-            if (sudokuFieldsGlobal[startRow + i, startCol + j]->GetValue() == value)
+            if (fieldsSudoku[startRow + i, startCol + j]->GetValue() == value)
                 return false;
         }
     }
@@ -90,11 +81,11 @@ bool ButtonFillSudoku::IsValid(int& row, int& col, int& value)
     return true;
 }
 
-void ButtonFillSudoku::UpdateUI()
+void ButtonFillSudoku::UpdateUI(array<SudokuField^, 2>^ fieldsSudoku)
 {
     for (int i = 0; i < 9; i++) {
         for (int j = 0; j < 9; j++) {
-            sudokuFieldsGlobal[i, j]->SetValue(sudokuFieldsGlobal[i, j]->GetValue(), sudokuFieldsGlobal, i, j);
+            fieldsSudoku[i, j]->SetValue(fieldsSudoku[i, j]->GetValue(), fieldsSudoku, i, j);
         }
     }
 }
