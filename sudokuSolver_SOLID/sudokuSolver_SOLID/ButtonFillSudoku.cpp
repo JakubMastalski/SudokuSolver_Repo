@@ -1,13 +1,19 @@
 #include "ButtonFillSudoku.h"
 
 
+void ButtonFillSudoku::FillSudokuButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^ MainPanel,Timer^ fillTimer)
+{
+
+    this->Visible = false;
+    this->Enabled = false;
+
     sudokuFieldsGlobal = fieldsSudoku;
     globalFillTimer = fillTimer;
 
     currentRow = 0;
     currentCol = 0;
 
-    fillTimer->Interval = 1;
+    fillTimer->Interval = 10;
     fillTimer->Tick += gcnew EventHandler(this, &ButtonFillSudoku::OnTick);
 
     fillTimer->Start();
@@ -15,8 +21,10 @@
 
 void ButtonFillSudoku::OnTick(Object^ sender, EventArgs^ e)
 {
+
     if (FillSudokuStep(sudokuFieldsGlobal, currentRow, currentCol)) 
     {
+        Console::WriteLine("Sudoku solved");
         globalFillTimer->Stop();
         UpdateUI();
         this->Visible = true;
@@ -28,18 +36,19 @@ bool ButtonFillSudoku::FillSudokuStep(array<SudokuField^, 2>^ fieldsSudoku, int 
 {
     int emptyRow = -1, emptyCol = -1;
 
-    if (!FindEmptyLocation(emptyRow, emptyCol))
+    if (!FindEmptyLocation(emptyRow, emptyCol) || emptyRow >= 1) 
         return true; 
 
     for (int num = 1; num <= 9; num++)
     {
-        if (num == 2)MessageBox::Show("EE");
         if (IsValid(emptyRow, emptyCol, num))
         {
             fieldsSudoku[emptyRow, emptyCol]->SetValue(num, fieldsSudoku, emptyRow, emptyCol);
-            row = emptyRow;
-            col = emptyCol;
-            return false;
+
+            currentRow = emptyRow;
+            currentCol = emptyCol;
+
+            return false; 
         }
     }
 
@@ -48,9 +57,9 @@ bool ButtonFillSudoku::FillSudokuStep(array<SudokuField^, 2>^ fieldsSudoku, int 
 
 bool ButtonFillSudoku::FindEmptyLocation(int& row, int& col)
 {
-    for (row = 0; row < 9; row++)
+    for (row = currentRow; row < 9; row++)
     {
-        for (col = 0; col < 9; col++)
+        for (col = (row == currentRow) ? currentCol : 0; col < 9; col++)
         {
             if (sudokuFieldsGlobal[row, col]->GetValue() == 0 || sudokuFieldsGlobal[row, col]->Text == "")
                 return true;

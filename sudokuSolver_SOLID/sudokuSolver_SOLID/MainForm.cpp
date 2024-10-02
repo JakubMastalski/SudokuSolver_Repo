@@ -9,8 +9,10 @@ namespace sudokuSolverSOLID
 		void InitializeComponent(void);
 		{
 			fieldsSudoku = gcnew array<SudokuField^, 2>(9, 9);
+			fillTimer = gcnew System::Windows::Forms::Timer();
 
 			std::srand(static_cast<unsigned int>(std::time(nullptr)));
+
 			this->MainPanel = (gcnew System::Windows::Forms::Panel());
 			this->MenuOptionsPanel = (gcnew System::Windows::Forms::Panel());
 
@@ -152,7 +154,7 @@ namespace sudokuSolverSOLID
 	}
 
 	Void MainForm::FillSudokuButton_Click(Object^ sender, EventArgs^ e) {
-		;
+		FillSudokuButton->FillSudokuButton_Click(fieldsSudoku,MainPanel,fillTimer);
 	}
 
 	Void MainForm::RestartButton_Click(Object^ sender, EventArgs^ e) {

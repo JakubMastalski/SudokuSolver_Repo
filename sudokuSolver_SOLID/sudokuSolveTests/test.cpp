@@ -1,5 +1,7 @@
 #include "pch.h"
 #include "SudokuFieldLogic.h"
+#include "C:\Users\USER\Desktop\sudokuSolver_Repo\sudokuSolver_SOLID\sudokuSolver_SOLID/SudokuField.cpp"
+
 
 
 TEST(SudokuFieldLogicTest, SetAndGetValue) {

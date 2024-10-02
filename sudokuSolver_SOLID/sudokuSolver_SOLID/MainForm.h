@@ -40,6 +40,8 @@ namespace sudokuSolverSOLID {
 		PanelButtonsSecondary^ HideButton;
 		PanelButtonsSecondary^ ShowButton;
 
+		System::Windows::Forms::Timer^ fillTimer;
+
 	private: System::Windows::Forms::Panel^ MainPanel;
 	private: System::Windows::Forms::Panel^ MenuOptionsPanel;
 
