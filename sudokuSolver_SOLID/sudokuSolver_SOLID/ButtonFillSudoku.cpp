@@ -5,23 +5,36 @@ void ButtonFillSudoku::FillSudokuButton_Click(array<SudokuField^, 2>^ fieldsSudo
     this->Visible = false;
     this->Enabled = false;
 
+    globalFillTimer = gcnew System::Windows::Forms::Timer();
+
     currentRow = 0;
     currentCol = 0;
 
-    sudokuFieldsGlobal = fieldsSudoku;
+    sudokuFieldsGlobal = gcnew array<SudokuField^, 2>(9, 9);
+
+    for (int i = 0; i < 9; i++)
+    {
+        for (int j = 0; j < 9; j++)
+        {
+            if (fieldsSudoku[i, j] != nullptr)
+            {
+                sudokuFieldsGlobal[i, j] = fieldsSudoku[i, j];
+            }
+        }
+    }
+
+    sudokuFieldsGlobal[0,0]->SetValue(9, sudokuFieldsGlobal, 0, 0);
+    sudokuFieldsGlobal[0, 8]->SetValue(9, sudokuFieldsGlobal, 0, 8);
 
     fillTimer->Interval = 10;
     fillTimer->Tick += gcnew EventHandler(this, &ButtonFillSudoku::OnTick);
-
     fillTimer->Start();
 }
 
 void ButtonFillSudoku::OnTick(Object^ sender, EventArgs^ e)
 {
-    // Upewnij siê, ¿e fieldsSudoku jest odpowiednio przekazywane
     if (FillSudokuStep(sudokuFieldsGlobal))
     {
-        Console::WriteLine("Sudoku solved");
         globalFillTimer->Stop();
         UpdateUI(sudokuFieldsGlobal);
         this->Visible = true;
@@ -31,15 +44,15 @@ void ButtonFillSudoku::OnTick(Object^ sender, EventArgs^ e)
 
 bool ButtonFillSudoku::FillSudokuStep(array<SudokuField^, 2>^ fieldsSudoku)
 {
-    if (!FindEmptyLocation(fieldsSudoku, currentRow, currentCol))
+    if (!FindEmptyLocation(sudokuFieldsGlobal, currentRow, currentCol))
         return true;
 
     for (int num = 1; num <= 9; num++)
     {
-        if (IsValidFill(fieldsSudoku, currentRow, currentCol, num))
+        if (IsValidFill(sudokuFieldsGlobal, currentRow, currentCol, num))
         {
-            fieldsSudoku[currentRow, currentCol]->SetValue(num, fieldsSudoku, currentRow, currentCol);
-            return false; // Kontynuuj wype³nianie
+            sudokuFieldsGlobal[currentRow, currentCol]->SetValue(num, sudokuFieldsGlobal, currentRow, currentCol);
+            return false;
         }
     }
 
@@ -52,18 +65,18 @@ bool ButtonFillSudoku::FindEmptyLocation(array<SudokuField^, 2>^ fieldsSudoku, i
     {
         for (col = (row == currentRow) ? currentCol : 0; col < 9; col++)
         {
-            if (fieldsSudoku[row, col]->GetValue() == 0 || fieldsSudoku[row, col]->Text == "")
+            if (sudokuFieldsGlobal[row, col]->GetValue() == 0 || sudokuFieldsGlobal[row, col]->Text == "")
                 return true;
         }
     }
     return false;
 }
 
-bool ButtonFillSudoku::IsValidFill(array<SudokuField^, 2>^ fieldsSudoku, int% row, int% col, int value) // Zmieniona na IsValid
+bool ButtonFillSudoku::IsValidFill(array<SudokuField^, 2>^ fieldsSudoku, int% row, int% col, int value)
 {
     for (int i = 0; i < 9; i++)
     {
-        if (fieldsSudoku[row, i]->GetValue() == value || fieldsSudoku[i, col]->GetValue() == value)
+        if (sudokuFieldsGlobal[row, i]->GetValue() == value || sudokuFieldsGlobal[i, col]->GetValue() == value)
             return false;
     }
 
@@ -73,7 +86,7 @@ bool ButtonFillSudoku::IsValidFill(array<SudokuField^, 2>^ fieldsSudoku, int% ro
     {
         for (int j = 0; j < 3; j++)
         {
-            if (fieldsSudoku[startRow + i, startCol + j]->GetValue() == value)
+            if (sudokuFieldsGlobal[startRow + i, startCol + j]->GetValue() == value)
                 return false;
         }
     }
@@ -81,11 +94,25 @@ bool ButtonFillSudoku::IsValidFill(array<SudokuField^, 2>^ fieldsSudoku, int% ro
     return true;
 }
 
+ButtonFillSudoku::ButtonFillSudoku(Panel^ panel)
+{
+    mainPanel = panel;
+}
+
 void ButtonFillSudoku::UpdateUI(array<SudokuField^, 2>^ fieldsSudoku)
 {
-    for (int i = 0; i < 9; i++) {
-        for (int j = 0; j < 9; j++) {
-            fieldsSudoku[i, j]->SetValue(fieldsSudoku[i, j]->GetValue(), fieldsSudoku, i, j);
+    if (mainPanel->InvokeRequired)
+    {
+        mainPanel->Invoke(gcnew Action<array<SudokuField^, 2>^>(this, &ButtonFillSudoku::UpdateUI), fieldsSudoku);
+    }
+    else
+    {
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                fieldsSudoku[i, j]->SetValue(sudokuFieldsGlobal[i, j]->GetValue(), sudokuFieldsGlobal, i, j);
+                fieldsSudoku[i, j]->Refresh(); 
+            }
         }
+        mainPanel->Refresh();
     }
 }

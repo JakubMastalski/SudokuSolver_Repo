@@ -34,7 +34,6 @@ namespace sudokuSolverSOLID {
 	private:
 		ButtonStart^ StartButton;
 		ButtonFillSudoku^ FillSudokuButton;
-
 		PanelButtonsSecondary^ RestartButton;
 		PanelButtonsSecondary^ ExitButton;
 		PanelButtonsSecondary^ HideButton;
