@@ -6,14 +6,13 @@
 ref class ButtonFillSudoku : public IPanelButtons
 {
 private:
-    System::Windows::Forms::Timer^ globalFillTimer;  // Globalny timer
-    int currentRow = -1;  // Aktualny wiersz
-    int currentCol = -1;  // Aktualna kolumna
+    System::Windows::Forms::Timer^ globalFillTimer; 
+    int currentRow = -1;  
+    int currentCol = -1; 
     array<SudokuField^, 2>^ sudokuFieldsGlobal;
     Panel^ mainPanel;
 public:
     ButtonFillSudoku(Panel^ panel);
-    // Deklaracje funkcji
     void FillSudokuButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^ MainPanel, Timer^ fillTimer);
     void OnTick(Object^ sender, EventArgs^ e);
     bool FillSudokuStep(array<SudokuField^, 2>^ fieldsSudoku);

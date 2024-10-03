@@ -154,6 +154,8 @@ namespace sudokuSolverSOLID
 	}
 
 	Void MainForm::FillSudokuButton_Click(Object^ sender, EventArgs^ e) {
+		
+		array<SudokuField^, 2>^ fieldsSudoku = gcnew array<SudokuField^, 2>(9, 9);
 
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 3; j++) {
@@ -168,14 +170,12 @@ namespace sudokuSolverSOLID
 						int globalRow = i * 3 + (minorIndex / 3);
 						int globalCol = j * 3 + (minorIndex % 3);
 
-
 						fieldsSudoku[globalRow, globalCol] = field;
-						field->ClearValue(fieldsSudoku);
 					}
 				}
 			}
 		}
-		FillSudokuButton->FillSudokuButton_Click(fieldsSudoku,MainPanel,fillTimer);
+		FillSudokuButton->FillSudokuButton_Click(fieldsSudoku, MainPanel, fillTimer);
 	}
 
 	Void MainForm::RestartButton_Click(Object^ sender, EventArgs^ e) {

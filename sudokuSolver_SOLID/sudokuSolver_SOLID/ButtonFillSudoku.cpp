@@ -23,10 +23,7 @@ void ButtonFillSudoku::FillSudokuButton_Click(array<SudokuField^, 2>^ fieldsSudo
         }
     }
 
-    sudokuFieldsGlobal[0,0]->SetValue(9, sudokuFieldsGlobal, 0, 0);
-    sudokuFieldsGlobal[0, 8]->SetValue(9, sudokuFieldsGlobal, 0, 8);
-
-    fillTimer->Interval = 10;
+    fillTimer->Interval = 100;
     fillTimer->Tick += gcnew EventHandler(this, &ButtonFillSudoku::OnTick);
     fillTimer->Start();
 }
@@ -108,9 +105,10 @@ void ButtonFillSudoku::UpdateUI(array<SudokuField^, 2>^ fieldsSudoku)
     else
     {
         for (int i = 0; i < 9; i++) {
-            for (int j = 0; j < 9; j++) {
+            for (int j = 0; j < 9; j++)
+            {
                 fieldsSudoku[i, j]->SetValue(sudokuFieldsGlobal[i, j]->GetValue(), sudokuFieldsGlobal, i, j);
-                fieldsSudoku[i, j]->Refresh(); 
+                fieldsSudoku[i, j]->Refresh();
             }
         }
         mainPanel->Refresh();
