@@ -17,7 +17,7 @@ namespace sudokuSolverSOLID
 			this->MenuOptionsPanel = (gcnew System::Windows::Forms::Panel());
 
 			this->StartButton = gcnew ButtonStart();
-			this->FillSudokuButton = gcnew ButtonFillSudoku(MainPanel);
+			this->FillSudokuButton = gcnew ButtonFillSudoku(MainPanel,fieldsSudoku);
 			this->RestartButton = gcnew PanelButtonsSecondary();
 			this->ExitButton = gcnew PanelButtonsSecondary();
 			this->HideButton = gcnew PanelButtonsSecondary();
@@ -155,8 +155,6 @@ namespace sudokuSolverSOLID
 
 	Void MainForm::FillSudokuButton_Click(Object^ sender, EventArgs^ e) {
 		
-		array<SudokuField^, 2>^ fieldsSudoku = gcnew array<SudokuField^, 2>(9, 9);
-
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 3; j++) {
 				SudokuMajorField^ majorField = dynamic_cast<SudokuMajorField^>(MainPanel->Controls[i * 3 + j]);

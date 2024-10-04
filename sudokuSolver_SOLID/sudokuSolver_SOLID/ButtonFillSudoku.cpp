@@ -91,9 +91,10 @@ bool ButtonFillSudoku::IsValidFill(array<SudokuField^, 2>^ fieldsSudoku, int% ro
     return true;
 }
 
-ButtonFillSudoku::ButtonFillSudoku(Panel^ panel)
+ButtonFillSudoku::ButtonFillSudoku(Panel^ panel, array<SudokuField^, 2>^ fieldsSudoku)
 {
     mainPanel = panel;
+    sudokuFieldsGlobal = fieldsSudoku;
 }
 
 void ButtonFillSudoku::UpdateUI(array<SudokuField^, 2>^ fieldsSudoku)
