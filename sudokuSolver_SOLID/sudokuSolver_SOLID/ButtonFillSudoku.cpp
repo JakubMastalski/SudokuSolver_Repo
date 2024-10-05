@@ -2,6 +2,7 @@
 
 void ButtonFillSudoku::FillSudokuButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^ MainPanel, Timer^ fillTimer)
 {
+    //wywolaj pierwsze wszystkie potrzebne operacje a potem w scope przpisz wartosci
     this->Visible = false;
     this->Enabled = false;
 
@@ -17,12 +18,38 @@ void ButtonFillSudoku::FillSudokuButton_Click(array<SudokuField^, 2>^ fieldsSudo
             if (fieldsSudoku[i, j] != nullptr)
             {
                 sudokuFieldsGlobal[i, j] = fieldsSudoku[i, j];
-                sudokuFieldsGlobal[i, j]->SetValue(fieldsSudoku[i, j]->GetValue(),fieldsSudoku, i, j);
+                sudokuFieldsGlobal[i, j]->SetValue(fieldsSudoku[i, j]->GetValue(), fieldsSudoku, i, j);
+            }
+        }
+    }
+    sudokuFieldsGlobal[0, 0]->SetValue(9, sudokuFieldsGlobal, 0, 0);
+
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            SudokuMajorField^ majorField = dynamic_cast<SudokuMajorField^>(MainPanel->Controls[i * 3 + j]);
+
+            for (int minorIndex = 0; minorIndex < majorField->Controls->Count; minorIndex++) {
+                SudokuMiniorField^ minorField = dynamic_cast<SudokuMiniorField^>(majorField->Controls[minorIndex]);
+
+                for (int fieldIndex = 0; fieldIndex < minorField->GetFields()->Length; fieldIndex++) {
+                    SudokuField^ field = minorField->GetField(fieldIndex);
+
+                    int globalRow = i * 3 + (minorIndex / 3);
+                    int globalCol = j * 3 + (minorIndex % 3);
+
+
+                    fieldsSudoku[globalRow, globalCol] = field;
+                   // field->ClearValue(fieldsSudoku);
+                    if (fieldsSudoku[0, 0]->GetValue() == 0) // Sprawdzamy czy wartoœæ pola to 0
+                    {
+                        fieldsSudoku[0, 0]->SetValue(sudokuFieldsGlobal[0, 0]->GetValue(), fieldsSudoku, 0, 0);
+                    }
+                }
             }
         }
     }
 
-    fillTimer->Interval = 100;
+    fillTimer->Interval = 10;
     fillTimer->Tick += gcnew EventHandler(this, &ButtonFillSudoku::OnTick);
     fillTimer->Start();
     globalFillTimer = fillTimer;

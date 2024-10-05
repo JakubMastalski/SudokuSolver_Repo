@@ -24,8 +24,8 @@ void ButtonStart::StartButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^
                     fieldsSudoku[globalRow, globalCol] = field;
                     field->ClearValue(fieldsSudoku);
                     AddNumbersToBoard(fieldsSudoku);
-                    fieldsSudoku[0, 0]->SetValue(1, fieldsSudoku, 0, 0);
-                    fieldsSudoku[0, 8]->SetValue(1, fieldsSudoku, 0, 8);
+                    //fieldsSudoku[0, 0]->SetValue(1, fieldsSudoku, 0, 0);
+                    //fieldsSudoku[0, 8]->SetValue(1, fieldsSudoku, 0, 8);
                 }
             }
         }

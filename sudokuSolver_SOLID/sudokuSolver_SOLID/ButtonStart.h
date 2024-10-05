@@ -1,6 +1,7 @@
 #pragma once
 #include "iPanelButtons.h"
 #include <algorithm> 
+#include "ButtonFillSudoku.h"
 #include <vector> 
 
 ref class ButtonStart :
