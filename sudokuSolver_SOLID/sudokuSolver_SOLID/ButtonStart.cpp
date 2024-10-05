@@ -7,12 +7,34 @@ void ButtonStart::StartButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^
     this->Visible = false;
     this->Enabled = false;
 
+    array<SudokuField^, 2>^ fieldsSudokuStart = gcnew array<SudokuField^, 2>(9, 9);
+
+    // Inicjalizacja fieldsSudokuStart
+    for (int i = 0; i < 9; i++)
+    {
+        for (int j = 0; j < 9; j++)
+        {
+            if (fieldsSudoku[i, j] != nullptr)
+            {
+                fieldsSudokuStart[i, j] = fieldsSudoku[i, j];
+                fieldsSudokuStart[i, j]->SetValue(fieldsSudoku[i, j]->GetValue(), fieldsSudoku, i, j);
+            }
+        }
+    }
+
+    AddNumbersToBoard(fieldsSudokuStart);
+    fieldsSudokuStart[0, 2]->SetValue(3, fieldsSudokuStart, 0, 2);
+
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
             SudokuMajorField^ majorField = dynamic_cast<SudokuMajorField^>(MainPanel->Controls[i * 3 + j]);
 
+            if (majorField == nullptr) continue; 
+
             for (int minorIndex = 0; minorIndex < majorField->Controls->Count; minorIndex++) {
                 SudokuMiniorField^ minorField = dynamic_cast<SudokuMiniorField^>(majorField->Controls[minorIndex]);
+
+                if (minorField == nullptr) continue; 
 
                 for (int fieldIndex = 0; fieldIndex < minorField->GetFields()->Length; fieldIndex++) {
                     SudokuField^ field = minorField->GetField(fieldIndex);
@@ -20,12 +42,11 @@ void ButtonStart::StartButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^
                     int globalRow = i * 3 + (minorIndex / 3);
                     int globalCol = j * 3 + (minorIndex % 3);
 
-
                     fieldsSudoku[globalRow, globalCol] = field;
                     field->ClearValue(fieldsSudoku);
-                    AddNumbersToBoard(fieldsSudoku);
-                    //fieldsSudoku[0, 0]->SetValue(1, fieldsSudoku, 0, 0);
-                    //fieldsSudoku[0, 8]->SetValue(1, fieldsSudoku, 0, 8);
+
+                    fieldsSudoku[0, 0]->SetValue(fieldsSudokuStart[0, 0]->GetValue(), fieldsSudoku, 0, 0);
+                    fieldsSudoku[0, 1]->SetValue(fieldsSudokuStart[0, 1]->GetValue(), fieldsSudoku, 0, 1);
                 }
             }
         }
