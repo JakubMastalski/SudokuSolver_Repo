@@ -9,7 +9,6 @@ void ButtonStart::StartButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^
 
     array<SudokuField^, 2>^ fieldsSudokuStart = gcnew array<SudokuField^, 2>(9, 9);
 
-    // Inicjalizacja fieldsSudokuStart
     for (int i = 0; i < 9; i++)
     {
         for (int j = 0; j < 9; j++)
@@ -21,9 +20,20 @@ void ButtonStart::StartButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^
             }
         }
     }
-
+    
+    for (int i = 0; i < 9; i++)
+    {
+        for (int j = 0; j < 9; j++)
+        {
+            if (fieldsSudokuStart[i, j] != nullptr)
+            {
+                fieldsSudokuStart[i, j]->ClearValue(fieldsSudokuStart);  
+                fieldsSudoku[i, j]->ClearValue(fieldsSudoku);
+            }
+        }
+    }
+    
     AddNumbersToBoard(fieldsSudokuStart);
-   // fieldsSudokuStart[0, 0]->SetValue(3, fieldsSudokuStart, 0, 0);
 
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
@@ -39,22 +49,18 @@ void ButtonStart::StartButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^
                 for (int fieldIndex = 0; fieldIndex < minorField->GetFields()->Length; fieldIndex++) {
                     SudokuField^ field = minorField->GetField(fieldIndex);
 
+                    field->SetValueString("");
+
                     int globalRow = i * 3 + (minorIndex / 3);
                     int globalCol = j * 3 + (minorIndex % 3);
 
                     fieldsSudoku[globalRow, globalCol] = field;
-                    //field->ClearValue(fieldsSudoku);
-                    
-                    field->SetValueOne(fieldsSudokuStart[globalRow, globalCol]->GetValue());
-
-                   //if(field->Text == 0)
-
-
+                   if(fieldsSudokuStart[globalRow, globalCol]->GetValue() != 0)field->SetValueInt(fieldsSudokuStart[globalRow, globalCol]->GetValue());
                 }
             }
         }
     }
-    RemoveInvalidNumbers(fieldsSudoku);
+    RemoveInvalidNumbers(fieldsSudokuStart);
 
     this->Visible = true;
     this->Enabled = true;

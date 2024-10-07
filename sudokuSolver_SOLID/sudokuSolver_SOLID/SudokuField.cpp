@@ -13,10 +13,14 @@ void SudokuField::SetValue(int value, array<SudokuField^, 2>^ fieldsSudoku, int 
     }
 }
 
-void SudokuField::SetValueOne(int value) {
+void SudokuField::SetValueInt(int value) {
     this->Text = value.ToString();
 }
 
+void SudokuField::SetValueString(System::String^ text)
+{
+    this->Text = text;
+}
 
 void SudokuField::ClearValue(array<SudokuField^, 2>^ fieldsSudoku) {
     for (int row = 0; row < 9; row++) {
