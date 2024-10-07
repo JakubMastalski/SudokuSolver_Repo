@@ -23,7 +23,7 @@ void ButtonStart::StartButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^
     }
 
     AddNumbersToBoard(fieldsSudokuStart);
-    fieldsSudokuStart[0, 2]->SetValue(3, fieldsSudokuStart, 0, 2);
+   // fieldsSudokuStart[0, 0]->SetValue(3, fieldsSudokuStart, 0, 0);
 
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
@@ -43,10 +43,13 @@ void ButtonStart::StartButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^
                     int globalCol = j * 3 + (minorIndex % 3);
 
                     fieldsSudoku[globalRow, globalCol] = field;
-                    field->ClearValue(fieldsSudoku);
+                    //field->ClearValue(fieldsSudoku);
+                    
+                    field->SetValueOne(fieldsSudokuStart[globalRow, globalCol]->GetValue());
 
-                    fieldsSudoku[0, 0]->SetValue(fieldsSudokuStart[0, 0]->GetValue(), fieldsSudoku, 0, 0);
-                    fieldsSudoku[0, 1]->SetValue(fieldsSudokuStart[0, 1]->GetValue(), fieldsSudoku, 0, 1);
+                   //if(field->Text == 0)
+
+
                 }
             }
         }
