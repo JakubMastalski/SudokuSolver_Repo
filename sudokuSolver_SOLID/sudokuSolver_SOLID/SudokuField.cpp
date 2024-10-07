@@ -8,7 +8,7 @@ SudokuField::SudokuField() {
 }
 
 void SudokuField::SetValue(int value, array<SudokuField^, 2>^ fieldsSudoku, int row, int column) {
-    if (fieldsSudoku[row, column] != nullptr) {
+    if (fieldsSudoku[row, column] != nullptr && fieldsSudoku[row, column]->GetValue() == 0) {
         fieldsSudoku[row, column]->Text = value == 0 ? "" : value.ToString();
     }
 }

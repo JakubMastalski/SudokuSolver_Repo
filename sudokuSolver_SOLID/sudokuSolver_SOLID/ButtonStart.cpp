@@ -2,7 +2,7 @@
 
 
 
-void ButtonStart::StartButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^ MainPanel)
+void ButtonStart::StartButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^ MainPanel, array<SudokuField^, 2>^ fieldsSudoku2)
 {
     this->Visible = false;
     this->Enabled = false;
@@ -20,31 +20,31 @@ void ButtonStart::StartButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^
             }
         }
     }
-    
+
     for (int i = 0; i < 9; i++)
     {
         for (int j = 0; j < 9; j++)
         {
             if (fieldsSudokuStart[i, j] != nullptr)
             {
-                fieldsSudokuStart[i, j]->ClearValue(fieldsSudokuStart);  
+                fieldsSudokuStart[i, j]->ClearValue(fieldsSudokuStart);
                 fieldsSudoku[i, j]->ClearValue(fieldsSudoku);
             }
         }
     }
-    
+
     AddNumbersToBoard(fieldsSudokuStart);
 
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
             SudokuMajorField^ majorField = dynamic_cast<SudokuMajorField^>(MainPanel->Controls[i * 3 + j]);
 
-            if (majorField == nullptr) continue; 
+            if (majorField == nullptr) continue;
 
             for (int minorIndex = 0; minorIndex < majorField->Controls->Count; minorIndex++) {
                 SudokuMiniorField^ minorField = dynamic_cast<SudokuMiniorField^>(majorField->Controls[minorIndex]);
 
-                if (minorField == nullptr) continue; 
+                if (minorField == nullptr) continue;
 
                 for (int fieldIndex = 0; fieldIndex < minorField->GetFields()->Length; fieldIndex++) {
                     SudokuField^ field = minorField->GetField(fieldIndex);
@@ -55,11 +55,19 @@ void ButtonStart::StartButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^
                     int globalCol = j * 3 + (minorIndex % 3);
 
                     fieldsSudoku[globalRow, globalCol] = field;
-                   if(fieldsSudokuStart[globalRow, globalCol]->GetValue() != 0)field->SetValueInt(fieldsSudokuStart[globalRow, globalCol]->GetValue());
+
+                    if (fieldsSudokuStart[globalRow, globalCol]->GetValue() != 0)
+                    {
+                        field->SetValueInt(fieldsSudokuStart[globalRow, globalCol]->GetValue());
+
+                        fieldsSudoku2[globalRow, globalCol] = fieldsSudokuStart[globalRow, globalCol];
+                    }
+
                 }
             }
         }
     }
+
     RemoveInvalidNumbers(fieldsSudokuStart);
 
     this->Visible = true;

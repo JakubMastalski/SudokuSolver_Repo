@@ -8,7 +8,7 @@ ref class ButtonStart :
     public IPanelButtons
 {
 public:
-    void StartButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^ MainPanel);
+    void StartButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^ MainPanel, array<SudokuField^, 2>^ fieldsSudoku2);
     bool IsValid(array<SudokuField^, 2>^ fieldsSudoku, int row, int col, int value);
     void RemoveInvalidNumbers(array<SudokuField^, 2>^ fieldsSudoku);
     void AddNumbersToBoard(array<SudokuField^, 2>^ fieldsSudoku);

@@ -13,7 +13,7 @@ private:
     Panel^ mainPanel;
 public:
     ButtonFillSudoku(Panel^ panel, array<SudokuField^, 2>^ fieldsSudoku);
-    void FillSudokuButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^ MainPanel, Timer^ fillTimer);
+    void FillSudokuButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^ MainPanel,array<SudokuField^, 2>^ fieldsSudoku2);
     bool FillSudokuStep(array<SudokuField^, 2>^ fieldsSudoku);
     bool FindEmptyLocation(array<SudokuField^, 2>^ fieldsSudoku, int% row, int% col);
     bool IsValidFill(array<SudokuField^, 2>^ fieldsSudoku, int% row, int% col, int value);
