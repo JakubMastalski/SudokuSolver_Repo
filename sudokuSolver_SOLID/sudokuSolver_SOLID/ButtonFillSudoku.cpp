@@ -47,22 +47,8 @@ void ButtonFillSudoku::FillSudokuButton_Click(array<SudokuField^, 2>^ fieldsSudo
             }
         }
     }
-
-    fillTimer->Interval = 10;
-    fillTimer->Tick += gcnew EventHandler(this, &ButtonFillSudoku::OnTick);
-    fillTimer->Start();
-    globalFillTimer = fillTimer;
-}
-
-void ButtonFillSudoku::OnTick(Object^ sender, EventArgs^ e)
-{
-    if (FillSudokuStep(sudokuFieldsGlobal))
-    {
-        globalFillTimer->Stop();
-        UpdateUI(sudokuFieldsGlobal);
-        this->Visible = true;
-        this->Enabled = true;
-    }
+    this->Visible = true;
+    this->Enabled = true;
 }
 
 bool ButtonFillSudoku::FillSudokuStep(array<SudokuField^, 2>^ fieldsSudoku)
@@ -121,53 +107,4 @@ ButtonFillSudoku::ButtonFillSudoku(Panel^ panel, array<SudokuField^, 2>^ fieldsS
 {
     mainPanel = panel;
     sudokuFieldsGlobal = fieldsSudoku;
-}
-
-void ButtonFillSudoku::UpdateUI(array<SudokuField^, 2>^ fieldsSudoku)
-{
-    /*
-    for (int i = 0; i < 3; i++)
-    {
-        for (int j = 0; j < 3; j++)
-        {
-            SudokuMajorField^ majorField = dynamic_cast<SudokuMajorField^>(mainPanel->Controls[i * 3 + j]);
-
-            if (majorField == nullptr) {
-                MessageBox::Show("SudokuMajorField is null at (" + i + "," + j + ")");
-                continue;
-            }
-
-            for (int minorIndex = 0; minorIndex < majorField->Controls->Count; minorIndex++)
-            {
-                SudokuMiniorField^ minorField = dynamic_cast<SudokuMiniorField^>(majorField->Controls[minorIndex]);
-
-                if (minorField == nullptr) {
-                    MessageBox::Show("SudokuMiniorField is null at (" + i + "," + j + ")");
-                    continue;
-                }
-                for (int fieldIndex = 0; fieldIndex < minorField->GetFields()->Length; fieldIndex++)
-                {
-                    SudokuField^ field = minorField->GetField(fieldIndex);
-
-                    int globalRow = i * 3 + (minorIndex / 3);
-                    int globalCol = j * 3 + (minorIndex % 3);
-
-                    int value = sudokuFieldsGlobal[globalRow, globalCol]->GetValue();
-
-                    if (value != 0)
-                    {
-                        field->SetValue(value, sudokuFieldsGlobal, globalRow, globalCol);
-                    }
-                    else
-                    {
-                        field->ClearValue(sudokuFieldsGlobal);
-                    }
-
-                    field->Refresh();
-                }
-            }
-        }
-    }
-    mainPanel->Refresh();
-    */
 }
