@@ -2,7 +2,6 @@
 
 void ButtonFillSudoku::FillSudokuButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^ MainPanel, Timer^ fillTimer)
 {
-    //wywolaj pierwsze wszystkie potrzebne operacje a potem w scope przpisz wartosci
     this->Visible = false;
     this->Enabled = false;
 
@@ -22,7 +21,7 @@ void ButtonFillSudoku::FillSudokuButton_Click(array<SudokuField^, 2>^ fieldsSudo
             }
         }
     }
-    sudokuFieldsGlobal[0, 0]->SetValue(9, sudokuFieldsGlobal, 0, 0);
+    while (FillSudokuStep(sudokuFieldsGlobal) != true)
 
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
@@ -39,10 +38,10 @@ void ButtonFillSudoku::FillSudokuButton_Click(array<SudokuField^, 2>^ fieldsSudo
 
 
                     fieldsSudoku[globalRow, globalCol] = field;
-                   // field->ClearValue(fieldsSudoku);
-                    if (fieldsSudoku[0, 0]->GetValue() == 0) // Sprawdzamy czy wartoœæ pola to 0
+                    fieldsSudoku[globalRow, globalCol] = field;
+                    if (sudokuFieldsGlobal[globalRow, globalCol]->GetValue() != 0)
                     {
-                        fieldsSudoku[0, 0]->SetValue(sudokuFieldsGlobal[0, 0]->GetValue(), fieldsSudoku, 0, 0);
+                        field->SetValueInt(sudokuFieldsGlobal[globalRow, globalCol]->GetValue());
                     }
                 }
             }
@@ -68,7 +67,7 @@ void ButtonFillSudoku::OnTick(Object^ sender, EventArgs^ e)
 
 bool ButtonFillSudoku::FillSudokuStep(array<SudokuField^, 2>^ fieldsSudoku)
 {
-    if (!FindEmptyLocation(sudokuFieldsGlobal, currentRow, currentCol))
+    if(!FindEmptyLocation(sudokuFieldsGlobal, currentRow, currentCol))
         return true;
 
     for (int num = 1; num <= 9; num++)
@@ -126,6 +125,7 @@ ButtonFillSudoku::ButtonFillSudoku(Panel^ panel, array<SudokuField^, 2>^ fieldsS
 
 void ButtonFillSudoku::UpdateUI(array<SudokuField^, 2>^ fieldsSudoku)
 {
+    /*
     for (int i = 0; i < 3; i++)
     {
         for (int j = 0; j < 3; j++)
@@ -169,4 +169,5 @@ void ButtonFillSudoku::UpdateUI(array<SudokuField^, 2>^ fieldsSudoku)
         }
     }
     mainPanel->Refresh();
+    */
 }
