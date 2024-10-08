@@ -19,7 +19,7 @@ void ButtonFillSudoku::FillSudokuButton_Click(array<SudokuField^, 2>^ fieldsSudo
                 sudokuFieldsGlobal[i, j] = fieldsSudoku[i, j];
 
                 if (fieldsSudoku[i, j]->GetLocked()) {
-                    continue;
+                   int a = fieldsSudoku[i, j]->GetValue();
                 }
 
                 if (fieldsSudoku2[i, j] != nullptr)
@@ -33,6 +33,7 @@ void ButtonFillSudoku::FillSudokuButton_Click(array<SudokuField^, 2>^ fieldsSudo
             }
         }
     }
+    //sudokuFieldsGlobal[0, 0]->SetValue(1, sudokuFieldsGlobal, 0, 0);
 
     while (FillSudokuStep(sudokuFieldsGlobal) != true);
 
@@ -100,6 +101,9 @@ bool ButtonFillSudoku::IsValidFill(array<SudokuField^, 2>^ fieldsSudoku, int% ro
 {
     for (int i = 0; i < 9; i++)
     {
+       int valueRow = sudokuFieldsGlobal[row, i]->GetValue();
+       int valueCol = sudokuFieldsGlobal[i, col]->GetValue();
+
         if (sudokuFieldsGlobal[row, i]->GetValue() == value || sudokuFieldsGlobal[i, col]->GetValue() == value)
             return false;
     }

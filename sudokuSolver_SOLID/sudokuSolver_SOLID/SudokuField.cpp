@@ -36,7 +36,7 @@ int SudokuField::GetValue()
 {
     if (this != nullptr)
     {
-        if (this->Text == "" || this->Text == "0") {
+        if (this->Text == "") {
             return 0;
         }
         return System::Int32::Parse(this->Text);
