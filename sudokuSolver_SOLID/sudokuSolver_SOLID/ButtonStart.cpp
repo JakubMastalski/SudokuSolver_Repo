@@ -28,7 +28,9 @@ void ButtonStart::StartButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^
             if (fieldsSudokuStart[i, j] != nullptr)
             {
                 fieldsSudokuStart[i, j]->ClearValue(fieldsSudokuStart);
+                fieldsSudokuStart[i, j]->SetLocked(false);
                 fieldsSudoku[i, j]->ClearValue(fieldsSudoku);
+                fieldsSudoku[i, j]->SetLocked(false);
             }
         }
     }
@@ -90,6 +92,7 @@ void ButtonStart::AddNumbersToBoard(array<SudokuField^, 2>^ fieldsSudoku)
             for (int attempts = 0; attempts < 9; attempts++) {
                 if (IsValid(fieldsSudoku, i, j, value)) {
                     fieldsSudoku[i, j]->SetValue(value, fieldsSudoku, i, j);
+                    fieldsSudoku[i, j]->SetLocked(true);
                     numbersToInsert--;
                     isValidValue = true;
                     break;
