@@ -65,6 +65,10 @@ bool ButtonFillSudoku::FillSudokuStep(array<SudokuField^, 2>^ fieldsSudoku)
     if(!FindEmptyLocation(sudokuFieldsGlobal, currentRow, currentCol))
         return true;
 
+    if (sudokuFieldsGlobal[currentRow, currentCol]->GetLocked()) {
+        return false;
+    }
+
     for (int num = 1; num <= 9; num++)
     {
         if (IsValidFill(sudokuFieldsGlobal, currentRow, currentCol, num))
@@ -83,7 +87,7 @@ bool ButtonFillSudoku::FindEmptyLocation(array<SudokuField^, 2>^ fieldsSudoku, i
     {
         for (col = (row == currentRow) ? currentCol : 0; col < 9; col++)
         {
-            if (sudokuFieldsGlobal[row, col]->GetValue() == 0 || sudokuFieldsGlobal[row, col]->Text == "")
+            if (!sudokuFieldsGlobal[row, col]->GetLocked() && (sudokuFieldsGlobal[row, col]->GetValue() == 0 || sudokuFieldsGlobal[row, col]->Text == ""))
                 return true;
         }
     }

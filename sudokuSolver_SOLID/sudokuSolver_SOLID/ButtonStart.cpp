@@ -59,7 +59,7 @@ void ButtonStart::StartButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^
                     if (fieldsSudokuStart[globalRow, globalCol]->GetValue() != 0)
                     {
                         field->SetValueInt(fieldsSudokuStart[globalRow, globalCol]->GetValue());
-
+                        field->SetLocked(true);
                         fieldsSudoku2[globalRow, globalCol] = fieldsSudokuStart[globalRow, globalCol];
                     }
 
