@@ -43,3 +43,12 @@ int SudokuField::GetValue()
     }
     return 0;
 }
+
+bool SudokuField::GetLocked()
+{
+    return IsLocked;
+}
+
+void SudokuField::SetLocked(bool locked) {
+    IsLocked = locked;
+}
