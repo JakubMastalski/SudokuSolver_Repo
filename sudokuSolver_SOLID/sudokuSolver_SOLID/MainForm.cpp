@@ -9,7 +9,6 @@ namespace sudokuSolverSOLID
 		void InitializeComponent(void);
 		{
 			fieldsSudoku = gcnew array<SudokuField^, 2>(9, 9);
-			fieldsSudoku2 = gcnew array<SudokuField^, 2>(9, 9);
 
 			std::srand(static_cast<unsigned int>(std::time(nullptr)));
 
@@ -172,13 +171,12 @@ namespace sudokuSolverSOLID
 	//Menu Buttons Options
 
 	Void MainForm::StartButton_Click(Object^ sender, EventArgs^ e) {
-		StartButton->StartButton_Click(fieldsSudoku, MainPanel, fieldsSudoku2);
+		StartButton->StartButton_Click(fieldsSudoku, MainPanel);
 		this->MainPanel->Refresh();
 	}
 
 	Void MainForm::FillSudokuButton_Click(Object^ sender, EventArgs^ e) {
-		FillSudokuButton->FillSudokuButton_Click(fieldsSudoku, MainPanel,fieldsSudoku2);
-		fieldsSudoku2;
+		FillSudokuButton->FillSudokuButton_Click(fieldsSudoku, MainPanel);
 		this->MainPanel->Refresh();
 	}
 

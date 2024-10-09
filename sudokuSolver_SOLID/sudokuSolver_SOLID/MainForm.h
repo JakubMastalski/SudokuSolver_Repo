@@ -52,7 +52,6 @@ namespace sudokuSolverSOLID {
 		System::ComponentModel::Container ^components;
 
 		array<SudokuField^, 2>^ fieldsSudoku;
-		array<SudokuField^, 2>^ fieldsSudoku2;
 
 #pragma region Windows Form Designer generated code
 

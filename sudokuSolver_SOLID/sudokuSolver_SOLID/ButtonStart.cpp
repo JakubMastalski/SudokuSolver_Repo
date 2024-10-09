@@ -2,7 +2,7 @@
 
 
 
-void ButtonStart::StartButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^ MainPanel, array<SudokuField^, 2>^ fieldsSudoku2)
+void ButtonStart::StartButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^ MainPanel)
 {
     this->Visible = false;
     this->Enabled = false;
@@ -37,6 +37,7 @@ void ButtonStart::StartButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^
 
     AddNumbersToBoard(fieldsSudokuStart);
 
+
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
             SudokuMajorField^ majorField = dynamic_cast<SudokuMajorField^>(MainPanel->Controls[i * 3 + j]);
@@ -62,7 +63,8 @@ void ButtonStart::StartButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^
                     {
                         field->SetValueInt(fieldsSudokuStart[globalRow, globalCol]->GetValue());
                         field->SetLocked(true);
-                        fieldsSudoku2[globalRow, globalCol] = fieldsSudokuStart[globalRow, globalCol];
+                        int a = fieldsSudokuStart[globalRow, globalCol]->GetValue();
+                        fieldsSudoku[globalRow, globalCol]->SetValue(fieldsSudokuStart[globalRow, globalCol]->GetValue(), fieldsSudoku, globalRow, globalCol);
                     }
 
                 }

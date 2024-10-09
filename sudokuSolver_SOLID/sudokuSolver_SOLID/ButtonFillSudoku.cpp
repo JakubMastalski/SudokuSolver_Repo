@@ -1,6 +1,6 @@
 #include "ButtonFillSudoku.h"
 
-void ButtonFillSudoku::FillSudokuButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^ MainPanel, array<SudokuField^, 2>^ fieldsSudoku2)
+void ButtonFillSudoku::FillSudokuButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^ MainPanel)
 {
     this->Visible = false;
     this->Enabled = false;
@@ -20,11 +20,12 @@ void ButtonFillSudoku::FillSudokuButton_Click(array<SudokuField^, 2>^ fieldsSudo
 
                 if (fieldsSudoku[i, j]->GetLocked()) {
                    int a = fieldsSudoku[i, j]->GetValue();
+                   int c = sudokuFieldsGlobal[i, j]->GetValue();
                 }
 
-                if (fieldsSudoku2[i, j] != nullptr)
+                if (fieldsSudoku[i, j] != nullptr)
                 {
-                    sudokuFieldsGlobal[i, j]->SetValue(fieldsSudoku2[i, j]->GetValue(), fieldsSudoku, i, j);
+                    sudokuFieldsGlobal[i, j]->SetValue(fieldsSudoku[i, j]->GetValue(), fieldsSudoku, i, j);
                 }
                 else
                 {
@@ -33,9 +34,12 @@ void ButtonFillSudoku::FillSudokuButton_Click(array<SudokuField^, 2>^ fieldsSudo
             }
         }
     }
-    //sudokuFieldsGlobal[0, 0]->SetValue(1, sudokuFieldsGlobal, 0, 0);
 
     while (FillSudokuStep(sudokuFieldsGlobal) != true);
+
+    int a = sudokuFieldsGlobal[0, 0]->GetValue();
+    int b = fieldsSudoku[0, 0]->GetValue();
+
 
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
@@ -53,6 +57,7 @@ void ButtonFillSudoku::FillSudokuButton_Click(array<SudokuField^, 2>^ fieldsSudo
                     if (!sudokuFieldsGlobal[globalRow, globalCol]->GetLocked() && sudokuFieldsGlobal[globalRow, globalCol]->GetValue() != 0)
                     {
                         field->SetValueInt(sudokuFieldsGlobal[globalRow, globalCol]->GetValue());
+                        int fieldVal = sudokuFieldsGlobal[globalRow, globalCol]->GetValue();
                     }
                 }
             }
