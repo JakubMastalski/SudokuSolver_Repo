@@ -22,6 +22,14 @@ void SudokuField::SetValueString(System::String^ text)
     this->Text = text;
 }
 
+void SudokuField::Clear0()
+{
+    if (this->Text == "0")
+    {
+        this->Text = "";
+    }
+}
+
 void SudokuField::ClearValue(array<SudokuField^, 2>^ fieldsSudoku) {
     for (int row = 0; row < 9; row++) {
         for (int col = 0; col < 9; col++) {

@@ -171,12 +171,12 @@ namespace sudokuSolverSOLID
 	//Menu Buttons Options
 
 	Void MainForm::StartButton_Click(Object^ sender, EventArgs^ e) {
-		StartButton->StartButton_Click(fieldsSudoku, MainPanel);
+		StartButton->StartButton_Click(fieldsSudoku, MainPanel,isFilled);
 		this->MainPanel->Refresh();
 	}
 
 	Void MainForm::FillSudokuButton_Click(Object^ sender, EventArgs^ e) {
-		FillSudokuButton->FillSudokuButton_Click(fieldsSudoku, MainPanel);
+		FillSudokuButton->FillSudokuButton_Click(fieldsSudoku, MainPanel,isFilled);
 		this->MainPanel->Refresh();
 	}
 

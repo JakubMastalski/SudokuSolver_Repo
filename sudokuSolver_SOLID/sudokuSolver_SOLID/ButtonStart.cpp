@@ -2,7 +2,7 @@
 
 
 
-void ButtonStart::StartButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^ MainPanel)
+void ButtonStart::StartButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^ MainPanel,bool isFilled)
 {
     this->Visible = false;
     this->Enabled = false;
@@ -60,7 +60,14 @@ void ButtonStart::StartButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^
                 for (int fieldIndex = 0; fieldIndex < minorField->GetFields()->Length; fieldIndex++) {
                     SudokuField^ field = minorField->GetField(fieldIndex);
 
-                    //field->SetValueString("");
+
+                    if (isFilled)
+                    {
+                        field->SetValueString("");
+                        isFilled = false;
+                    }
+                    field->Clear0();
+
 
                     int globalRow = i * 3 + (minorIndex / 3);
                     int globalCol = j * 3 + (minorIndex % 3);

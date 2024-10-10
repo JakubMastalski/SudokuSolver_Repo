@@ -9,6 +9,7 @@ public:
 public:
     SudokuField();
     void SetValue(int value, array<SudokuField^, 2>^ fieldsSudoku, int row, int column);
+    void Clear0();
     int GetValue();
     void SetValueInt(int value);
     bool GetLocked();

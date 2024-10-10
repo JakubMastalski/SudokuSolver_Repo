@@ -1,7 +1,8 @@
 #include "ButtonFillSudoku.h"
 
-void ButtonFillSudoku::FillSudokuButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^ MainPanel)
+void ButtonFillSudoku::FillSudokuButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^ MainPanel, bool isFilled)
 {
+    isFilled = true;
     this->Visible = false;
     this->Enabled = false;
 
@@ -58,12 +59,12 @@ void ButtonFillSudoku::FillSudokuButton_Click(array<SudokuField^, 2>^ fieldsSudo
                     if (!sudokuFieldsGlobal[globalRow, globalCol]->GetLocked() && sudokuFieldsGlobal[globalRow, globalCol]->GetValue() != 0)
                     {
                         field->SetValueInt(sudokuFieldsGlobal[globalRow, globalCol]->GetValue());
-                        int fieldVal = sudokuFieldsGlobal[globalRow, globalCol]->GetValue();
                     }
                 }
             }
         }
     }
+
 
     this->Visible = true;
     this->Enabled = true;
