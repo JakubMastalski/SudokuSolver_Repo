@@ -21,27 +21,18 @@ void ButtonFillSudoku::FillSudokuButton_Click(array<SudokuField^, 2>^ fieldsSudo
                 sudokuFieldsGlobal[i, j]->SetValue(fieldsSudoku[i, j]->GetValue(), sudokuFieldsGlobal, i, j);
 
                 if (fieldsSudoku[i, j]->GetLocked()) {
-                   int a = fieldsSudoku[i, j]->GetValue();
-                   int c = sudokuFieldsGlobal[i, j]->GetValue();
+                    int a = fieldsSudoku[i, j]->GetValue();
+                    int c = sudokuFieldsGlobal[i, j]->GetValue();
                 }
-
-                if (fieldsSudoku[i, j] != nullptr)
-                {
-                    sudokuFieldsGlobal[i, j]->SetValue(fieldsSudoku[i, j]->GetValue(), fieldsSudoku, i, j);
-                }
-                else
-                {
-                    sudokuFieldsGlobal[i, j]->Text = "";
-                }
+            }
+            else
+            {
+                sudokuFieldsGlobal[i, j]->Text = "";
             }
         }
     }
 
     while (FillSudokuStep(sudokuFieldsGlobal) != true);
-
-    int a = sudokuFieldsGlobal[0, 0]->GetValue();
-    int b = fieldsSudoku[0, 0]->GetValue();
-
 
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
@@ -64,7 +55,6 @@ void ButtonFillSudoku::FillSudokuButton_Click(array<SudokuField^, 2>^ fieldsSudo
             }
         }
     }
-
 
     this->Visible = true;
     this->Enabled = true;

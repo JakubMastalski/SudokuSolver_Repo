@@ -4,6 +4,7 @@
 
 void ButtonStart::StartButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^ MainPanel,bool isFilled)
 {
+
     this->Visible = false;
     this->Enabled = false;
 
@@ -16,7 +17,6 @@ void ButtonStart::StartButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^
             if (fieldsSudoku[i, j] != nullptr)
             {
                 fieldsSudokuStart[i, j] = fieldsSudoku[i, j];
-                fieldsSudokuStart[i, j]->SetValue(fieldsSudoku[i, j]->GetValue(), fieldsSudoku, i, j);
             }
         }
     }
@@ -29,8 +29,8 @@ void ButtonStart::StartButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^
             {
                 fieldsSudokuStart[i, j]->ClearValue(fieldsSudokuStart);
                 fieldsSudokuStart[i, j]->SetLocked(false);
-                fieldsSudoku[i, j]->ClearValue(fieldsSudoku);
-                fieldsSudoku[i, j]->SetLocked(false);
+                //fieldsSudoku[i, j]->ClearValue(fieldsSudoku);
+                //fieldsSudoku[i, j]->SetLocked(false);
             }
         }
     }
@@ -59,16 +59,9 @@ void ButtonStart::StartButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^
 
                 for (int fieldIndex = 0; fieldIndex < minorField->GetFields()->Length; fieldIndex++) {
                     SudokuField^ field = minorField->GetField(fieldIndex);
-
-
-                    if (isFilled)
-                    {
-                        field->SetValueString("");
-                        isFilled = false;
-                    }
+                
                     field->Clear0();
-
-
+                
                     int globalRow = i * 3 + (minorIndex / 3);
                     int globalCol = j * 3 + (minorIndex % 3);
 

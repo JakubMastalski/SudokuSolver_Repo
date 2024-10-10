@@ -1,6 +1,7 @@
 #pragma once
 #include "iPanelButtons.h"
 #include  "ButtonStart.h"
+#include "SudokuField.h"
 
 
 ref class ButtonFillSudoku : public IPanelButtons
