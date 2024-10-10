@@ -17,6 +17,7 @@ void ButtonFillSudoku::FillSudokuButton_Click(array<SudokuField^, 2>^ fieldsSudo
             if (fieldsSudoku[i, j] != nullptr)
             {
                 sudokuFieldsGlobal[i, j] = fieldsSudoku[i, j];
+                sudokuFieldsGlobal[i, j]->SetValue(fieldsSudoku[i, j]->GetValue(), sudokuFieldsGlobal, i, j);
 
                 if (fieldsSudoku[i, j]->GetLocked()) {
                    int a = fieldsSudoku[i, j]->GetValue();

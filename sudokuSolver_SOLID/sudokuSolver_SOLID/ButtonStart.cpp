@@ -37,6 +37,14 @@ void ButtonStart::StartButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^
 
     AddNumbersToBoard(fieldsSudokuStart);
 
+    for (int r = 0; r < 9; r++)
+    {
+        for (int c = 0; c < 9; c++)
+        {
+            fieldsSudoku[r, c]->SetValue(fieldsSudokuStart[r, c]->GetValue(), fieldsSudoku,r, c);
+        }
+    }
+
 
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
@@ -52,27 +60,22 @@ void ButtonStart::StartButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^
                 for (int fieldIndex = 0; fieldIndex < minorField->GetFields()->Length; fieldIndex++) {
                     SudokuField^ field = minorField->GetField(fieldIndex);
 
-                    field->SetValueString("");
+                    //field->SetValueString("");
 
                     int globalRow = i * 3 + (minorIndex / 3);
                     int globalCol = j * 3 + (minorIndex % 3);
 
-                    fieldsSudoku[globalRow, globalCol] = field;
 
                     if (fieldsSudokuStart[globalRow, globalCol]->GetValue() != 0)
                     {
                         field->SetValueInt(fieldsSudokuStart[globalRow, globalCol]->GetValue());
                         field->SetLocked(true);
-                        int a = fieldsSudokuStart[globalRow, globalCol]->GetValue();
-                        fieldsSudoku[globalRow, globalCol]->SetValue(fieldsSudokuStart[globalRow, globalCol]->GetValue(), fieldsSudoku, globalRow, globalCol);
                     }
 
                 }
             }
         }
     }
-
-    RemoveInvalidNumbers(fieldsSudokuStart);
 
     this->Visible = true;
     this->Enabled = true;
