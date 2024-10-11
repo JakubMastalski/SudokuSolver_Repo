@@ -100,10 +100,10 @@ bool ButtonFillSudoku::IsValidFill(array<SudokuField^, 2>^ sudokuFieldsGlobal, i
 {
     for (int i = 0; i < 9; i++)
     {
-       int valueRow = sudokuFieldsGlobal[row, i]->GetValue();
-       int valueCol = sudokuFieldsGlobal[i, col]->GetValue();
+        if (i != col && sudokuFieldsGlobal[row, i]->GetValue() == value)
+            return false;
 
-        if (sudokuFieldsGlobal[row, i]->GetValue() == value || sudokuFieldsGlobal[i, col]->GetValue() == value)
+        if (i != row && sudokuFieldsGlobal[i, col]->GetValue() == value)
             return false;
     }
 
@@ -113,8 +113,11 @@ bool ButtonFillSudoku::IsValidFill(array<SudokuField^, 2>^ sudokuFieldsGlobal, i
     {
         for (int j = 0; j < 3; j++)
         {
-            if (sudokuFieldsGlobal[startRow + i, startCol + j]->GetValue() == value)
+            if ((startRow + i != row || startCol + j != col) &&
+                sudokuFieldsGlobal[startRow + i, startCol + j]->GetValue() == value)
+            {
                 return false;
+            }
         }
     }
 
