@@ -4,7 +4,7 @@ ref class SudokuField :
     public System::Windows::Forms::Label
 {
 public:
-    bool IsLocked = false;
+    bool IsLocked;
     void SetLocked(bool locked);
 public:
     SudokuField();

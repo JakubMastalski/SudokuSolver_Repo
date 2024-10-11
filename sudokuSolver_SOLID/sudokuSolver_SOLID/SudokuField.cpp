@@ -5,6 +5,8 @@ SudokuField::SudokuField() {
     this->Location = System::Drawing::Point(5, 5);
     this->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
     this->Font = gcnew System::Drawing::Font(L"Segoe UI", 15.2F, System::Drawing::FontStyle::Bold);
+    this->IsLocked = false;
+    this->Text = "";
 }
 
 void SudokuField::SetValue(int value, array<SudokuField^, 2>^ fieldsSudoku, int row, int column) {
