@@ -2,15 +2,13 @@
 
 //POPRAW IS LOCKED
 
-void ButtonFillSudoku::FillSudokuButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^ MainPanel, bool isFilled)
+void ButtonFillSudoku::FillSudokuButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^ MainPanel)
 {
-    isFilled = true;
     this->Visible = false;
     this->Enabled = false;
 
     currentRow = 0;
     currentCol = 0;
-
     sudokuFieldsGlobal = gcnew array<SudokuField^, 2>(9, 9);
 
     for (int i = 0; i < 9; i++)

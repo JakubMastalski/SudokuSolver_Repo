@@ -2,7 +2,7 @@
 
 
 
-void ButtonStart::StartButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^ MainPanel,bool isFilled)
+void ButtonStart::StartButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^ MainPanel)
 {
 
     this->Visible = false;

@@ -50,10 +50,7 @@ namespace sudokuSolverSOLID {
 		bool dragging;
 		Point offset;
 		System::ComponentModel::Container ^components;
-
 		array<SudokuField^, 2>^ fieldsSudoku;
-	public:
-		bool isFilled = false;
 
 #pragma region Windows Form Designer generated code
 
