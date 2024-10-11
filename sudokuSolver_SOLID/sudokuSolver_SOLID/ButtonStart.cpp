@@ -14,24 +14,9 @@ void ButtonStart::StartButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^
     {
         for (int j = 0; j < 9; j++)
         {
-            if (fieldsSudokuStart[i, j] == nullptr)
-            {
-                fieldsSudokuStart[i, j] = gcnew SudokuField();
-                fieldsSudokuStart[i, j]->IsLocked = false;
-                fieldsSudoku[i, j]->IsLocked = false;
-            }
-        }
-    }
-
-    for (int i = 0; i < 9; i++)
-    {
-        for (int j = 0; j < 9; j++)
-        {
-            if (fieldsSudokuStart[i, j] != nullptr)
-            {
-                fieldsSudokuStart[i, j]->SetLocked(false);
-                fieldsSudoku[i, j]->SetLocked(false);
-            }
+           fieldsSudokuStart[i, j] = gcnew SudokuField();
+           fieldsSudokuStart[i, j]->SetLocked(false);
+           fieldsSudoku[i, j]->SetLocked(false);
         }
     }
 
@@ -68,7 +53,6 @@ void ButtonStart::StartButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^
                     int globalRow = i * 3 + (minorIndex / 3);
                     int globalCol = j * 3 + (minorIndex % 3);
 
-
                     if (fieldsSudokuStart[globalRow, globalCol]->GetValue() != 0)
                     {
                         field->SetValueInt(fieldsSudokuStart[globalRow, globalCol]->GetValue());
@@ -100,7 +84,6 @@ void ButtonStart::AddNumbersToBoard(array<SudokuField^, 2>^ fieldsSudokuStart)
             for (int attempts = 0; attempts < 9; attempts++) {
                 if (IsValid(fieldsSudokuStart, i, j, value)) {
                     fieldsSudokuStart[i, j]->SetValue(value, fieldsSudokuStart, i, j);
-                    fieldsSudokuStart[i, j]->SetLocked(true);
                     numbersToInsert--;
                     isValidValue = true;
                     break;
