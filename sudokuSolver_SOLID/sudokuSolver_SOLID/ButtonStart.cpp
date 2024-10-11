@@ -14,9 +14,9 @@ void ButtonStart::StartButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^
     {
         for (int j = 0; j < 9; j++)
         {
-            if (fieldsSudoku[i, j] != nullptr)
+            if (fieldsSudokuStart[i, j] != nullptr)
             {
-                fieldsSudokuStart[i, j] = fieldsSudoku[i, j];
+                fieldsSudokuStart[i, j] = gcnew SudokuField();
             }
         }
     }
@@ -29,8 +29,8 @@ void ButtonStart::StartButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^
             {
                 fieldsSudokuStart[i, j]->ClearValue(fieldsSudokuStart);
                 fieldsSudokuStart[i, j]->SetLocked(false);
-                //fieldsSudoku[i, j]->ClearValue(fieldsSudoku);
-                //fieldsSudoku[i, j]->SetLocked(false);
+                fieldsSudoku[i, j]->ClearValue(fieldsSudoku);
+                fieldsSudoku[i, j]->SetLocked(false);
             }
         }
     }
@@ -42,6 +42,7 @@ void ButtonStart::StartButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^
         for (int c = 0; c < 9; c++)
         {
             fieldsSudoku[r, c]->SetValue(fieldsSudokuStart[r, c]->GetValue(), fieldsSudoku,r, c);
+            fieldsSudoku[r, c]->SetLocked(true);
         }
     }
 
