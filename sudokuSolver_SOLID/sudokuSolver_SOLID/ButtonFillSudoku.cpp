@@ -64,19 +64,23 @@ void ButtonFillSudoku::FillSudokuButton_Click(array<SudokuField^, 2>^ fieldsSudo
 
 bool ButtonFillSudoku::FillSudokuStep(array<SudokuField^, 2>^ sudokuFieldsGlobal)
 {
-    if(!FindEmptyLocation(sudokuFieldsGlobal, currentRow, currentCol))
-        return true;
+    int row = 0, col = 0;
 
-    if (sudokuFieldsGlobal[currentRow, currentCol]->GetLocked()) {
-        return false;
-    }
+    // ZnajdŸ puste miejsce na planszy
+    if (!FindEmptyLocation(sudokuFieldsGlobal, row, col))
+        return true; // Brak pustych miejsc, sudoku rozwi¹zane
 
+    // Spróbuj wszystkich mo¿liwych wartoœci od 1 do 9
     for (int num = 1; num <= 9; num++)
     {
-        if (IsValidFill(sudokuFieldsGlobal, currentRow, currentCol, num))
+        if (IsValidFill(sudokuFieldsGlobal, row, col, num))
         {
-            sudokuFieldsGlobal[currentRow, currentCol]->SetValue(num, sudokuFieldsGlobal, currentRow, currentCol);
-            return false;
+            sudokuFieldsGlobal[row, col]->SetValue(num, sudokuFieldsGlobal, row, col);
+
+            if (FillSudokuStep(sudokuFieldsGlobal))
+                return true; 
+
+            sudokuFieldsGlobal[row, col]->SetValue(0, sudokuFieldsGlobal, row, col);
         }
     }
 
@@ -85,12 +89,16 @@ bool ButtonFillSudoku::FillSudokuStep(array<SudokuField^, 2>^ sudokuFieldsGlobal
 
 bool ButtonFillSudoku::FindEmptyLocation(array<SudokuField^, 2>^ sudokuFieldsGlobal, int% row, int% col)
 {
-    for (row = currentRow; row < 9; row++)
+    for (int r = 0; r < 9; r++)
     {
-        for (col = (row == currentRow) ? currentCol : 0; col < 9; col++)
+        for (int c = 0; c < 9; c++)
         {
-            if (!sudokuFieldsGlobal[row, col]->GetLocked() && (sudokuFieldsGlobal[row, col]->GetValue() == 0 || sudokuFieldsGlobal[row, col]->Text == ""))
-                return true;
+            if (!sudokuFieldsGlobal[r, c]->GetLocked() && sudokuFieldsGlobal[r, c]->GetValue() == 0)
+            {
+                row = r;
+                col = c;
+                return true; 
+            }
         }
     }
     return false;
