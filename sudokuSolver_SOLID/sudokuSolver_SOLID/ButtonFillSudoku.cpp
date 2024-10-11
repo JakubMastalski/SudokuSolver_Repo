@@ -20,7 +20,7 @@ void ButtonFillSudoku::FillSudokuButton_Click(array<SudokuField^, 2>^ fieldsSudo
             sudokuFieldsGlobal[i, j] = gcnew SudokuField();
 
             sudokuFieldsGlobal[i, j]->SetValue(fieldsSudoku[i, j]->GetValue(), sudokuFieldsGlobal, i, j);
-            if (fieldsSudoku[i, j]->GetLocked())
+            if (fieldsSudoku[i, j]->GetLocked() && fieldsSudoku[i,j]->GetValue() > 0)
             {
                 sudokuFieldsGlobal[i, j]->SetLocked(true);
             }
