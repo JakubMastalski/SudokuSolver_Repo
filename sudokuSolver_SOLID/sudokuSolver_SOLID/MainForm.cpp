@@ -219,25 +219,27 @@ namespace sudokuSolverSOLID
 		TextBoxPanel->Visible = !TextBoxPanel->Visible;
 		TextBoxPanel->Enabled = !TextBoxPanel->Enabled;
 
-		/*
+		StartButton->Enabled = !StartButton->Enabled;
+		FillSudokuButton->Enabled = !FillSudokuButton->Enabled;
+		RestartButton->Enabled = !RestartButton->Enabled;
+		ExitButton->Enabled = !ExitButton->Enabled;
+		HideButton->Enabled = !HideButton->Enabled;
+		ShowButton->Enabled = !ShowButton->Enabled;
+
 		for (int i = 0; i < 9; i++)
 		{
 			for (int j = 0; j < 9; j++)
 			{
 				user_textBox^ textBox = gcnew user_textBox(i, j);
 
-				textBox->Text = fieldsSudoku[i, j]->GetValue().ToString();
-				textBox->Font = gcnew System::Drawing::Font(L"Segoe UI", 12);
-				textBox->TextAlign = HorizontalAlignment::Center;
-
-				MainPanel->Controls->Add(textBox);
+				if (fieldsSudoku[i, j]->GetValue() != 0)textBox->Text = fieldsSudoku[i, j]->GetValue().ToString();
+				textBox->BoxColor(i, j);
+				TextBoxPanel->Controls->Add(textBox);
 
 				textBoxesSudoku[i, j] = textBox;
-
 				fieldsSudoku[i, j]->Visible = false;
 			}
 		}
-		*/
 	}
 
 	//Dragging Form
