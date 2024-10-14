@@ -14,5 +14,6 @@ public:
     void HideButton_Click(Panel^ menuOptionsPanel, Button^ showButton);
     void ShowButton_Click(Panel^ menuOptionsPanel, Button^ hideButton);
     void ExitButton_Click();
+    void TextBox_Click();
 };
 

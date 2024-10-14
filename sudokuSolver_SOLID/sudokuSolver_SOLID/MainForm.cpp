@@ -17,6 +17,7 @@ namespace sudokuSolverSOLID
 
 			this->StartButton = gcnew ButtonStart();
 			this->FillSudokuButton = gcnew ButtonFillSudoku();
+			this->TextBoxButton = gcnew PanelButtonsSecondary();
 			this->RestartButton = gcnew PanelButtonsSecondary();
 			this->ExitButton = gcnew PanelButtonsSecondary();
 			this->HideButton = gcnew PanelButtonsSecondary();
@@ -80,12 +81,11 @@ namespace sudokuSolverSOLID
 			this->MenuOptionsPanel->Controls->Add(this->StartButton);
 			this->MenuOptionsPanel->Controls->Add(this->ExitButton);
 			this->MenuOptionsPanel->Controls->Add(this->FillSudokuButton);
+			this->MenuOptionsPanel->Controls->Add(this->TextBoxButton);
 			this->MenuOptionsPanel->Location = System::Drawing::Point(605, 2);
 			this->MenuOptionsPanel->Name = L"MenuOptionsPanel";
 			this->MenuOptionsPanel->Size = System::Drawing::Size(250, 588);
 			this->MenuOptionsPanel->TabIndex = 5;
-
-
 			// 
 			// StartButton
 			// 
@@ -97,27 +97,24 @@ namespace sudokuSolverSOLID
 			// 
 			//  FillSudokuButton
 			// 
-			this->FillSudokuButton->Location = System::Drawing::Point(12, 246);
+			this->FillSudokuButton->Location = System::Drawing::Point(12, 174);
 			this->FillSudokuButton->Name = L" FillSudokuButton";
-			this->FillSudokuButton->Size = System::Drawing::Size(227, 54);
 			this->TabIndex = 2;
 			this->FillSudokuButton->Text = L"Fill Sudoku";
 			this->FillSudokuButton->Click += gcnew System::EventHandler(this, &MainForm::FillSudokuButton_Click);
 			// 
-			// CloseButton
+			// RestartButton
 			// 
-			this->RestartButton->Location = System::Drawing::Point(12, 100);
+			this->RestartButton->Location = System::Drawing::Point(12, 246);
 			this->RestartButton->Name = L"CloseButton";
-			this->RestartButton->Size = System::Drawing::Size(227, 54);
 			this->RestartButton->TabIndex = 3;
 			this->RestartButton->Text = L"Restart";
 			this->RestartButton->Click += gcnew System::EventHandler(this, &MainForm::RestartButton_Click);
 			// 
 			// ExitButton
 			// 
-			this->ExitButton->Location = System::Drawing::Point(12, 174);
+			this->ExitButton->Location = System::Drawing::Point(12, 400);
 			this->ExitButton->Name = L" ExitButton";
-			this->ExitButton->Size = System::Drawing::Size(227, 54);
 			this->ExitButton->TabIndex = 4;
 			this->ExitButton->Text = L"Close";
 			this->ExitButton->Click += gcnew System::EventHandler(this, &MainForm::ExitButton_Click);
@@ -126,16 +123,22 @@ namespace sudokuSolverSOLID
 			// 
 			this->HideButton->Location = System::Drawing::Point(12, 321);
 			this->HideButton->Name = L"HideButton";
-			this->HideButton->Size = System::Drawing::Size(227, 54);
 			this->HideButton->TabIndex = 5;
 			this->HideButton->Text = L"Hide Menu";
 			this->HideButton->Click += gcnew System::EventHandler(this, &MainForm::HideButton_Click);
+			// 
+	        // TextBoxButton
+	        // 
+	 		this->TextBoxButton->Location = System::Drawing::Point(12, 100);
+			this->TextBoxButton->Name = L" TextBoxButton";
+			this->TextBoxButton->Text = L"Enter Numbers";
+			this->TextBoxButton->TabIndex = 4;
+			this->TextBoxButton->Click += gcnew System::EventHandler(this, &MainForm::TextBoxButton_Click);
 			// 
 			// ShowButton
 			// 
 			this->ShowButton->Location = System::Drawing::Point(617, 22);
 			this->ShowButton->Name = L"ShowButton";
-			this->ShowButton->Size = System::Drawing::Size(227, 54);
 			this->ShowButton->Text = L"Open Menu";
 			this->ShowButton->Visible = false;
 			this->ShowButton->Click += gcnew System::EventHandler(this, &MainForm::ShowButton_Click);
@@ -194,6 +197,11 @@ namespace sudokuSolverSOLID
 
 	Void MainForm::ExitButton_Click(Object^ sender, EventArgs^ e) {
 		ExitButton->ExitButton_Click();
+	}
+
+	Void MainForm::TextBoxButton_Click(System::Object^ sender, System::EventArgs^ e)
+	{
+		//TODOl;
 	}
 
 	//Dragging Form

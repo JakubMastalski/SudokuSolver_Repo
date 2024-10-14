@@ -22,3 +22,9 @@ void PanelButtonsSecondary::ExitButton_Click()
 {
     Application::Exit();
 }
+
+void PanelButtonsSecondary::TextBox_Click()
+{
+    ;
+
+}

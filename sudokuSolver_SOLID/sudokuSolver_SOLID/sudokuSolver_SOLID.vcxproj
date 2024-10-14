@@ -131,6 +131,7 @@
     <ClCompile Include="SudokuMajorField.cpp" />
     <ClCompile Include="SudokuMiniorField.cpp" />
     <ClCompile Include="SudokuField.cpp" />
+    <ClCompile Include="user_textBox.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ButtonFillSudoku.h" />
@@ -143,6 +144,7 @@
     <ClInclude Include="SudokuMajorField.h" />
     <ClInclude Include="SudokuMiniorFiled.h" />
     <ClInclude Include="SudokuField.h" />
+    <ClInclude Include="user_textBox.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainForm.resx">
