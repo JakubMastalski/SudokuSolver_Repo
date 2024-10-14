@@ -9,11 +9,13 @@ namespace sudokuSolverSOLID
 		void InitializeComponent(void);
 		{
 			fieldsSudoku = gcnew array<SudokuField^, 2>(9, 9);
+			textBoxesSudoku = gcnew array<user_textBox^, 2>(9, 9);
 
 			std::srand(static_cast<unsigned int>(std::time(nullptr)));
 
 			this->MainPanel = (gcnew System::Windows::Forms::Panel());
 			this->MenuOptionsPanel = (gcnew System::Windows::Forms::Panel());
+			this->TextBoxPanel = (gcnew System::Windows::Forms::Panel());
 
 			this->StartButton = gcnew ButtonStart();
 			this->FillSudokuButton = gcnew ButtonFillSudoku();
@@ -71,6 +73,15 @@ namespace sudokuSolverSOLID
 					}
 				}
 			}
+			//TextBoxPanel
+
+			this->TextBoxPanel->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->TextBoxPanel->Location = System::Drawing::Point(82, 63);
+			this->TextBoxPanel->Name = L"TextBoxPanel";
+			this->TextBoxPanel->Size = System::Drawing::Size(440, 438);
+			this->TextBoxPanel->TabIndex = 0;
+			this->TextBoxPanel->Enabled = false;
+			this->TextBoxPanel->Visible = false;
 			// 
 	        // MenuOptionsPanel
 	        // 
@@ -152,6 +163,7 @@ namespace sudokuSolverSOLID
 			this->Controls->Add(this->ShowButton);
 			this->Controls->Add(this->MenuOptionsPanel);
 			this->Controls->Add(this->MainPanel);
+			this->Controls->Add(this->TextBoxPanel);
 			this->Font = (gcnew System::Drawing::Font(L"Segoe UI", 7.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
 			this->ForeColor = System::Drawing::Color::White;
@@ -201,7 +213,31 @@ namespace sudokuSolverSOLID
 
 	Void MainForm::TextBoxButton_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-		//TODOl;
+		MainPanel->Visible = !MainPanel->Visible;
+		MainPanel->Enabled = !MainPanel->Enabled;
+
+		TextBoxPanel->Visible = !TextBoxPanel->Visible;
+		TextBoxPanel->Enabled = !TextBoxPanel->Enabled;
+
+		/*
+		for (int i = 0; i < 9; i++)
+		{
+			for (int j = 0; j < 9; j++)
+			{
+				user_textBox^ textBox = gcnew user_textBox(i, j);
+
+				textBox->Text = fieldsSudoku[i, j]->GetValue().ToString();
+				textBox->Font = gcnew System::Drawing::Font(L"Segoe UI", 12);
+				textBox->TextAlign = HorizontalAlignment::Center;
+
+				MainPanel->Controls->Add(textBox);
+
+				textBoxesSudoku[i, j] = textBox;
+
+				fieldsSudoku[i, j]->Visible = false;
+			}
+		}
+		*/
 	}
 
 	//Dragging Form

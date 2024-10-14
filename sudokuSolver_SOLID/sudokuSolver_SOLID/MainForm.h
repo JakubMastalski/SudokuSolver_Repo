@@ -8,6 +8,7 @@
 #include "PanelButtonsSecondary.h"
 #include "ButtonStart.h"
 #include "ButtonFillSudoku.h"
+#include "user_textBox.h"
 
 namespace sudokuSolverSOLID {
 
@@ -41,6 +42,7 @@ namespace sudokuSolverSOLID {
 		PanelButtonsSecondary^ TextBoxButton;
 
 	private: System::Windows::Forms::Panel^ MainPanel;
+	private: System::Windows::Forms::Panel^ TextBoxPanel;
 	private: System::Windows::Forms::Panel^ MenuOptionsPanel;
 
 	protected:
@@ -49,7 +51,9 @@ namespace sudokuSolverSOLID {
 		bool dragging;
 		Point offset;
 		System::ComponentModel::Container ^components;
+	private:
 		array<SudokuField^, 2>^ fieldsSudoku;
+		array<user_textBox^, 2>^ textBoxesSudoku;
 
 #pragma region Windows Form Designer generated code
 
