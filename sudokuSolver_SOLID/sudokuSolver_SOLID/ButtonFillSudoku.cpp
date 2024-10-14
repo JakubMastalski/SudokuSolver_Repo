@@ -1,7 +1,5 @@
 #include "ButtonFillSudoku.h"
 
-//POPRAW IS LOCKED
-
 void ButtonFillSudoku::FillSudokuButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^ MainPanel)
 {
     this->Visible = false;
@@ -16,15 +14,21 @@ void ButtonFillSudoku::FillSudokuButton_Click(array<SudokuField^, 2>^ fieldsSudo
         for (int j = 0; j < 9; j++)
         {
             sudokuFieldsGlobal[i, j] = gcnew SudokuField();
-
             sudokuFieldsGlobal[i, j]->SetValue(fieldsSudoku[i, j]->GetValue(), sudokuFieldsGlobal, i, j);
-            if (fieldsSudoku[i, j]->GetLocked() && fieldsSudoku[i,j]->GetValue() > 0)
+
+            if (fieldsSudoku[i, j]->GetLocked() && fieldsSudoku[i, j]->GetValue() > 0)
             {
                 sudokuFieldsGlobal[i, j]->SetLocked(true);
             }
         }
     }
-    while (FillSudokuStep(sudokuFieldsGlobal) != true);
+
+    if (!FillSudokuStep(sudokuFieldsGlobal))
+    {
+        MessageBox::Show("Sudoku is impossible to solve.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+        Application::Restart();
+        return; 
+    }
 
     for (int r = 0; r < 9; r++)
     {
@@ -32,7 +36,7 @@ void ButtonFillSudoku::FillSudokuButton_Click(array<SudokuField^, 2>^ fieldsSudo
         {
             int valueFill = sudokuFieldsGlobal[r, c]->GetValue();
             fieldsSudoku[r, c]->SetValue(sudokuFieldsGlobal[r, c]->GetValue(), fieldsSudoku, r, c);
-            if(valueFill > 0)fieldsSudoku[r, c]->SetLocked(true);
+            if (valueFill > 0) fieldsSudoku[r, c]->SetLocked(true);
         }
     }
 
@@ -58,19 +62,19 @@ void ButtonFillSudoku::FillSudokuButton_Click(array<SudokuField^, 2>^ fieldsSudo
         }
     }
 
-    this->Visible = true;
-    this->Enabled = true;
+    if (MessageBox::Show("Sudoku has been solved successfully!", "Success", MessageBoxButtons::OK, MessageBoxIcon::Information) == System::Windows::Forms::DialogResult::OK)
+    {
+        Application::Restart();
+    }
 }
 
 bool ButtonFillSudoku::FillSudokuStep(array<SudokuField^, 2>^ sudokuFieldsGlobal)
 {
     int row = 0, col = 0;
 
-    // ZnajdŸ puste miejsce na planszy
     if (!FindEmptyLocation(sudokuFieldsGlobal, row, col))
-        return true; // Brak pustych miejsc, sudoku rozwi¹zane
+     return true;
 
-    // Spróbuj wszystkich mo¿liwych wartoœci od 1 do 9
     for (int num = 1; num <= 9; num++)
     {
         if (IsValidFill(sudokuFieldsGlobal, row, col, num))
@@ -132,8 +136,3 @@ bool ButtonFillSudoku::IsValidFill(array<SudokuField^, 2>^ sudokuFieldsGlobal, i
     return true;
 }
 
-ButtonFillSudoku::ButtonFillSudoku(Panel^ panel, array<SudokuField^, 2>^ fieldsSudoku)
-{
-    mainPanel = panel;
-    
-}
