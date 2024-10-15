@@ -39,7 +39,12 @@ namespace sudokuSolverSOLID {
 		PanelButtonsSecondary^ ExitButton;
 		PanelButtonsSecondary^ HideButton;
 		PanelButtonsSecondary^ ShowButton;
+
+		PanelButtonsSecondary^ CheckSolutionButton;
 		PanelButtonsSecondary^ TextBoxButton;
+		PanelButtonsSecondary^ SaveButton;
+		PanelButtonsSecondary^ ClearButton;
+
 
 	private: System::Windows::Forms::Panel^ MainPanel;
 	private: System::Windows::Forms::Panel^ TextBoxPanel;
@@ -65,6 +70,9 @@ private: System::Void HideButton_Click(System::Object^ sender, System::EventArgs
 private: System::Void ShowButton_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void ExitButton_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void TextBoxButton_Click(System::Object^ sender, System::EventArgs^ e);
+private: System::Void SaveButton_Click(System::Object^ sender, System::EventArgs^ e);
+private: System::Void ClearButton_Click(System::Object^ sender, System::EventArgs^ e);
+private: System::Void CheckSolutionButton_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void MainForm_MouseDown(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e);
 private: System::Void MainForm_MouseMove(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e);
 private: System::Void MainForm_MouseUp(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e);
