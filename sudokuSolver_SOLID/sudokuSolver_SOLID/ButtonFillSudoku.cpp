@@ -61,11 +61,8 @@ void ButtonFillSudoku::FillSudokuButton_Click(array<SudokuField^, 2>^ fieldsSudo
             }
         }
     }
-
-    if (MessageBox::Show("Sudoku has been solved successfully!", "Success", MessageBoxButtons::OK, MessageBoxIcon::Information) == System::Windows::Forms::DialogResult::OK)
-    {
-        Application::Restart();
-    }
+        this->Visible = true;
+        this->Enabled = true;
 }
 
 bool ButtonFillSudoku::FillSudokuStep(array<SudokuField^, 2>^ sudokuFieldsGlobal)

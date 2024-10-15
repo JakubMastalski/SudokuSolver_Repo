@@ -305,23 +305,127 @@ namespace sudokuSolverSOLID
 
 	Void MainForm::SaveButton_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-		;
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < 3; j++) {
+				SudokuMajorField^ majorField = dynamic_cast<SudokuMajorField^>(MainPanel->Controls[i * 3 + j]);
+
+				for (int minorIndex = 0; minorIndex < majorField->Controls->Count; minorIndex++) {
+					SudokuMiniorField^ minorField = dynamic_cast<SudokuMiniorField^>(majorField->Controls[minorIndex]);
+
+					for (int fieldIndex = 0; fieldIndex < minorField->GetFields()->Length; fieldIndex++) {
+						SudokuField^ field = minorField->GetField(fieldIndex);
+
+						int globalRow = i * 3 + (minorIndex / 3);
+						int globalCol = j * 3 + (minorIndex % 3);
+
+
+						field->Text = textBoxesSudoku[globalRow, globalCol]->Text;
+					}
+				}
+			}
+		}
+		MessageBox::Show("Changes has been Saved");
 	}
 
 	Void MainForm::ClearButton_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-		for (int i = 0; i < 9; i++)
+		for (int row = 0; row < 9; row++)
 		{
-			for (int j = 0; j < 9; j++)
+			for (int col = 0; col < 9; col++)
 			{
-				textBoxesSudoku[i,j]->Text = "";
-				fieldsSudoku[i,j]->Text = "";
+				textBoxesSudoku[row, col]->Text = "";
 			}
 		}
 	}
 	Void MainForm::CheckSolutionButton_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-		;
+		bool allFilled = true;
+		bool hasErrors = false;
+
+		// Sprawdzenie, czy wszystkie pola s¹ wype³nione
+		for (int i = 0; i < 9; i++)
+		{
+			for (int j = 0; j < 9; j++)
+			{
+				if (fieldsSudoku[i, j]->GetValue() == 0) // 0 oznacza puste pole
+				{
+					allFilled = false;
+					break;
+				}
+			}
+			if (!allFilled) break;
+		}
+
+		if (!allFilled)
+		{
+			MessageBox::Show("Wszystkie pola musz¹ byæ wype³nione!", "B³¹d");
+			return;
+		}
+
+		// Sprawdzenie, czy nie ma b³êdów w wierszach, kolumnach i kwadratach 3x3
+		for (int i = 0; i < 9; i++)
+		{
+			// Sprawdzamy wiersz
+			array<bool>^ seenRow = gcnew array<bool>(9);
+			for (int j = 0; j < 9; j++)
+			{
+				int value = fieldsSudoku[i, j]->GetValue();
+				if (seenRow[value - 1]) // Powtórzona liczba
+				{
+					hasErrors = true;
+					break;
+				}
+				seenRow[value - 1] = true;
+			}
+
+			if (hasErrors) break;
+
+			// Sprawdzamy kolumnê
+			array<bool>^ seenCol = gcnew array<bool>(9);
+			for (int j = 0; j < 9; j++)
+			{
+				int value = fieldsSudoku[j, i]->GetValue();
+				if (seenCol[value - 1])
+				{
+					hasErrors = true;
+					break;
+				}
+				seenCol[value - 1] = true;
+			}
+
+			if (hasErrors) break;
+
+			int startRow = (i / 3) * 3;
+			int startCol = (i % 3) * 3;
+			array<bool>^ seenSquare = gcnew array<bool>(9);
+
+			for (int row = 0; row < 3; row++)
+			{
+				for (int col = 0; col < 3; col++)
+				{
+					int value = fieldsSudoku[startRow + row, startCol + col]->GetValue();
+					if (seenSquare[value - 1])
+					{
+						hasErrors = true;
+						break;
+					}
+					seenSquare[value - 1] = true;
+				}
+				if (hasErrors) break;
+			}
+
+			if (hasErrors) break;
+		}
+
+		// Informowanie gracza o wyniku
+		if (hasErrors)
+		{
+			MessageBox::Show("B³¹d w rozwi¹zaniu!", "B³¹d");
+		}
+		else
+		{
+			MessageBox::Show("Gratulacje! Rozwi¹zanie jest poprawne!", "Sukces");
+		}
 	}
 
 	//Dragging Form
