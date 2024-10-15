@@ -70,7 +70,7 @@ void ButtonStart::StartButton_Click(array<SudokuField^, 2>^ fieldsSudoku, Panel^
 
 void ButtonStart::AddNumbersToBoard(array<SudokuField^, 2>^ fieldsSudokuStart)
 {
-    int numbersToInsert = 14;
+    int numbersToInsert = 12;
     srand(static_cast<unsigned int>(time(0)));
 
     while (numbersToInsert > 0) {

@@ -217,7 +217,6 @@ namespace sudokuSolverSOLID
 			this->ResumeLayout(false);
 		}
 	}
-
 	//Menu Buttons Options
 
 	Void MainForm::StartButton_Click(Object^ sender, EventArgs^ e) {
@@ -342,12 +341,11 @@ namespace sudokuSolverSOLID
 		bool allFilled = true;
 		bool hasErrors = false;
 
-		// Sprawdzenie, czy wszystkie pola s¹ wype³nione
 		for (int i = 0; i < 9; i++)
 		{
 			for (int j = 0; j < 9; j++)
 			{
-				if (fieldsSudoku[i, j]->GetValue() == 0) // 0 oznacza puste pole
+				if (fieldsSudoku[i, j]->GetValue() == 0)
 				{
 					allFilled = false;
 					break;
@@ -358,19 +356,17 @@ namespace sudokuSolverSOLID
 
 		if (!allFilled)
 		{
-			MessageBox::Show("Wszystkie pola musz¹ byæ wype³nione!", "B³¹d");
+			MessageBox::Show("All fields must be filled!", "Error");
 			return;
 		}
 
-		// Sprawdzenie, czy nie ma b³êdów w wierszach, kolumnach i kwadratach 3x3
 		for (int i = 0; i < 9; i++)
 		{
-			// Sprawdzamy wiersz
 			array<bool>^ seenRow = gcnew array<bool>(9);
 			for (int j = 0; j < 9; j++)
 			{
 				int value = fieldsSudoku[i, j]->GetValue();
-				if (seenRow[value - 1]) // Powtórzona liczba
+				if (seenRow[value - 1]) 
 				{
 					hasErrors = true;
 					break;
@@ -380,7 +376,6 @@ namespace sudokuSolverSOLID
 
 			if (hasErrors) break;
 
-			// Sprawdzamy kolumnê
 			array<bool>^ seenCol = gcnew array<bool>(9);
 			for (int j = 0; j < 9; j++)
 			{
@@ -417,14 +412,13 @@ namespace sudokuSolverSOLID
 			if (hasErrors) break;
 		}
 
-		// Informowanie gracza o wyniku
 		if (hasErrors)
 		{
-			MessageBox::Show("B³¹d w rozwi¹zaniu!", "B³¹d");
+			MessageBox::Show("Mistake in solution!", "Mistake");
 		}
 		else
 		{
-			MessageBox::Show("Gratulacje! Rozwi¹zanie jest poprawne!", "Sukces");
+			MessageBox::Show("Congratulations! The solution is correct!", "Success");
 		}
 	}
 
