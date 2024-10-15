@@ -38,7 +38,7 @@ namespace sudokuSolverSOLID {
 		ButtonStart^ StartButton;
 		ButtonFillSudoku^ FillSudokuButton;
 
-		PanelButtonsSecondary^ CheckSolutionButton;
+		CheckSolutionButton^ checkSolutionButton;
 		TextBoxButton^ textBoxButton;
 
 		PanelButtonsSecondary^ RestartButton;

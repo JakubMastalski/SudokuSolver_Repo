@@ -24,7 +24,7 @@ namespace sudokuSolverSOLID
 			this->HideButton = gcnew PanelButtonsSecondary();
 			this->ShowButton = gcnew PanelButtonsSecondary();
 
-			this->CheckSolutionButton = gcnew PanelButtonsSecondary();
+			this->checkSolutionButton = gcnew CheckSolutionButton();
 			this->textBoxButton = gcnew TextBoxButton();
 			this->SaveButton = gcnew PanelButtonsSecondary();
 			this->ClearButton = gcnew PanelButtonsSecondary();
@@ -101,7 +101,7 @@ namespace sudokuSolverSOLID
 			this->MenuOptionsPanel->Controls->Add(this->textBoxButton);
 			this->MenuOptionsPanel->Controls->Add(this->SaveButton);
 			this->MenuOptionsPanel->Controls->Add(this->ClearButton);
-			this->MenuOptionsPanel->Controls->Add(this->CheckSolutionButton);
+			this->MenuOptionsPanel->Controls->Add(this->checkSolutionButton);
 			this->MenuOptionsPanel->Location = System::Drawing::Point(605, 2);
 			this->MenuOptionsPanel->Name = L"MenuOptionsPanel";
 			this->MenuOptionsPanel->Size = System::Drawing::Size(250, 588);
@@ -175,11 +175,11 @@ namespace sudokuSolverSOLID
 			// 
 			// CheckSolutionButton
 			// 
-			this->CheckSolutionButton->Location = System::Drawing::Point(12, 27);
-			this->CheckSolutionButton->Name = L"CheckSolutionButton";
-			this->CheckSolutionButton->Text = L"Check Solution";
-			this->ClearButton->Enabled = false;
-			this->CheckSolutionButton->Click += gcnew System::EventHandler(this, &MainForm::CheckSolutionButton_Click);
+			this->checkSolutionButton->Location = System::Drawing::Point(12, 27);
+			this->checkSolutionButton->Name = L"CheckSolutionButton";
+			this->checkSolutionButton->Text = L"Check Solution";
+			this->checkSolutionButton->Enabled = false;
+			this->checkSolutionButton->Click += gcnew System::EventHandler(this, &MainForm::CheckSolutionButton_Click);
 			// 
 			// ShowButton
 			// 
@@ -269,18 +269,18 @@ namespace sudokuSolverSOLID
 			ClearButton->Enabled = true;
 			SaveButton->BringToFront();
 			ClearButton->BringToFront();
-			CheckSolutionButton->Enabled = true;
-			CheckSolutionButton->BringToFront();
+			checkSolutionButton->Enabled = true;
+			checkSolutionButton->BringToFront();
 		}
 		else
 		{
 			textBoxButton->Text = "Enter Numbers";
 			SaveButton->Enabled = false;
 			ClearButton->Enabled = false;
-			CheckSolutionButton->Enabled = false;
+			checkSolutionButton->Enabled = false;
 			SaveButton->SendToBack();
 			ClearButton->SendToBack();
-			CheckSolutionButton->SendToBack();
+			checkSolutionButton->SendToBack();
 		}
 
 		TextBoxPanel->Controls->Clear();
@@ -324,88 +324,7 @@ namespace sudokuSolverSOLID
 	}
 	Void MainForm::CheckSolutionButton_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-		bool allFilled = true;
-		bool hasErrors = false;
-
-		for (int i = 0; i < 9; i++)
-		{
-			for (int j = 0; j < 9; j++)
-			{
-				if (fieldsSudoku[i, j]->GetValue() == 0)
-				{
-					allFilled = false;
-					break;
-				}
-			}
-			if (!allFilled) break;
-		}
-
-		if (!allFilled)
-		{
-			MessageBox::Show("All fields must be filled!", "Error");
-			return;
-		}
-
-		for (int i = 0; i < 9; i++)
-		{
-			array<bool>^ seenRow = gcnew array<bool>(9);
-			for (int j = 0; j < 9; j++)
-			{
-				int value = fieldsSudoku[i, j]->GetValue();
-				if (seenRow[value - 1]) 
-				{
-					hasErrors = true;
-					break;
-				}
-				seenRow[value - 1] = true;
-			}
-
-			if (hasErrors) break;
-
-			array<bool>^ seenCol = gcnew array<bool>(9);
-			for (int j = 0; j < 9; j++)
-			{
-				int value = fieldsSudoku[j, i]->GetValue();
-				if (seenCol[value - 1])
-				{
-					hasErrors = true;
-					break;
-				}
-				seenCol[value - 1] = true;
-			}
-
-			if (hasErrors) break;
-
-			int startRow = (i / 3) * 3;
-			int startCol = (i % 3) * 3;
-			array<bool>^ seenSquare = gcnew array<bool>(9);
-
-			for (int row = 0; row < 3; row++)
-			{
-				for (int col = 0; col < 3; col++)
-				{
-					int value = fieldsSudoku[startRow + row, startCol + col]->GetValue();
-					if (seenSquare[value - 1])
-					{
-						hasErrors = true;
-						break;
-					}
-					seenSquare[value - 1] = true;
-				}
-				if (hasErrors) break;
-			}
-
-			if (hasErrors) break;
-		}
-
-		if (hasErrors)
-		{
-			MessageBox::Show("Mistake in solution!", "Mistake");
-		}
-		else
-		{
-			MessageBox::Show("Congratulations! The solution is correct!", "Success");
-		}
+		checkSolutionButton->CheckSolution(fieldsSudoku);
 	}
 
 	//Dragging Form
