@@ -25,7 +25,7 @@ namespace sudokuSolverSOLID
 			this->ShowButton = gcnew PanelButtonsSecondary();
 
 			this->CheckSolutionButton = gcnew PanelButtonsSecondary();
-			this->TextBoxButton = gcnew PanelButtonsSecondary();
+			this->textBoxButton = gcnew TextBoxButton();
 			this->SaveButton = gcnew PanelButtonsSecondary();
 			this->ClearButton = gcnew PanelButtonsSecondary();
 
@@ -98,7 +98,7 @@ namespace sudokuSolverSOLID
 			this->MenuOptionsPanel->Controls->Add(this->StartButton);
 			this->MenuOptionsPanel->Controls->Add(this->ExitButton);
 			this->MenuOptionsPanel->Controls->Add(this->FillSudokuButton);
-			this->MenuOptionsPanel->Controls->Add(this->TextBoxButton);
+			this->MenuOptionsPanel->Controls->Add(this->textBoxButton);
 			this->MenuOptionsPanel->Controls->Add(this->SaveButton);
 			this->MenuOptionsPanel->Controls->Add(this->ClearButton);
 			this->MenuOptionsPanel->Controls->Add(this->CheckSolutionButton);
@@ -147,13 +147,13 @@ namespace sudokuSolverSOLID
 			this->HideButton->Text = L"Hide Menu";
 			this->HideButton->Click += gcnew System::EventHandler(this, &MainForm::HideButton_Click);
 			// 
-	        // TextBoxButton
+	        // textBoxButton
 	        // 
-	 		this->TextBoxButton->Location = System::Drawing::Point(12, 100);
-			this->TextBoxButton->Name = L" TextBoxButton";
-			this->TextBoxButton->Text = L"Enter Numbers";
-			this->TextBoxButton->TabIndex = 4;
-			this->TextBoxButton->Click += gcnew System::EventHandler(this, &MainForm::TextBoxButton_Click);
+	 		this->textBoxButton->Location = System::Drawing::Point(12, 100);
+			this->textBoxButton->Name = L" TextBoxButton";
+			this->textBoxButton->Text = L"Enter Numbers";
+			this->textBoxButton->TabIndex = 4;
+			this->textBoxButton->Click += gcnew System::EventHandler(this, &MainForm::TextBoxButton_Click);
 			// 
 		    //	SaveButton
 		    // 
@@ -264,7 +264,7 @@ namespace sudokuSolverSOLID
 
 		if (!SaveButton->Enabled)
 		{
-			TextBoxButton->Text = "Menu";
+			textBoxButton->Text = "Menu";
 			SaveButton->Enabled = true;
 			ClearButton->Enabled = true;
 			SaveButton->BringToFront();
@@ -274,7 +274,7 @@ namespace sudokuSolverSOLID
 		}
 		else
 		{
-			TextBoxButton->Text = "Enter Numbers";
+			textBoxButton->Text = "Enter Numbers";
 			SaveButton->Enabled = false;
 			ClearButton->Enabled = false;
 			CheckSolutionButton->Enabled = false;
@@ -285,21 +285,7 @@ namespace sudokuSolverSOLID
 
 		TextBoxPanel->Controls->Clear();
 
-		for (int i = 0; i < 9; i++)
-		{
-			for (int j = 0; j < 9; j++)
-			{
-				user_textBox^ textBox = gcnew user_textBox(i, j);
-
-				if (fieldsSudoku[i, j]->GetValue() != 0)
-					textBox->Text = fieldsSudoku[i, j]->GetValue().ToString();
-
-				textBox->BoxColor(i, j);
-				TextBoxPanel->Controls->Add(textBox);
-				textBoxesSudoku[i, j] = textBox;
-				fieldsSudoku[i, j]->Visible = false;
-			}
-		}
+		textBoxButton->TextBoxButton_Click(fieldsSudoku, textBoxesSudoku, TextBoxPanel);
 	}
 
 	Void MainForm::SaveButton_Click(System::Object^ sender, System::EventArgs^ e)

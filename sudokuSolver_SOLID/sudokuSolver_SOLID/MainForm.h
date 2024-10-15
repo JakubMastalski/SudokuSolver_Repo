@@ -9,6 +9,8 @@
 #include "ButtonStart.h"
 #include "ButtonFillSudoku.h"
 #include "user_textBox.h"
+#include "TextBoxButton.h"
+#include "CheckSolutionButton.h"
 
 namespace sudokuSolverSOLID {
 
@@ -35,16 +37,16 @@ namespace sudokuSolverSOLID {
 	private:
 		ButtonStart^ StartButton;
 		ButtonFillSudoku^ FillSudokuButton;
+
+		PanelButtonsSecondary^ CheckSolutionButton;
+		TextBoxButton^ textBoxButton;
+
 		PanelButtonsSecondary^ RestartButton;
 		PanelButtonsSecondary^ ExitButton;
 		PanelButtonsSecondary^ HideButton;
 		PanelButtonsSecondary^ ShowButton;
-
-		PanelButtonsSecondary^ CheckSolutionButton;
-		PanelButtonsSecondary^ TextBoxButton;
 		PanelButtonsSecondary^ SaveButton;
 		PanelButtonsSecondary^ ClearButton;
-
 
 	private: System::Windows::Forms::Panel^ MainPanel;
 	private: System::Windows::Forms::Panel^ TextBoxPanel;

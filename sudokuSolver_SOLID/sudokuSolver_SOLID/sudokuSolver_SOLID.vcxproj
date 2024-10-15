@@ -123,6 +123,7 @@
     <ClCompile Include="Board.cpp" />
     <ClCompile Include="ButtonFillSudoku.cpp" />
     <ClCompile Include="ButtonStart.cpp" />
+    <ClCompile Include="CheckSolutionButton.cpp" />
     <ClCompile Include="IBoard.cpp" />
     <ClCompile Include="iPanelButtons.cpp" />
     <ClCompile Include="MainForm.cpp" />
@@ -131,11 +132,13 @@
     <ClCompile Include="SudokuMajorField.cpp" />
     <ClCompile Include="SudokuMiniorField.cpp" />
     <ClCompile Include="SudokuField.cpp" />
+    <ClCompile Include="TextBoxButton.cpp" />
     <ClCompile Include="user_textBox.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ButtonFillSudoku.h" />
     <ClInclude Include="ButtonStart.h" />
+    <ClInclude Include="CheckSolutionButton.h" />
     <ClInclude Include="iPanelButtons.h" />
     <ClInclude Include="MainForm.h">
       <FileType>CppForm</FileType>
@@ -144,6 +147,7 @@
     <ClInclude Include="SudokuMajorField.h" />
     <ClInclude Include="SudokuMiniorFiled.h" />
     <ClInclude Include="SudokuField.h" />
+    <ClInclude Include="TextBoxButton.h" />
     <ClInclude Include="user_textBox.h" />
   </ItemGroup>
   <ItemGroup>
